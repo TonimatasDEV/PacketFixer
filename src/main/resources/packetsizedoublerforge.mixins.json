@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.tonimatasdev.packetsizedoublerforge.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "packetsizedoublerforge.refmap.json",
+  "mixins": [
+    "CompressionDecoderMixin",
+    "CompressionEncoderMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
