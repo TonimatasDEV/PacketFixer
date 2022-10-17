@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin({CompressionEncoder.class})
 public abstract class CompressionEncoderMixin {
 
-    @ModifyConstant(method = "encode(Lio/netty/channel/ChannelHandlerContext;Ljava/lang/Object;Lio/netty/buffer/ByteBuf;)V", constant = @Constant(intValue = 2097152))
+    @ModifyConstant(method = "encode(Lio/netty/channel/ChannelHandlerContext;Lio/netty/buffer/ByteBuf;Lio/netty/buffer/ByteBuf;)V", constant = @Constant(intValue = 2097152))
     private int injected(int value) {
         return 2097152*10;
     }
