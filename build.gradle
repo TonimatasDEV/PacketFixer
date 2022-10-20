@@ -23,7 +23,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings channel: 'parchment', version: '2022.09.04-1.18.2'
+    mappings channel: 'parchment', version: "${parchment_version}-${minecraft_version}"
 
     runs {
         client {
@@ -83,7 +83,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.84'
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }
 
