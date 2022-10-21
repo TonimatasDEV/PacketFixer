@@ -16,7 +16,7 @@ repositories {
 }
 
 group = 'PacketSizeDoublerForge'
-version = '1.0.0'
+version = "1.0.1-${minecraft_version}"
 archivesBaseName = 'PacketSizeDoublerForge'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)

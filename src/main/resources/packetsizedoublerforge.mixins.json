@@ -8,7 +8,9 @@
     "CompressionDecoderMixin",
     "CompressionEncoderMixin"
   ],
-  "client": [],
+  "client": [
+    "ClientboundCustomPayloadPacketMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }
