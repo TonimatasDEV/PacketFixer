@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ClientboundCustomPayloadPacket.class)
 public class ClientboundCustomPayloadPacketMixin {
+
     @ModifyConstant(method = "<init>(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)V",constant = @Constant(intValue = 1048576))
     private int injectedRF(int value) {
         return value*10;
