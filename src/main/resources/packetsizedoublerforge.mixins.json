@@ -10,7 +10,8 @@
     "CompressionDecoderMixin",
     "CompressionEncoderMixin",
     "ServerboundCustomPayloadPacketMixin",
-    "ServerboundCustomQueryPacketMixin"
+    "ServerboundCustomQueryPacketMixin",
+    "ServerLoginPacketListenerImplMixin"
   ],
   "client": [
   ],
