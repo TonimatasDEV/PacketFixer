@@ -13,3 +13,8 @@ buildscript {
 }
 
 rootProject.name = 'PacketSizeDoublerForge'
+
+include '1.16.x'
+include '1.17.x'
+include '1.18.x'
+include '1.19.x'
