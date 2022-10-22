@@ -41,3 +41,24 @@ subprojects {
         }
     }
 }
+
+task exportAll {
+    dependsOn(":1.16.x:jar")
+    dependsOn(":1.17.x:jar")
+    dependsOn(":1.18.x:jar")
+    dependsOn(":1.19.x:jar")
+}
+
+task buildAll {
+    dependsOn(":1.16.x:build")
+    dependsOn(":1.17.x:build")
+    dependsOn(":1.18.x:build")
+    dependsOn(":1.19.x:build")
+}
+
+task cleanAll {
+    dependsOn(":1.16.x:clean")
+    dependsOn(":1.17.x:clean")
+    dependsOn(":1.18.x:clean")
+    dependsOn(":1.19.x:clean")
+}
