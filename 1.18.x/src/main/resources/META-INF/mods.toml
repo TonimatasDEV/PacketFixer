@@ -15,13 +15,13 @@ A simple mod for doubling the size of allowed packets.
 [[dependencies.packetsizedoublerforge]]
 modId = "forge"
 mandatory = true
-versionRange = "[40,)"
+versionRange = "[38,41)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.packetsizedoublerforge]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18,1.18.2)"
+versionRange = "[1.18,1.19)"
 ordering = "NONE"
 side = "BOTH"
