@@ -11,7 +11,7 @@ subprojects {
     apply plugin: 'org.spongepowered.mixin'
 
     group = 'PacketSizeDoublerForge'
-    version = "1.0.2-${minecraft_version}"
+    version = "1.0.3-${minecraft_version}"
     archivesBaseName = 'PacketSizeDoublerForge'
 
     mixin {
@@ -42,21 +42,24 @@ subprojects {
     }
 }
 
-task exportAll {
+tasks.register('exportAll') {
+    dependsOn(":1.15.x:jar")
     dependsOn(":1.16.x:jar")
     dependsOn(":1.17.x:jar")
     dependsOn(":1.18.x:jar")
     dependsOn(":1.19.x:jar")
 }
 
-task buildAll {
+tasks.register('buildAll') {
+    dependsOn(":1.15.x:build")
     dependsOn(":1.16.x:build")
     dependsOn(":1.17.x:build")
     dependsOn(":1.18.x:build")
     dependsOn(":1.19.x:build")
 }
 
-task cleanAll {
+tasks.register('cleanAll') {
+    dependsOn(":1.15.x:clean")
     dependsOn(":1.16.x:clean")
     dependsOn(":1.17.x:clean")
     dependsOn(":1.18.x:clean")

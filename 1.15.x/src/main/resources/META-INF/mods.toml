@@ -4,7 +4,7 @@ license = "All Rights Reserved"
 
 [[mods]]
 modId = "packetsizedoublerforge"
-version = "1.0.1"
+version = "${file.jarVersion}"
 displayName = "PacketSizeDoublerForge"
 
 authors = "TonimatasDEV"

@@ -9,8 +9,8 @@
   "mixins": [
     "CCustomPayloadLoginPacketMixin",
     "CCustomPayloadPacketMixin",
-    "CompressionDecoderMixin",
-    "CompressionEncoderMixin",
+    "NettyCompressionDecoderMixin",
+    "NettyCompressionEncoderMixin",
     "SCustomPayloadLoginPacketMixin",
     "SCustomPayloadPacketMixin",
     "ServerLoginNetHandlerMixin"

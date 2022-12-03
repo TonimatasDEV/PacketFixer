@@ -4,7 +4,7 @@ license = "All Rights Reserved"
 
 [[mods]]
 modId = "packetsizedoublerforge"
-version = "1.0.1"
+version = "${file.jarVersion}"
 displayName = "PacketSizeDoublerForge"
 
 authors = "TonimatasDEV"
@@ -22,6 +22,6 @@ side = "BOTH"
 [[dependencies.packetsizedoublerforge]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.17,1.18)"
+versionRange = "[1.17.1]"
 ordering = "NONE"
 side = "BOTH"
