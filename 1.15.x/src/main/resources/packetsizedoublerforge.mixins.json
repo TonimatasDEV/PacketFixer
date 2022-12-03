@@ -1,0 +1,21 @@
+{
+  "client": [
+  ],
+  "compatibilityLevel": "JAVA_8",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8",
+  "mixins": [
+    "CCustomPayloadLoginPacketMixin",
+    "CCustomPayloadPacketMixin",
+    "CompressionDecoderMixin",
+    "CompressionEncoderMixin",
+    "SCustomPayloadLoginPacketMixin",
+    "SCustomPayloadPacketMixin",
+    "ServerLoginNetHandlerMixin"
+  ],
+  "package": "net.tonimatasdev.packetsizedoublerforge.mixin",
+  "refmap": "packetsizedoublerforge.refmap.json",
+  "required": true
+}
