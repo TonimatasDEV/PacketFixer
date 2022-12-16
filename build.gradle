@@ -11,7 +11,7 @@ subprojects {
     apply plugin: 'org.spongepowered.mixin'
 
     group = 'PacketSizeDoublerForge'
-    version = "1.0.3-${minecraft_version}"
+    version = "1.0.4-${minecraft_version}"
     archivesBaseName = 'PacketSizeDoublerForge'
 
     mixin {
