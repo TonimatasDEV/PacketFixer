@@ -1,21 +1,21 @@
 {
-  "client": [
-  ],
-  "compatibilityLevel": "JAVA_8",
-  "injectors": {
-    "defaultRequire": 1
-  },
+  "required": false,
   "minVersion": "0.8",
+  "package": "net.tonimatasdev.packetsizedoublerforge.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "packetsizedoublerforge.refmap.json",
   "mixins": [
+    "NettyCompressionDecoderMixin",
+    "NettyCompressionEncoderMixin"
+  ],
+  "client": [
     "CCustomPayloadLoginPacketMixin",
     "CCustomPayloadPacketMixin",
-    "NettyCompressionDecoderMixin",
-    "NettyCompressionEncoderMixin",
-    "SCustomPayloadLoginPacketMixin",
-    "SCustomPayloadPacketMixin",
     "ServerLoginNetHandlerMixin"
   ],
-  "package": "net.tonimatasdev.packetsizedoublerforge.mixin",
-  "refmap": "packetsizedoublerforge.refmap.json",
-  "required": true
+  "server": [
+    "SCustomPayloadLoginPacketMixin",
+    "SCustomPayloadPacketMixin",
+    "ServerPlayNetHandlerMixin"
+  ]
 }

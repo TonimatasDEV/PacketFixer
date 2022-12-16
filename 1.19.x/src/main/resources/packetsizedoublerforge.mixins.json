@@ -1,19 +1,22 @@
 {
-  "required": true,
+  "required": false,
   "minVersion": "0.8",
   "package": "net.tonimatasdev.packetsizedoublerforge.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "packetsizedoublerforge.refmap.json",
   "mixins": [
-    "ClientboundCustomPayloadPacketMixin",
-    "ClientboundCustomQueryPacketMixin",
     "CompressionDecoderMixin",
-    "CompressionEncoderMixin",
-    "ServerboundCustomPayloadPacketMixin",
-    "ServerboundCustomQueryPacketMixin",
-    "ServerLoginPacketListenerImplMixin"
+    "CompressionEncoderMixin"
   ],
   "client": [
+    "ClientboundCustomPayloadPacketMixin",
+    "ClientboundCustomQueryPacketMixin",
+    "ServerLoginPacketListenerImplMixin"
+  ],
+  "server": [
+    "ServerboundCustomPayloadPacketMixin",
+    "ServerboundCustomQueryPacketMixin",
+    "ServerGamePacketListenerImplMixin"
   ],
   "injectors": {
     "defaultRequire": 1
