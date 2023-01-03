@@ -1,3 +1,4 @@
+//file:noinspection GroovyAssignabilityCheck
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 allprojects {
@@ -11,7 +12,7 @@ subprojects {
     apply plugin: 'org.spongepowered.mixin'
 
     group = 'PacketSizeDoublerForge'
-    version = "1.0.4-${minecraft_version}"
+    version = "1.0.5-${minecraft_version}"
     archivesBaseName = 'PacketSizeDoublerForge'
 
     mixin {
@@ -40,28 +41,4 @@ subprojects {
             ])
         }
     }
-}
-
-tasks.register('exportAll') {
-    dependsOn(":1.15.x:jar")
-    dependsOn(":1.16.x:jar")
-    dependsOn(":1.17.x:jar")
-    dependsOn(":1.18.x:jar")
-    dependsOn(":1.19.x:jar")
-}
-
-tasks.register('buildAll') {
-    dependsOn(":1.15.x:build")
-    dependsOn(":1.16.x:build")
-    dependsOn(":1.17.x:build")
-    dependsOn(":1.18.x:build")
-    dependsOn(":1.19.x:build")
-}
-
-tasks.register('cleanAll') {
-    dependsOn(":1.15.x:clean")
-    dependsOn(":1.16.x:clean")
-    dependsOn(":1.17.x:clean")
-    dependsOn(":1.18.x:clean")
-    dependsOn(":1.19.x:clean")
 }
