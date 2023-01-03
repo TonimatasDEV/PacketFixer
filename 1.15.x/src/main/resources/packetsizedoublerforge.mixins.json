@@ -15,7 +15,6 @@
   ],
   "server": [
     "SCustomPayloadLoginPacketMixin",
-    "SCustomPayloadPacketMixin",
     "ServerPlayNetHandlerMixin"
   ]
 }
