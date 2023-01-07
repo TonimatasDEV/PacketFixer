@@ -7,9 +7,8 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ServerboundCustomPayloadPacket.class)
 public class ServerboundCustomPayloadPacketMixin {
-
     @ModifyConstant(method = "<init>(Lnet/minecraft/network/FriendlyByteBuf;)V", constant = @Constant(intValue = 32767))
-    private int injected(int value) {
+    private int packetDoubler(int value) {
         return value*10;
     }
 }

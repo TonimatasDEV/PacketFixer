@@ -7,9 +7,8 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin({ServerPlayNetHandler.class})
 public class ServerPlayNetHandlerMixin {
-
     @ModifyConstant(method = "tick", constant = @Constant(longValue = 15000L, ordinal = 0))
-    private long injected(long value) {
+    private long packetDoubler(long value) {
         return value*4;
     }
 }

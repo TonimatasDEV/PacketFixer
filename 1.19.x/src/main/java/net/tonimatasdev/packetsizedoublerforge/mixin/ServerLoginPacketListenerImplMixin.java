@@ -7,9 +7,8 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ServerLoginPacketListenerImpl.class)
 public class ServerLoginPacketListenerImplMixin {
-
     @ModifyConstant(method = "tick", constant = @Constant(intValue = 600))
-    private int injected(int value) {
+    private int packetDoubler(int value) {
         return value*10;
     }
 }

@@ -6,7 +6,9 @@
   "refmap": "packetsizedoublerforge.refmap.json",
   "mixins": [
     "NettyCompressionDecoderMixin",
-    "NettyCompressionEncoderMixin"
+    "NettyCompressionEncoderMixin",
+    "PacketBufferMixin",
+    "SCustomPayloadPlayPacketMixin"
   ],
   "client": [
     "CCustomPayloadLoginPacketMixin",
