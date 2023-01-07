@@ -5,12 +5,14 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "packetsizedoublerforge.refmap.json",
   "mixins": [
+    "ClientboundCustomQueryPacketMixin",
     "CompressionDecoderMixin",
-    "CompressionEncoderMixin"
+    "CompressionEncoderMixin",
+    "FriendlyByteBufMixin",
+    "PacketEncoderMixin"
   ],
   "client": [
     "ClientboundCustomPayloadPacketMixin",
-    "ClientboundCustomQueryPacketMixin",
     "ServerLoginPacketListenerImplMixin"
   ],
   "server": [

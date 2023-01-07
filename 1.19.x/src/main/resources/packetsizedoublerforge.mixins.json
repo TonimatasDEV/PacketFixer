@@ -6,11 +6,12 @@
   "refmap": "packetsizedoublerforge.refmap.json",
   "mixins": [
     "CompressionDecoderMixin",
-    "CompressionEncoderMixin"
+    "CompressionEncoderMixin",
+    "FriendlyByteBufMixin",
+    "PacketEncoderMixin"
   ],
   "client": [
     "ClientboundCustomPayloadPacketMixin",
-    "ClientboundCustomQueryPacketMixin",
     "ServerLoginPacketListenerImplMixin"
   ],
   "server": [
