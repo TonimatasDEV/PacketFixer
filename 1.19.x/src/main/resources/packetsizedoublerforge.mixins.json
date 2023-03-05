@@ -7,16 +7,7 @@
   "mixins": [
     "CompressionDecoderMixin",
     "CompressionEncoderMixin",
-    "FriendlyByteBufMixin",
     "PacketEncoderMixin"
-  ],
-  "client": [
-    "ClientboundCustomPayloadPacketMixin",
-    "ServerLoginPacketListenerImplMixin"
-  ],
-  "server": [
-    "ServerboundCustomPayloadPacketMixin",
-    "ServerGamePacketListenerImplMixin"
   ],
   "injectors": {
     "defaultRequire": 1

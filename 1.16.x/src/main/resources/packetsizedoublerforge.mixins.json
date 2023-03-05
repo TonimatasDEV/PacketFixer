@@ -7,16 +7,6 @@
   "mixins": [
     "NettyCompressionDecoderMixin",
     "NettyCompressionEncoderMixin",
-    "PacketBufferMixin",
-    "SCustomPayloadPlayPacketMixin"
-  ],
-  "client": [
-    "CCustomPayloadLoginPacketMixin",
-    "CCustomPayloadPacketMixin",
-    "ServerLoginNetHandlerMixin"
-  ],
-  "server": [
-    "SCustomPayloadLoginPacketMixin",
-    "ServerPlayNetHandlerMixin"
+    "PacketBufferMixin"
   ]
 }
