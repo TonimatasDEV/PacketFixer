@@ -8,5 +8,8 @@
     "NettyCompressionDecoderMixin",
     "NettyCompressionEncoderMixin",
     "PacketBufferMixin"
+  ],
+  "client": [
+    "CCustomPayloadLoginPacketMixin"
   ]
 }
