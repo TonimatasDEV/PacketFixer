@@ -1,4 +1,5 @@
 //file:noinspection GroovyAssignabilityCheck
+//file:noinspection GrDeprecatedAPIUsage
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 allprojects {
@@ -12,7 +13,7 @@ subprojects {
     apply plugin: 'org.spongepowered.mixin'
 
     group = 'PacketSizeDoublerForge'
-    version = "1.0.7-${minecraft_version}"
+    version = "1.0.8-${version}"
     archivesBaseName = 'PacketSizeDoublerForge'
 
     mixin {
@@ -29,6 +30,8 @@ subprojects {
     sourceSets.main.resources { srcDir 'src/generated/resources' }
 
     jar {
+        destinationDir = file("$rootDir/artifacts")
+
         manifest {
             attributes([
                     "Specification-Title"     : "PacketSizeDoublerForge",
@@ -41,4 +44,8 @@ subprojects {
             ])
         }
     }
+}
+
+tasks.register('exportAll') {
+    dependsOn '1-15-x:jar', '1-16-x:jar', '1-17-x:jar', '1-18-x:jar', '1-19-x:jar'
 }

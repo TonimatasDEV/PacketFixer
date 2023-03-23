@@ -4,17 +4,12 @@
 /build/classes/java/main/
 /run/
 /.idea/
+/artifacts/
 
 /1.15.x/build/
-/1.15.x/.gradle/
-
 /1.16.x/build/
-/1.16.x/.gradle/
-
 /1.17.x/build/
-
 /1.18.x/build/
-
 /1.19.x/build/
 
 
