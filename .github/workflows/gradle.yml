@@ -11,34 +11,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Java JDK 8
-        uses: actions/setup-java@v3.10.0
-        with:
-          java-version: 8
-          distribution: 'temurin'
-      - name: Build with Gradle
-        run: chmod +x ./gradlew
-
-      - name: Generate jar with Gradle
-        run: ./gradlew exportAllJava8
-
-      - name: Setup Java JDK 16
-        uses: actions/setup-java@v3.10.0
-        with:
-          java-version: 16
-          distribution: 'temurin'
-
-      - name: Generate jar with Gradle
-        run: ./gradlew exportAllJava16
-
       - name: Setup Java JDK 17
         uses: actions/setup-java@v3.10.0
         with:
           java-version: 17
           distribution: 'temurin'
+      - name: Build with Gradle
+        run: chmod +x ./gradlew
 
       - name: Generate jar with Gradle
-        run: ./gradlew exportAllJava17
+        run: ./gradlew exportAll
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.2
