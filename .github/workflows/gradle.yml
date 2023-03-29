@@ -4,17 +4,17 @@ on:
   push:
     branches: [master]
 
-  permissions:
-    actions: write
-    checks: write
-    contents: write
-    deployments: write
-    repository-projects: write
-    security-events: write
-    statuses: write
-
 jobs:
   build:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      repository-projects: write
+      security-events: write
+      statuses: write
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
