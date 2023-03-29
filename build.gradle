@@ -9,7 +9,6 @@ allprojects {
 
 subprojects {
     apply plugin: 'net.minecraftforge.gradle'
-    apply plugin: 'org.parchmentmc.librarian.forgegradle'
     apply plugin: 'org.spongepowered.mixin'
 
     group = 'PacketSizeDoublerForge'
@@ -46,6 +45,14 @@ subprojects {
     }
 }
 
-tasks.register('exportAll') {
-    dependsOn '1-15-x:jar', '1-16-x:jar', '1-17-x:jar', '1-18-x:jar', '1-19-x:jar'
+tasks.register('exportAllJava8') {
+    dependsOn '1-15-x:jar', '1-16-x:jar'
+}
+
+tasks.register('exportAllJava16') {
+    dependsOn '1-17-x:jar'
+}
+
+tasks.register('exportAllJava17') {
+    dependsOn '1-18-x:jar', '1-19-x:jar'
 }
