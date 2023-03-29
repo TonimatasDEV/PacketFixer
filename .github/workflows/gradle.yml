@@ -4,7 +4,6 @@ on:
   push:
     branches: [master]
 
-jobs:
   permissions:
     actions: write
     checks: write
@@ -14,6 +13,7 @@ jobs:
     security-events: write
     statuses: write
 
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
