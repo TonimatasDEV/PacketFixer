@@ -18,8 +18,8 @@ project(':1.15.x').name = '1-15-x'
 include(':1.16.x')
 project(':1.16.x').name = '1-16-x'
 
-include(':1.17.x')
-project(':1.17.x').name = '1-17-x'
+//include(':1.17.x')
+//project(':1.17.x').name = '1-17-x'
 
 include(':1.18.x')
 project(':1.18.x').name = '1-18-x'
