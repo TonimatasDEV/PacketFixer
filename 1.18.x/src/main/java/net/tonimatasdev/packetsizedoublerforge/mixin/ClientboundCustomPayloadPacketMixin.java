@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class ClientboundCustomPayloadPacketMixin {
     @ModifyConstant(method = "<init>*", constant = @Constant(intValue = 1048576))
     private int packetDoubler(int value) {
-        return value*100;
+        return value * 100;
     }
 }

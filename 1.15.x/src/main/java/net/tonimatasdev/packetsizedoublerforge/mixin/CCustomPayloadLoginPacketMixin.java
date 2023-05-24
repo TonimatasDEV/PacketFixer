@@ -7,9 +7,9 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(CCustomPayloadLoginPacket.class)
 public class CCustomPayloadLoginPacketMixin {
-    @ModifyConstant(method ="read", constant = @Constant(intValue = 1048576))
+    @ModifyConstant(method = "read", constant = @Constant(intValue = 1048576))
     private int packetDoubler(int value) {
-        return value*10;
+        return value * 100;
     }
 
 }

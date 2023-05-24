@@ -9,6 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class PacketBufferMixin {
     @ModifyConstant(method = "readNbt()Lnet/minecraft/nbt/CompoundNBT;", constant = @Constant(longValue = 2097152L))
     private long packetDoubler(long value) {
-        return value*100;
+        return value * 100;
     }
 }

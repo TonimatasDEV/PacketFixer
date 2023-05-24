@@ -5,11 +5,8 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "packetsizedoublerforge.refmap.json",
   "mixins": [
+    "CCustomPayloadLoginPacketMixin",
     "NettyCompressionDecoderMixin",
-    "NettyCompressionEncoderMixin",
     "PacketBufferMixin"
-  ],
-  "client": [
-    "CCustomPayloadLoginPacketMixin"
   ]
 }
