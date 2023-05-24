@@ -7,13 +7,17 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "mixins": [
+  "client": [
     "ClientboundCustomPayloadPacketMixin",
-    "ClientboundCustomQueryPacketMixin",
-    "CompressionDecoderMixin",
-    "CompressionEncoderMixin",
-    "PacketEncoderMixin",
+    "ClientboundCustomQueryPacketMixin"
+  ],
+  "server": [
     "ServerboundCustomPayloadPacketMixin",
     "ServerboundCustomQueryPacketMixin"
+  ],
+  "mixins": [
+    "CompressionDecoderMixin",
+    "CompressionEncoderMixin",
+    "PacketEncoderMixin"
   ]
 }
