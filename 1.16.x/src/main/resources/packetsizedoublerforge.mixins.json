@@ -4,12 +4,16 @@
   "package": "net.tonimatasdev.packetsizedoublerforge.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "packetsizedoublerforge.refmap.json",
+  "client": [
+    "CCustomPayloadLoginPacketMixin"
+  ],
+  "server": [
+    "SCustomPayloadLoginPacketMixin",
+    "SCustomPayloadPlayPacketMixin"
+  ],
   "mixins": [
     "NettyCompressionDecoderMixin",
     "NettyCompressionEncoderMixin",
     "PacketBufferMixin"
-  ],
-  "client": [
-    "CCustomPayloadLoginPacketMixin"
   ]
 }

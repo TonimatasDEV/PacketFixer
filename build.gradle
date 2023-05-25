@@ -45,6 +45,6 @@ subprojects {
     }
 }
 
-tasks.register('exportAll8') {
-    dependsOn '1-15-x:jar', '1-16-x:jar', /*'1-17-x:jar',*/ '1-18-x:jar', '1-19-x:jar'
+tasks.register('exportAll') {
+    dependsOn '1-15-x:jar', '1-16-x:jar', '1-17-x:jar', '1-18-x:jar', '1-19-x:jar'
 }
