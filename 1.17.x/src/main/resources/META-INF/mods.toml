@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[37,)"
-license = "All Rights Reserved"
+license = "Apache License Version 2.0"
 
 [[mods]]
 modId = "packetsizedoublerforge"
