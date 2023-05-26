@@ -1,12 +1,3 @@
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GrDeprecatedAPIUsage
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-
-allprojects {
-    apply plugin: 'maven-publish'
-    apply plugin: 'eclipse'
-}
-
 subprojects {
     apply plugin: 'net.minecraftforge.gradle'
     apply plugin: 'org.spongepowered.mixin'
@@ -18,7 +9,6 @@ subprojects {
     mixin {
         config "packetsizedoublerforge.mixins.json"
         add sourceSets.main, "packetsizedoublerforge.refmap.json"
-        disableEclipseAddon = true
         debug.export = true
     }
 
@@ -29,7 +19,7 @@ subprojects {
     sourceSets.main.resources { srcDir 'src/generated/resources' }
 
     jar {
-        destinationDir = file("$rootDir/artifacts")
+        archiveFileName = "$rootDir/artifacts/PacketSizeDoubler-${project.version}.jar"
 
         manifest {
             attributes([

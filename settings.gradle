@@ -18,7 +18,6 @@ project(':1.15.x').name = '1-15-x'
 include(':1.16.x')
 project(':1.16.x').name = '1-16-x'
 
-// TODO: 1.17 is unsupported.
 include(':1.17.x')
 project(':1.17.x').name = '1-17-x'
 
