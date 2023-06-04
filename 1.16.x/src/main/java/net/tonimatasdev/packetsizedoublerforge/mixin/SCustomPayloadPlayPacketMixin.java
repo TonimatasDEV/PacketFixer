@@ -12,4 +12,10 @@ public class SCustomPayloadPlayPacketMixin {
         return value * 100;
     }
 
+    @ModifyConstant(method = "<init>(Lnet/minecraft/util/ResourceLocation;Lnet/minecraft/network/PacketBuffer;)V", constant = @Constant(intValue = 1048576))
+    private int packetDoublerInit(int value) {
+        return value * 100;
+    }
+
+
 }
