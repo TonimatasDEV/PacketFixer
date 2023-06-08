@@ -3,7 +3,7 @@ subprojects {
     apply plugin: 'org.spongepowered.mixin'
 
     group = 'PacketSizeDoublerForge'
-    version = "1.0.8-${version}"
+    version = "1.0.9-${version}"
     archivesBaseName = 'PacketSizeDoublerForge'
 
     mixin {
@@ -36,5 +36,5 @@ subprojects {
 }
 
 tasks.register('exportAll') {
-    dependsOn '1-15-x:jar', '1-16-x:jar', '1-17-x:jar', '1-18-x:jar', '1-19-x:jar'
+    dependsOn '1-15-x:jar', '1-16-x:jar', '1-17-x:jar', '1-18-x:jar', '1-19-x:jar', '1-20-x:jar'
 }

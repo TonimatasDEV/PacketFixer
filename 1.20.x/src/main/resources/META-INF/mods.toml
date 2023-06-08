@@ -1,0 +1,27 @@
+modLoader = "javafml"
+loaderVersion = "[46,)"
+license = "Apache License Version 2.0"
+
+[[mods]]
+modId = "packetsizedoublerforge"
+version = "${file.jarVersion}"
+displayName = "PacketSizeDoublerForge"
+
+authors = "TonimatasDEV"
+description = '''
+A simple mod for doubling the size of allowed packets.
+'''
+
+[[dependencies.packetsizedoublerforge]]
+modId = "forge"
+mandatory = true
+versionRange = "[46,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.packetsizedoublerforge]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20,1.21)"
+ordering = "NONE"
+side = "BOTH"

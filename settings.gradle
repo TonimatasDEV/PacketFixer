@@ -26,3 +26,6 @@ project(':1.18.x').name = '1-18-x'
 
 include(':1.19.x')
 project(':1.19.x').name = '1-19-x'
+
+include(':1.20.x')
+project(':1.20.x').name = '1-20-x'
