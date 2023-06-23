@@ -1,31 +1,12 @@
-buildscript {
+pluginManagement {
     repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        maven { url "https://maven.fabricmc.net/" }
+        maven { url "https://maven.architectury.dev/" }
+        maven { url "https://maven.minecraftforge.net/" }
+        gradlePluginPortal()
     }
 }
 
-rootProject.name = 'PacketSizeDoublerForge'
-
-include(':1.15.x')
-project(':1.15.x').name = '1-15-x'
-
-include(':1.16.x')
-project(':1.16.x').name = '1-16-x'
-
-include(':1.17.x')
-project(':1.17.x').name = '1-17-x'
-
-include(':1.18.x')
-project(':1.18.x').name = '1-18-x'
-
-include(':1.19.x')
-project(':1.19.x').name = '1-19-x'
-
-include(':1.20.x')
-project(':1.20.x').name = '1-20-x'
+include("common")
+include("fabric")
+include("forge")

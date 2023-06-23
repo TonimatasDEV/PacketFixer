@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "packetsizedoubler",
+  "version": "${version}",
+
+  "name": "PacketSizeDoubler",
+  "description": "",
+  "authors": [],
+  "contact": {},
+
+  "license": "Apache License Version 2.0",
+
+  "environment": "*",
+  "entrypoints": {},
+  "mixins": [
+    "packetsizedoubler-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.1",
+    "minecraft": ">1.17.1"
+  }
+}

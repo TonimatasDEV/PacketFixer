@@ -6,11 +6,9 @@
 /.idea/
 /artifacts/
 
-/1.15.x/build/
-/1.16.x/build/
-/1.17.x/build/
-/1.18.x/build/
-/1.19.x/build/
-/1.20.x/build/
-
-
+/common/build/
+/fabric/build/
+/forge/build/
+/common/.gradle/
+/fabric/.gradle/
+/forge/.gradle/
