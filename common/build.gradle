@@ -1,8 +1,0 @@
-dependencies {
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modApi "dev.architectury:architectury:${architectury_version}"
-}
-
-architectury {
-    common()
-}
