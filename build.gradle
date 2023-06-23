@@ -1,40 +1,43 @@
+plugins {
+    id "architectury-plugin" version "3.4-SNAPSHOT"
+    id "dev.architectury.loom" version "1.1-SNAPSHOT" apply false
+}
+
+architectury {
+    minecraft = minecraft_version
+}
+
 subprojects {
-    apply plugin: 'net.minecraftforge.gradle'
-    apply plugin: 'org.spongepowered.mixin'
+    apply plugin: "dev.architectury.loom"
 
-    group = 'PacketSizeDoublerForge'
-    version = "1.0.9-${version}"
-    archivesBaseName = 'PacketSizeDoublerForge'
-
-    mixin {
-        config "packetsizedoublerforge.mixins.json"
-        add sourceSets.main, "packetsizedoublerforge.refmap.json"
-        debug.export = true
+    loom {
+        silentMojangMappingsLicense()
     }
 
     dependencies {
-        annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
-    }
-
-    sourceSets.main.resources { srcDir 'src/generated/resources' }
-
-    jar {
-        archiveFileName = "$rootDir/artifacts/PacketSizeDoubler-${project.version}.jar"
-
-        manifest {
-            attributes([
-                    "Specification-Title"     : "PacketSizeDoublerForge",
-                    "Specification-Vendor"    : "TonimatasDEV",
-                    "Specification-Version"   : "1",
-                    "Implementation-Title"    : project.name,
-                    "Implementation-Version"  : project.jar.archiveVersion,
-                    "Implementation-Vendor"   : "TonimatasDEV",
-                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-            ])
-        }
+        minecraft "com.mojang:minecraft:${minecraft_version}"
+        mappings loom.officialMojangMappings()
     }
 }
 
-tasks.register('exportAll') {
-    dependsOn '1-15-x:jar', '1-16-x:jar', '1-17-x:jar', '1-18-x:jar', '1-19-x:jar', '1-20-x:jar'
+allprojects {
+    apply plugin: "java"
+    apply plugin: "architectury-plugin"
+
+    archivesBaseName = archives_base_name
+    version = mod_version
+    group = maven_group
+
+    repositories {
+
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        options.release = 17
+    }
+
+    java {
+        withSourcesJar()
+    }
 }
