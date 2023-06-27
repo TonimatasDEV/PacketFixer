@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[38,47)"
+loaderVersion="[38,48)"
 license="Apache License Version 2.0"
 
 [[mods]]
@@ -15,7 +15,7 @@ A simple mod for doubling the size of allowed packets.
 [[dependencies.packetsizedoubler]]
 modId="forge"
 mandatory=true
-versionRange="[38,47)"
+versionRange="[38,48)"
 ordering="NONE"
 side="BOTH"
 
