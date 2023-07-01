@@ -62,12 +62,12 @@ jar {
                 "Implementation-Version": project.jar.archiveVersion,
                 "Implementation-Vendor": "TonimatasDEV",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs": "potiontimestacker-common.mixins.json"
+                "MixinConfigs": "packetsizedoubler-common.mixins.json"
         ])
     }
 }
 
 shadowJar {
     configurations = [project.configurations.shadowCommon]
-    archiveFileName = "$rootDir/artifacts/PotionTimeStacker-${mod_version}.jar"
+    archiveFileName = "$rootDir/artifacts/PacketSizeDoubler-${mod_version}.jar"
 }

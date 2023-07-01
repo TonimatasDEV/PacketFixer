@@ -30,10 +30,6 @@ processResources {
     }
 }
 
-jar {
-    archiveFileName = "PacketSizeDoubler-${mod_version}-fabric.jar"
-}
-
 sourcesJar {
     def commonSources = project(":common").sourcesJar
     dependsOn commonSources
