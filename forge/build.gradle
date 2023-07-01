@@ -33,10 +33,6 @@ processResources {
     }
 }
 
-jar {
-    archiveFileName = "PotionTimeStacker-${mod_version}-forge.jar"
-}
-
 sourcesJar {
     def commonSources = project(":common").sourcesJar
     dependsOn commonSources
