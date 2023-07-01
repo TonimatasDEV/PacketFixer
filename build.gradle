@@ -101,6 +101,21 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 }
 
+def resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta']
+def replaceProperties = [
+        minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+        forge_version_range: forge_version_range, loader_version_range: forge_version_range, mod_version: mod_version
+]
+
+processResources {
+    inputs.properties replaceProperties
+    replaceProperties.put 'project', project
+
+    filesMatching(resourceTargets) {
+        expand replaceProperties
+    }
+}
+
 jar {
     archiveFileName = "$rootDir/artifacts/PacketSizeDoubler-${project.version}.jar"
 
