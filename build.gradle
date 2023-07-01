@@ -1,58 +1,109 @@
-plugins {
-    id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.1-SNAPSHOT" apply false
-    id "com.github.johnrengelman.shadow" version "7.1.2"
-}
-architectury {
-    minecraft = minecraft_version
-}
-
-subprojects {
-    apply plugin: "dev.architectury.loom"
-
-    loom {
-        silentMojangMappingsLicense()
-    }
-
-    dependencies {
-        minecraft "com.mojang:minecraft:${minecraft_version}"
-        mappings loom.officialMojangMappings()
-    }
-}
-
-allprojects {
-    apply plugin: "java"
-    apply plugin: "architectury-plugin"
-
-    archivesBaseName = archives_base_name
-    version = mod_version
-    group = "net.tonimatasdev"
-
+buildscript {
     repositories {
-
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        mavenCentral()
     }
-
-    tasks.withType(JavaCompile) {
-        options.encoding = "UTF-8"
-        options.release = 17
-    }
-
-    java {
-        withSourcesJar()
+    dependencies {
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 
-configurations {
-    shadowCommon
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+apply plugin: 'org.spongepowered.mixin'
+
+base {
+    archivesName = 'packetsizedoubler'
+}
+
+group = 'net.tonimatasdev'
+version = mod_version
+
+mixin {
+    config "packetsizedoubler.mixins.json"
+    add sourceSets.main, "packetsizedoubler.refmap.json"
+    debug.export = true
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: minecraft_version
+
+    copyIdeResources = true
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'packetsizedoubler'
+
+            mods {
+                packetsizedoubler {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'packetsizedoubler'
+
+            mods {
+                packetsizedoubler {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        gameTestServer {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'krystalcraft'
+
+            mods {
+                packetsizedoubler {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            args '--mod', 'packetsizedoubler', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
+            mods {
+                packetsizedoubler {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+
 }
 
 dependencies {
-    shadowCommon(project(path: ":common")) { transitive false }
-    shadowCommon(project(path: ":fabric")) { transitive false }
-    shadowCommon(project(path: ":forge")) { transitive false }
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 }
 
 jar {
+    archiveFileName = "$rootDir/artifacts/PacketSizeDoubler-${project.version}.jar"
+
     manifest {
         attributes([
                 "Specification-Title": "PacketSizeDoubler",
@@ -61,13 +112,13 @@ jar {
                 "Implementation-Title": project.name,
                 "Implementation-Version": project.jar.archiveVersion,
                 "Implementation-Vendor": "TonimatasDEV",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs": "packetsizedoubler-common.mixins.json"
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
 
-shadowJar {
-    configurations = [project.configurations.shadowCommon]
-    archiveFileName = "$rootDir/artifacts/PacketSizeDoubler-${mod_version}.jar"
+jar.finalizedBy('reobfJar')
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
