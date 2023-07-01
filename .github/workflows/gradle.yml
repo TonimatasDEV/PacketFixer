@@ -1,4 +1,4 @@
-name: Java with Gradle
+name: Build and Upload Artifacts
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
         run: ./gradlew build
 
       - name: Export jar with Gradle
-        run: ./gradlew jar
+        run: ./gradlew shadowJar
 
       - name: Get repository name
         id: repo_name

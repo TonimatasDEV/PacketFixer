@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "potiontimestacker",
+  "version": "${version}",
+
+  "name": "packetsizedoubler",
+  "description": "",
+  "authors": [],
+  "contact": {},
+
+  "license": "Apache 2.0",
+
+  "environment": "*",
+  "entrypoints": {},
+  "mixins": [
+    "packetsizedoubler-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.0.0",
+    "minecraft": ">=${minecraft_version}"
+  }
+}
