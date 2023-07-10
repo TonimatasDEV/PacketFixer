@@ -11,8 +11,8 @@ group = 'net.tonimatasdev'
 version = mod_version
 
 mixin {
-    config "packetsizedoubler.mixins.json"
-    add sourceSets.main, "packetsizedoubler.refmap.json"
+    config "packetfixer.mixins.json"
+    add sourceSets.main, "packetfixer.refmap.json"
     debug.export = true
 }
 
@@ -28,10 +28,10 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'packetsizedoubler'
+            property 'forge.enabledGameTestNamespaces', 'packetfixer'
 
             mods {
-                packetsizedoubler {
+                packetfixer {
                     source sourceSets.main
                 }
             }
@@ -41,10 +41,10 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'packetsizedoubler'
+            property 'forge.enabledGameTestNamespaces', 'packetfixer'
 
             mods {
-                packetsizedoubler {
+                packetfixer {
                     source sourceSets.main
                 }
             }
@@ -54,10 +54,10 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'krystalcraft'
+            property 'forge.enabledGameTestNamespaces', 'packetfixer'
 
             mods {
-                packetsizedoubler {
+                packetfixer {
                     source sourceSets.main
                 }
             }
@@ -67,10 +67,10 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            args '--mod', 'packetsizedoubler', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'packetfixer', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                packetsizedoubler {
+                packetfixer {
                     source sourceSets.main
                 }
             }
@@ -89,10 +89,7 @@ dependencies {
 }
 
 def resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta']
-def replaceProperties = [
-        minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
-        forge_version_range: forge_version_range, loader_version_range: forge_version_range, mod_version: mod_version
-]
+def replaceProperties = [minecraft_version_range: minecraft_version_range, forge_version_range: forge_version_range, mod_version: mod_version]
 
 processResources {
     inputs.properties replaceProperties
@@ -104,11 +101,11 @@ processResources {
 }
 
 jar {
-    archiveFileName = "$rootDir/artifacts/PacketSizeDoubler-${project.version}.jar"
+    archiveFileName = "$rootDir/artifacts/PacketFixer-${project.version}-1.20.x.jar"
 
     manifest {
         attributes([
-                "Specification-Title": "PacketSizeDoubler",
+                "Specification-Title": "PacketFixerForge",
                 "Specification-Vendor": "TonimatasDEV",
                 "Specification-Version": "1",
                 "Implementation-Title": project.name,
