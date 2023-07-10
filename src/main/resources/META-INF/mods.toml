@@ -1,27 +1,27 @@
 modLoader="javafml"
-loaderVersion="[38,48)"
-license="Apache License Version 2.0"
+loaderVersion="${forge_version_range}"
+license="Apache 2.0"
 
 [[mods]]
-modId="packetsizedoubler"
+modId="packetfixer"
 version="1.1.0"
-displayName="PacketSizeDoubler"
+displayName="PacketFixer"
 
 authors="TonimatasDEV"
 description='''
-A simple mod for doubling the size of allowed packets.
+A simple mod to solve various problems with packets.
 '''
 
-[[dependencies.packetsizedoubler]]
+[[dependencies.packetfixer]]
 modId="forge"
 mandatory=true
-versionRange="[38,48)"
+versionRange="${forge_version_range}"
 ordering="NONE"
 side="BOTH"
 
-[[dependencies.packetsizedoubler]]
+[[dependencies.packetfixer]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.18,1.20.1]"
+versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
