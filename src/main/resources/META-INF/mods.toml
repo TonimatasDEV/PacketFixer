@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="${forge_version_range}"
-license="Apache 2.0"
+license="MIT"
 
 [[mods]]
 modId="packetfixer"
