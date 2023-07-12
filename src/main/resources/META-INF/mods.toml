@@ -6,6 +6,7 @@ license="Apache 2.0"
 modId="packetfixer"
 version="1.1.0"
 displayName="PacketFixer"
+icon="icon.png"
 
 authors="TonimatasDEV"
 description='''

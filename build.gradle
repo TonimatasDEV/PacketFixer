@@ -101,7 +101,7 @@ processResources {
 }
 
 jar {
-    archiveFileName = "$rootDir/artifacts/PacketFixer-${project.version}-1.20.x.jar"
+    archiveFileName = "$rootDir/artifacts/PacketFixerForge-${mod_version}-${minecraft_version}.jar"
 
     manifest {
         attributes([
