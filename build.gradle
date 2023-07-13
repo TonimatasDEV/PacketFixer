@@ -8,7 +8,7 @@ base {
 }
 
 group = 'net.tonimatasdev'
-version = mod_version
+version = mod_version + "-" + minecraft_version
 
 mixin {
     config "packetfixer.mixins.json"
@@ -101,8 +101,6 @@ processResources {
 }
 
 jar {
-    archiveFileName = "$rootDir/artifacts/PacketFixerForge-${mod_version}-${minecraft_version}.jar"
-
     manifest {
         attributes([
                 "Specification-Title": "PacketFixerForge",

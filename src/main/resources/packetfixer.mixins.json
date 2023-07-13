@@ -12,6 +12,7 @@
     "ClientboundCustomQueryPacketMixin",
     "CompressionDecoderMixin",
     "CompressionEncoderMixin",
+    "NbtAccounterMixin",
     "PacketEncoderMixin",
     "ServerboundCustomPayloadPacketMixin",
     "ServerboundCustomQueryPacketMixin"
