@@ -9,7 +9,7 @@ group = 'net.tonimatasdev'
 version = mod_version + "-" + minecraft_version
 
 base {
-    archivesName = 'packetsizedoubler'
+    archivesName = 'packetfixer'
 }
 
 java {
