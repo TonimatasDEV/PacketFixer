@@ -16,9 +16,6 @@ java {
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
-
-
-
 minecraft {
     mappings channel: 'official', version: minecraft_version
 
@@ -83,7 +80,8 @@ tasks.named('processResources', ProcessResources).configure {
 
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
         expand replaceProperties + [project: project]
-    }}
+    }
+}
 
 
 tasks.named('jar', Jar).configure {
