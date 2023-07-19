@@ -13,7 +13,4 @@ This mod fixes various package erros. This mod could be used in mod packs for in
  - Payload may not be larger than 1048576 bytes
  - Payload may not be larger than 32767 bytes
 
-### Links
- - My page: https://www.tonimatas.dev/
-
 ###  Feel free to use this mod on your modpack
