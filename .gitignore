@@ -6,9 +6,9 @@
 /.idea/
 /artifacts/
 
-/common/build/
 /fabric/build/
 /forge/build/
-/common/.gradle/
 /fabric/.gradle/
 /forge/.gradle/
+/fabric/run/
+/forge/run/
