@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class NbtTagSizeTrackerMixin {
     @Redirect(method = "add", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtTagSizeTracker;maxBytes:J", opcode = Opcodes.GETFIELD))
     public long accountBits(NbtTagSizeTracker instance) {
-        return 2097152 * 100;
+        return 9223372036854775807;
     }
 }

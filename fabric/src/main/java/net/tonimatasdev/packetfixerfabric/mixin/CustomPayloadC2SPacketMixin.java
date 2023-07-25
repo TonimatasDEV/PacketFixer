@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class CustomPayloadC2SPacketMixin {
     @ModifyConstant(method = "<init>(Lnet/minecraft/network/PacketByteBuf;)V", constant = @Constant(intValue = 32767))
     private int newSize(int value) {
-        return value * 100;
+        return 2147483647;
     }
 }

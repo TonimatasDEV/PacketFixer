@@ -9,6 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class PacketEncoderMixin {
     @ModifyConstant(method = "encode(Lio/netty/channel/ChannelHandlerContext;Lnet/minecraft/network/packet/Packet;Lio/netty/buffer/ByteBuf;)V", constant = @Constant(intValue = 8388608))
     private int newSize(int value) {
-        return value * 100;
+        return 2147483647;
     }
 }

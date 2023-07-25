@@ -9,6 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class CustomPayloadS2CPacketMixin {
     @ModifyConstant(method = "<init>*", constant = @Constant(intValue = 1048576))
     private int newSize(int value) {
-        return value * 100;
+        return 2147483647;
     }
 }
