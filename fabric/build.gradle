@@ -9,7 +9,7 @@ version = mod_version + "-" + minecraft_version
 group = "net.tonimatasdev"
 
 base {
-    archivesName = "PacketFixerFabric-" + mod_version
+    archivesName = "PacketFixerFabric"
 }
 
 repositories {
