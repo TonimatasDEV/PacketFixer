@@ -11,7 +11,7 @@ group = 'net.tonimatasdev'
 version = mod_version + "-" + minecraft_version
 
 base {
-    archivesName = "PacketFixerForge-" + mod_version
+    archivesName = "PacketFixerForge"
 }
 
 java {
