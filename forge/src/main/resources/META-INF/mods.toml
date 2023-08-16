@@ -1,6 +1,7 @@
 modLoader="javafml"
 loaderVersion="${forge_version_range}"
 license="MIT"
+issueTrackerURL="https://github.com/TonimatasDEV/PacketFixer"
 
 [[mods]]
 modId="packetfixer"
