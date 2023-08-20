@@ -1,4 +1,4 @@
-package net.tonimatasdev.packetfixerfabric.mixin;
+package net.tonimatasdev.packetfixer.mixin;
 
 import net.minecraft.nbt.NbtTagSizeTracker;
 import org.objectweb.asm.Opcodes;
