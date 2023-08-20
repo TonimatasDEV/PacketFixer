@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/TonimatasDEV/PacketFixer"
 
 [[mods]]
 modId="packetfixer"
-version="${modVersion}"
+version="${version}"
 displayName="PacketFixer"
 icon="icon.png"
 
