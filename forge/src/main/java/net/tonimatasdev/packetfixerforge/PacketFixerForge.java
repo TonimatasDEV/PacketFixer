@@ -1,4 +1,4 @@
-package net.tonimatasdev.packetsizedoubler;
+package net.tonimatasdev.packetfixerforge;
 
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.fml.common.Mod;

@@ -1,4 +1,4 @@
-package net.tonimatasdev.packetsizedoubler.mixin;
+package net.tonimatasdev.packetfixerforge.mixin;
 
 import net.minecraft.nbt.NbtAccounter;
 import org.objectweb.asm.Opcodes;

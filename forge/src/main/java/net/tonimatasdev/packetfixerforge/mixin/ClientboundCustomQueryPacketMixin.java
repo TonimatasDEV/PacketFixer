@@ -1,4 +1,4 @@
-package net.tonimatasdev.packetsizedoubler.mixin;
+package net.tonimatasdev.packetfixerforge.mixin;
 
 import net.minecraft.network.protocol.login.ClientboundCustomQueryPacket;
 import org.spongepowered.asm.mixin.Mixin;
