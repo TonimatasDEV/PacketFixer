@@ -1,11 +1,11 @@
 modLoader="javafml"
-loaderVersion="${forge_version_range}"
+loaderVersion="${forgeVersionRange}"
 license="MIT"
 issueTrackerURL="https://github.com/TonimatasDEV/PacketFixer"
 
 [[mods]]
 modId="packetfixer"
-version="${mod_version}"
+version="${version}"
 displayName="PacketFixer"
 icon="icon.png"
 
@@ -17,13 +17,13 @@ A simple mod to solve various problems with packets.
 [[dependencies.packetfixer]]
 modId="forge"
 mandatory=true
-versionRange="${forge_version_range}"
+versionRange="${forgeVersionRange}"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.packetfixer]]
 modId="minecraft"
 mandatory=true
-versionRange="${minecraft_version_range}"
+versionRange="[${minecraftVersion}]"
 ordering="NONE"
 side="BOTH"
