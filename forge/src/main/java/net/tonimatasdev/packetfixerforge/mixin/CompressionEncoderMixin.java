@@ -1,4 +1,4 @@
-package net.tonimatasdev.packetsizedoubler.mixin;
+package net.tonimatasdev.packetfixerforge.mixin;
 
 import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
