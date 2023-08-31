@@ -1,46 +1,82 @@
-@file:Suppress("DEPRECATION", "UnstableApiUsage")
-
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import net.fabricmc.loom.task.RemapJarTask
-
 plugins {
-    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("net.minecraftforge.gradle") version "[6.0,6.2)"
+    id("org.spongepowered.mixin") version "0.7-SNAPSHOT"
+    id("idea")
+    id("eclipse")
 }
 
+val modVersion: String by extra
 val minecraftVersion: String by extra
 val forgeVersion: String by extra
 val forgeVersionRange: String by extra
-val forgeMinecraftVersionRange: String by extra
-val modVersion: String by extra
 
-architectury {
-    platformSetupLoomIde()
-    forge()
+group = "net.tonimatasdev"
+version = "$modVersion-$minecraftVersion"
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    withSourcesJar()
 }
 
-loom {
-    forge {
-        mixinConfig("packetfixer-common.mixins.json")
-        mixinConfig("packetfixer-forge.mixins.json")
+minecraft {
+    mappings("official", minecraftVersion)
+
+    copyIdeResources.set(true)
+
+    runs {
+        configureEach {
+            workingDirectory(project.file("run"))
+            property("forge.logging.markers", "REGISTRIES")
+            property("forge.logging.console.level", "debug")
+
+            mods {
+                create("packetfixer") {
+                    source(sourceSets.main.get())
+                }
+            }
+        }
+
+        create("client") {
+            property("forge.enabledGameTestNamespaces", "packetfixer")
+        }
+
+        create("server") {
+            property("forge.enabledGameTestNamespaces", "packetfixer")
+            args("--nogui")
+        }
+
+        create("gameTestServer") {
+            property("forge.enabledGameTestNamespaces", "packetfixer")
+        }
+
+        create("data") {
+            workingDirectory(project.file("run-data"))
+            args("--mod", "packetfixer", "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/"))
+        }
     }
 }
 
-val common by configurations.creating
-val shadowCommon by configurations.creating
+mixin {
+    add(sourceSets.main.get(), "packetfixer.refmap.json")
+    config("packetfixer.mixins.json")
+}
 
-configurations["compileClasspath"].extendsFrom(common)
-configurations["runtimeClasspath"].extendsFrom(common)
-configurations["developmentForge"].extendsFrom(common)
+sourceSets.main.get().resources { srcDir("src/generated/resources") }
+
+repositories {
+
+}
 
 dependencies {
-    forge("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
-
-    common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
-    shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }
+    minecraft("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
+    annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
 }
+
+
 
 tasks.withType<ProcessResources> {
     val replaceProperties = mapOf("forgeVersionRange" to forgeVersionRange, "version" to modVersion, "minecraftVersion" to minecraftVersion)
+
     inputs.properties(replaceProperties)
 
     filesMatching(listOf("META-INF/mods.toml", "pack.mcmeta")) {
@@ -48,32 +84,22 @@ tasks.withType<ProcessResources> {
     }
 }
 
-tasks.withType<ShadowJar> {
-    exclude("fabric.mod.json")
-
-    configurations = listOf(shadowCommon)
-    archiveClassifier.set("dev-shadow")
-}
-
-tasks.withType<RemapJarTask> {
-    val shadowTask = tasks.shadowJar.get()
-    input.set(shadowTask.archiveFile)
-    dependsOn(shadowTask)
-    archiveClassifier.set("")
-}
 
 tasks.jar {
-    archiveClassifier.set("dev")
-}
-
-tasks.sourcesJar {
-    val commonSources = project(":common").tasks.sourcesJar.get()
-    dependsOn(commonSources)
-    from(commonSources.archiveFile.map { zipTree(it) })
-}
-
-components.getByName<AdhocComponentWithVariants>("java").apply {
-    withVariantsFromConfiguration(project.configurations["shadowRuntimeElements"]) {
-        skip()
+    manifest {
+        attributes(
+            "Specification-Title" to "PacketFixerForge",
+            "Specification-Vendor" to "TonimatasDEV",
+            "Specification-Version" to modVersion,
+            "Implementation-Title" to "PacketFixerForge",
+            "Implementation-Version" to modVersion,
+            "Implementation-Vendor" to "TonimatasDEV"
+        )
     }
+
+    finalizedBy("reobfJar")
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
 }
