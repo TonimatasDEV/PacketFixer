@@ -75,7 +75,7 @@ dependencies {
 
 
 tasks.withType<ProcessResources> {
-    val replaceProperties = mapOf("forgeVersionRange" to forgeVersionRange, "version" to modVersion, "minecraftVersion" to minecraftVersion)
+    val replaceProperties = mapOf("forgeVersionRange" to forgeVersionRange, "modVersion" to modVersion, "minecraftVersion" to minecraftVersion)
 
     inputs.properties(replaceProperties)
 
