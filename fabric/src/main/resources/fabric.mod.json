@@ -19,10 +19,11 @@
     ]
   },
   "mixins": [
-    "packetfixer.mixins.json"
+    "packetfixer-fabric.mixins.json",
+    "packetfixer-common.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.12.12",
-    "minecraft": "${minecraftVersion}"
+    "minecraft": "${minecraftVersionRange}"
   }
 }

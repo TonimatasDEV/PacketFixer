@@ -1,4 +1,4 @@
-package net.tonimatasdev.packetfixerforge.mixin;
+package net.tonimatasdev.packetfixer.mixins;
 
 import net.minecraft.nbt.NbtAccounter;
 import org.objectweb.asm.Opcodes;
@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class NbtAccounterMixin {
     @Redirect(method = "accountBytes", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtAccounter;quota:J", opcode = Opcodes.GETFIELD))
     public long accountBits(NbtAccounter instance) {
-        return 2097152 * 100;
+        return Long.MAX_VALUE;
     }
 }

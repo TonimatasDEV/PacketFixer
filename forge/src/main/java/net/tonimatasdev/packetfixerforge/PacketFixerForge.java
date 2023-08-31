@@ -1,11 +1,11 @@
 package net.tonimatasdev.packetfixerforge;
 
-import com.mojang.logging.LogUtils;
 import net.minecraftforge.fml.common.Mod;
+import net.tonimatasdev.packetfixer.PacketFixer;
 
-@Mod("packetfixer")
+@Mod(PacketFixer.MOD_ID)
 public class PacketFixerForge {
     public PacketFixerForge() {
-        LogUtils.getLogger().info("PacketFixer (Forge) has been initialized successfully");
+        PacketFixer.init();
     }
 }
