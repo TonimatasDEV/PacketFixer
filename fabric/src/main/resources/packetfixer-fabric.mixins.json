@@ -1,8 +1,0 @@
-{
-  "required": true,
-  "package": "net.tonimatasdev.packetfixerfabric.mixins",
-  "compatibilityLevel": "JAVA_17",
-  "injectors": {
-    "defaultRequire": 1
-  }
-}

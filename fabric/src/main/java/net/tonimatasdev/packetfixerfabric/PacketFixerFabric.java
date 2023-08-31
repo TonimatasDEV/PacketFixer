@@ -1,11 +1,11 @@
 package net.tonimatasdev.packetfixerfabric;
 
+import com.mojang.logging.LogUtils;
 import net.fabricmc.api.ModInitializer;
-import net.tonimatasdev.packetfixer.PacketFixer;
 
 public class PacketFixerFabric implements ModInitializer {
     @Override
     public void onInitialize() {
-        PacketFixer.init();
+        LogUtils.getLogger().info("PacketFixer (Fabric) has been initialized successfully");
     }
 }
