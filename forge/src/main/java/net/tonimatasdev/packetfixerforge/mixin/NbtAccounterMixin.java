@@ -6,10 +6,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(value = NbtAccounter.class, priority = 999)
+@Mixin(value = NbtAccounter.class, priority = 9999)
 public abstract class NbtAccounterMixin {
     @Redirect(method = "accountBytes", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtAccounter;quota:J", opcode = Opcodes.GETFIELD))
     public long accountBits(NbtAccounter instance) {
-        return 2097152 * 100;
+        return Long.MAX_VALUE;
     }
 }

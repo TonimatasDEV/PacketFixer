@@ -5,10 +5,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(value = CustomPayloadS2CPacket.class, priority = 999)
+@Mixin(value = CustomPayloadS2CPacket.class, priority = 9999)
 public class CustomPayloadS2CPacketMixin {
     @ModifyConstant(method = "<init>*", constant = @Constant(intValue = 1048576))
     private int newSize(int value) {
-        return value * 100;
+        return Integer.MAX_VALUE;
     }
 }
