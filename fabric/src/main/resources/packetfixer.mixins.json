@@ -3,7 +3,6 @@
   "minVersion": "0.8",
   "package": "net.tonimatasdev.packetfixerfabric.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "packetfixer.refmap.json",
   "mixins": [
     "CustomPayloadC2SPacketMixin",
     "CustomPayloadS2CPacketMixin",
