@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     id("net.minecraftforge.gradle") version "[6.0,6.2)"
     id("org.spongepowered.mixin") version "0.7-SNAPSHOT"
@@ -14,7 +16,7 @@ group = "net.tonimatasdev"
 version = "$modVersion-$minecraftVersion"
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
     withSourcesJar()
 }
 
