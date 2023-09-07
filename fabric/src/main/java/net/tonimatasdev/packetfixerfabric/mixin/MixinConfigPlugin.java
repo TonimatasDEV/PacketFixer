@@ -1,6 +1,8 @@
-package net.tonimatasdev.packetfixerforge.mixin;
+package net.tonimatasdev.packetfixerfabric.mixin;
 
-import net.minecraftforge.fml.loading.FMLLoader;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.ModContainer;
+import net.fabricmc.loader.api.metadata.ModMetadata;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -12,7 +14,6 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public void onLoad(String mixinPackage) {
-        System.getProperties().setProperty("forge.disablePacketCompressionDebug", "true");
     }
 
     @Override
@@ -22,10 +23,10 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (FMLLoader.getLoadingModList().getModFileById("connectivity") != null) {
-            return !mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.CompressionDecoderMixin");
+        if (FabricLoader.getInstance().getAllMods().stream().map(ModContainer::getMetadata).map(ModMetadata::getId).toList().contains("connectivity")) {
+            return !mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.PacketInflaterMixin");
         } else {
-            return !mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.compat.connectivity.CompressionDecoderMixin");
+            return !mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.compat.connectivity.PacketInflaterMixin");
         }
     }
 

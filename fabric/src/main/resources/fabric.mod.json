@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "packetfixer",
   "version": "${version}",
-  "name": "PacketFixerFabric",
-  "description": "",
+  "name": "Packet Fixer",
+  "description": "A simple mod to solve various problems with packets/NBT's.",
   "authors": [
     "TonimatasDEV"
   ],

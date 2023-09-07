@@ -15,6 +15,7 @@
     "NbtAccounterMixin",
     "PacketEncoderMixin",
     "ServerboundCustomPayloadPacketMixin",
-    "ServerboundCustomQueryPacketMixin"
+    "ServerboundCustomQueryPacketMixin",
+    "compat.connectivity.CompressionDecoderMixin"
   ]
 }

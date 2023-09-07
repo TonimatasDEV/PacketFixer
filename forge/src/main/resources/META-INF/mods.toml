@@ -6,12 +6,12 @@ issueTrackerURL="https://github.com/TonimatasDEV/PacketFixer"
 [[mods]]
 modId="packetfixer"
 version="${modVersion}"
-displayName="PacketFixer"
-icon="icon.png"
+displayName="Packet Fixer"
+logoFile="icon.png"
 
 authors="TonimatasDEV"
 description='''
-A simple mod to solve various problems with packets.
+A simple mod to solve various problems with packets/NBT's.
 '''
 
 [[dependencies.packetfixer]]
