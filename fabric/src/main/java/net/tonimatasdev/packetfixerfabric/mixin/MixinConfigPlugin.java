@@ -31,6 +31,7 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
         if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.PacketInflaterMixin")) return !connectivity;
         if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.compat.connectivity.PacketInflaterMixin")) return connectivity;
         if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.CustomPayloadS2CPacket")) return !immersivePortals;
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin,immersiveportals.CustomPayloadS2CPacket")) return immersivePortals;
 
         return true;
     }

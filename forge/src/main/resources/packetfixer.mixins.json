@@ -16,6 +16,7 @@
     "PacketEncoderMixin",
     "ServerboundCustomPayloadPacketMixin",
     "ServerboundCustomQueryPacketMixin",
-    "compat.connectivity.CompressionDecoderMixin"
+    "compat.connectivity.CompressionDecoderMixin",
+    "compat.immersiveportals.ClientboundCustomPayloadPacketMixin"
   ]
 }
