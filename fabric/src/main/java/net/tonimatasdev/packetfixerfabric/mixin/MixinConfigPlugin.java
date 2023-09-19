@@ -23,11 +23,16 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (FabricLoader.getInstance().getAllMods().stream().map(ModContainer::getMetadata).map(ModMetadata::getId).toList().contains("connectivity")) {
-            return !mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.PacketInflaterMixin");
-        } else {
-            return !mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.compat.connectivity.PacketInflaterMixin");
-        }
+        List<String> mods = FabricLoader.getInstance().getAllMods().stream().map(ModContainer::getMetadata).map(ModMetadata::getId).toList();
+
+        boolean connectivity = mods.contains("connectivity");
+        boolean immersivePortals = mods.contains("immersive_portals");
+
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.PacketInflaterMixin")) return !connectivity;
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.compat.connectivity.PacketInflaterMixin")) return connectivity;
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.CustomPayloadS2CPacket")) return !immersivePortals;
+
+        return true;
     }
 
     @Override

@@ -22,11 +22,14 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (FMLLoader.getLoadingModList().getModFileById("connectivity") != null) {
-            return !mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.CompressionDecoderMixin");
-        } else {
-            return !mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.compat.connectivity.CompressionDecoderMixin");
-        }
+        boolean connectivity = FMLLoader.getLoadingModList().getModFileById("connectivity") != null;
+        boolean immersivePortals = FMLLoader.getLoadingModList().getModFileById("immersive_portals") != null;
+
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.CompressionDecoderMixin")) return !connectivity;
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.compat.connectivity.CompressionDecoderMixin")) return connectivity;
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.ClientboundCustomPayloadPacketMixin")) return !immersivePortals;
+
+        return true;
     }
 
     @Override
