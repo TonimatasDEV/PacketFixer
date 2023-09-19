@@ -28,6 +28,7 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
         if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.CompressionDecoderMixin")) return !connectivity;
         if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.compat.connectivity.CompressionDecoderMixin")) return connectivity;
         if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.ClientboundCustomPayloadPacketMixin")) return !immersivePortals;
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.compat.immersiveportals.ClientboundCustomPayloadPacketMixin")) return immersivePortals;
 
         return true;
     }

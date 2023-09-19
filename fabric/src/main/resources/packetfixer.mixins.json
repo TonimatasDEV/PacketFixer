@@ -12,7 +12,8 @@
     "NbtTagSizeTrackerMixin",
     "PacketEncoderMixin",
     "PacketInflaterMixin",
-    "compat.connectivity.PacketInflaterMixin"
+    "compat.connectivity.PacketInflaterMixin",
+    "compat.immersiveportals.CustomPayloadS2CPacketMixin"
   ],
   "injectors": {
     "defaultRequire": 1
