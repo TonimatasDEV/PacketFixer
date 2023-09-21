@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(value = NbtTagSizeTracker.class, priority = 9999)
 public abstract class NbtTagSizeTrackerMixin {
-    @Redirect(method = "add", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtTagSizeTracker;maxBytes:J", opcode = Opcodes.GETFIELD))
-    public long accountBits(NbtTagSizeTracker instance) {
+    @Redirect(method = "add(J)V", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtTagSizeTracker;maxBytes:J", opcode = Opcodes.GETFIELD))
+    public long newSize(NbtTagSizeTracker instance) {
         return Long.MAX_VALUE;
     }
 }
