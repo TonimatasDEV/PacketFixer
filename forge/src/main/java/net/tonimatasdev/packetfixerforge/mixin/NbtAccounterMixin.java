@@ -15,7 +15,12 @@ public abstract class NbtAccounterMixin {
     //}
 
     // >= 1.19
-    @Redirect(method = "accountBytes", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtAccounter;quota:J", opcode = Opcodes.GETFIELD))
+    //@Redirect(method = "accountBytes", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtAccounter;quota:J", opcode = Opcodes.GETFIELD))
+    //public long accountBits(NbtAccounter instance) {
+    //    return Long.MAX_VALUE;
+    //}
+
+    @Redirect(method = "accountBytes(J)V", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtAccounter;quota:J", opcode = Opcodes.GETFIELD))
     public long accountBits(NbtAccounter instance) {
         return Long.MAX_VALUE;
     }
