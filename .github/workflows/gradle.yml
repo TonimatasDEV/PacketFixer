@@ -19,18 +19,11 @@ jobs:
       - name: Give permissions to Gradle
         run: chmod +x ./gradlew
 
-      - name: Build with Gradle
-        run: ./gradlew build
-
-      - name: Export jar with Gradle
-        run: ./gradlew jar
-
-      - name: Get repository name
-        id: repo_name
-        run: echo "::set-output name=name::$(basename -s .git ${{ github.repository }})"
+      - name: Build
+        uses: gradle/gradle-build-action@v2
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: ${{ steps.repo_name.outputs.name }}
+          name: PacketFixer
           path: artifacts/**.jar
