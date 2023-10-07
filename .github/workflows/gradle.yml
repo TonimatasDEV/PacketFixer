@@ -22,10 +22,16 @@ jobs:
       - name: Build
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build
+          arguments: build jar
 
-      - name: Upload a Build Artifact
+      - name: Upload a Forge Artifacts
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: PacketFixer
-          path: artifacts/**.jar
+          name: PacketFixerForge
+          path: forge/build/libs/**.jar
+
+      - name: Upload a Fabric Artifacts
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: PacketFixerFabric
+          path: fabric/build/libs/**.jar
