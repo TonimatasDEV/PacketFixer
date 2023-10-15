@@ -1,5 +1,5 @@
 plugins {
-    id("net.minecraftforge.gradle") version "[6.0,6.2)"
+    id("net.minecraftforge.gradle") version "6.+"
     id("org.spongepowered.mixin") version "0.7-SNAPSHOT"
     id("idea")
     id("eclipse")
