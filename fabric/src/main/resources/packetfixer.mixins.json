@@ -12,6 +12,8 @@
     "NbtTagSizeTrackerMixin",
     "PacketEncoderMixin",
     "PacketInflaterMixin",
+    "SizePrependerMixin",
+    "SplitterHandlerMixin",
     "compat.connectivity.PacketInflaterMixin",
     "compat.immersiveportals.CustomPayloadS2CPacketMixin"
   ],
