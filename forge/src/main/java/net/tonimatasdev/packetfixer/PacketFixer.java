@@ -11,11 +11,11 @@ import java.io.IOException;
 public class PacketFixer {
     public static final Logger LOGGER = LogManager.getLogger("PacketFixer");
     public PacketFixer() {
-        LOGGER.info("Packet Fixer has been initialized successfully");
+
     }
 
     @Mod.EventHandler
-    public void onPreInit(FMLInitializationEvent event) throws IOException {
-        System.out.println("P");
+    public void onPreInit(FMLInitializationEvent event) {
+        LOGGER.info("Packet Fixer has been initialized successfully");
     }
 }
