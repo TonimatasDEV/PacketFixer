@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "packetfixer",
+    "name": "Packet Fixer",
+    "description": "A simple mod to solve various problems with packets/NBT's.",
+    "version": "${modVersion}",
+    "mcversion": "${minecraftVersion}",
+    "url": "https://github.com/TonimatasDEV/PacketFixer",
+    "updateJSON": "https://api.modrinth.com/updates/packet-fixer/forge_updates.json",
+    "authorList": [
+      "TonimatasDEV"
+    ],
+    "credits": "",
+    "logoFile": "icon.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

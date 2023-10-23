@@ -1,6 +1,5 @@
 plugins {
     id("net.minecraftforge.gradle") version "6.+"
-    id("org.spongepowered.mixin") version "0.7-SNAPSHOT"
     id("idea")
     id("eclipse")
 }
@@ -14,12 +13,12 @@ group = "net.tonimatasdev"
 version = "$modVersion-$minecraftVersion"
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
     withSourcesJar()
 }
 
 minecraft {
-    mappings("official", minecraftVersion)
+    mappings("snapshot", "20171003-1.12")
 
     copyIdeResources.set(true)
 
@@ -56,11 +55,6 @@ minecraft {
     }
 }
 
-mixin {
-    add(sourceSets.main.get(), "packetfixer.refmap.json")
-    config("packetfixer.mixins.json")
-}
-
 sourceSets.main.get().resources { srcDir("src/generated/resources") }
 
 repositories {
@@ -68,14 +62,13 @@ repositories {
 }
 
 dependencies {
-    minecraft("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
-    annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
+    minecraft("net.minecraftforge:forge:1.12.2-14.23.5.2860")
 }
 
 
 
 tasks.withType<ProcessResources> {
-    val replaceProperties = mapOf("forgeVersionRange" to forgeVersionRange, "modVersion" to modVersion, "minecraftVersion" to minecraftVersion)
+    val replaceProperties = mapOf("modVersion" to modVersion, "minecraftVersion" to minecraftVersion)
 
     inputs.properties(replaceProperties)
 
@@ -88,12 +81,8 @@ tasks.withType<ProcessResources> {
 tasks.jar {
     manifest {
         attributes(
-            "Specification-Title" to "PacketFixerForge",
-            "Specification-Vendor" to "TonimatasDEV",
-            "Specification-Version" to modVersion,
-            "Implementation-Title" to "PacketFixerForge",
-            "Implementation-Version" to modVersion,
-            "Implementation-Vendor" to "TonimatasDEV"
+            "Manifest-Version" to "1.0",
+            "FMLCorePlugin" to "net.tonimatasdev.packetfixer.PacketFixerCore"
         )
     }
 

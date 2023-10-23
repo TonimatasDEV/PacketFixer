@@ -1,6 +1,6 @@
 {
   "pack": {
-    "description": "Packet Fixer resources",
-    "pack_format": 9
+    "pack_format": 2,
+    "description": "Packet Fixer resources"
   }
 }

@@ -8,5 +8,5 @@ pluginManagement {
     }
 }
 
-include("fabric", "forge")
+include("forge")
 rootProject.name = "PacketFixer"
