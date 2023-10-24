@@ -15,7 +15,7 @@ public class PacketFixerTweaker implements ITweaker {
 
     @Override
     public void injectIntoClassLoader(LaunchClassLoader classLoader) {
-        classLoader.registerTransformer("net.tonimatasdev.packetfixer.PacketFixerClassTransformer");
+        classLoader.registerTransformer("net.tonimatasdev.packetfixer.asm.PacketFixerClassTransformer");
     }
 
     @Override

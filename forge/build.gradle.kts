@@ -7,7 +7,6 @@ plugins {
 val modVersion: String by extra
 val minecraftVersion: String by extra
 val forgeVersion: String by extra
-val forgeVersionRange: String by extra
 
 group = "net.tonimatasdev"
 version = "$modVersion-$minecraftVersion"
@@ -62,7 +61,7 @@ repositories {
 }
 
 dependencies {
-    minecraft("net.minecraftforge:forge:1.12.2-14.23.5.2860")
+    minecraft("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
 }
 
 
@@ -82,7 +81,8 @@ tasks.jar {
     manifest {
         attributes(
             "Manifest-Version" to "1.0",
-            "FMLCorePlugin" to "net.tonimatasdev.packetfixer.PacketFixerCore"
+            "FMLCorePluginContainsFMLMod" to true,
+            "FMLCorePlugin" to "net.tonimatasdev.packetfixer.PacketFixer"
         )
     }
 
