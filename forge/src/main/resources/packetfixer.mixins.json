@@ -16,6 +16,8 @@
     "PacketEncoderMixin",
     "ServerboundCustomPayloadPacketMixin",
     "ServerboundCustomQueryPacketMixin",
+    "SizePrependerMixin",
+    "SplitterHandlerMixin",
     "compat.connectivity.CompressionDecoderMixin"
   ]
 }
