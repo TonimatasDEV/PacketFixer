@@ -1,5 +1,6 @@
 package net.tonimatasdev.packetfixerforge.mixin;
 
+import com.mojang.logging.LogUtils;
 import net.minecraftforge.fml.loading.FMLLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
@@ -23,9 +24,14 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         boolean connectivity = FMLLoader.getLoadingModList().getModFileById("connectivity") != null;
+        boolean krypton = FMLLoader.getLoadingModList().getModFileById("krypton") != null;
 
         if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.CompressionDecoderMixin")) return !connectivity;
         if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.compat.connectivity.CompressionDecoderMixin")) return connectivity;
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.SplitterHandlerMixin") || mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.SizePrependerMixin")) {
+            LogUtils.getLogger().warn("For can't fit X into 3 error fix. Delete Krypton.");
+            return !krypton;
+        }
 
         return true;
     }
