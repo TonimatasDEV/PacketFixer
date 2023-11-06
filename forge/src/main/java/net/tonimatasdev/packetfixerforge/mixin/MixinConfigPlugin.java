@@ -24,12 +24,12 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         boolean connectivity = FMLLoader.getLoadingModList().getModFileById("connectivity") != null;
-        boolean krypton = FMLLoader.getLoadingModList().getModFileById("krypton") != null;
+        boolean krypton = FMLLoader.getLoadingModList().getModFileById("krypton") != null || FMLLoader.getLoadingModList().getModFileById("pluto") != null;
 
         if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.CompressionDecoderMixin")) return !connectivity;
         if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.compat.connectivity.CompressionDecoderMixin")) return connectivity;
-        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.SplitterHandlerMixin") || mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.SizePrependerMixin")) {
-            LogUtils.getLogger().warn("For can't fit X into 3 error fix. Delete Krypton.");
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.SplitterHandlerMixin") || mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.SizePrependerMixin")) {
+            LogUtils.getLogger().warn("For can't fit X into 3 error fix. Delete Krypton or Pluto.");
             return !krypton;
         }
 
