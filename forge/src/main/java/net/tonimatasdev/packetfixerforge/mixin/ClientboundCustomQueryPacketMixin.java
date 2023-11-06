@@ -11,10 +11,4 @@ public class ClientboundCustomQueryPacketMixin {
     private static int newSize(int value) {
         return Integer.MAX_VALUE;
     }
-
-    // 1.20.2
-    //@ModifyConstant(method = "readUnknownPayload", constant = @Constant(intValue = 1048576))
-    //private static int newSize(int value) {
-    //    return Integer.MAX_VALUE;
-    //}
 }
