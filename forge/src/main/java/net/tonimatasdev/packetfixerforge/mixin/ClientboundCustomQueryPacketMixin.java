@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(value = ClientboundCustomQueryPacket.class, priority = 9999)
 public class ClientboundCustomQueryPacketMixin {
-    @ModifyConstant(method = "<init>(Lnet/minecraft/network/FriendlyByteBuf;)V", constant = @Constant(intValue = 1048576))
+    @ModifyConstant(method = "readUnknownPayload", constant = @Constant(intValue = 1048576))
     private static int newSize(int value) {
         return Integer.MAX_VALUE;
     }
