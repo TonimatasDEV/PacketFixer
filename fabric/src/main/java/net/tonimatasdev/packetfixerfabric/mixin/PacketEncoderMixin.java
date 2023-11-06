@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(value = PacketEncoder.class, priority = 9999)
 public class PacketEncoderMixin {
-    @ModifyConstant(method = "encode(Lio/netty/channel/ChannelHandlerContext;Lnet/minecraft/network/packet/Packet;Lio/netty/buffer/ByteBuf;)V", constant = @Constant(intValue = 8388608))
+    @ModifyConstant(method = "encode(Lio/netty/channel/ChannelHandlerContext;Lnet/minecraft/network/Packet;Lio/netty/buffer/ByteBuf;)V", constant = @Constant(intValue = 8388608))
     private int newSize(int value) {
         return Integer.MAX_VALUE;
     }
