@@ -11,7 +11,7 @@ This mod fixes various package erros. This mod could be used in mod packs for in
  - Packet too big (is X, should be less than 8388608)
  - Payload may not be larger than 1048576 bytes
  - Payload may not be larger than 32767 bytes
- - Length wider than 21-bit **[Delete Krypton]**
- - Unable to fit X into 3 **[Delete Krypton]**
+ - Length wider than 21-bit **[Delete Krypton/Pluto]**
+ - Unable to fit X into 3 **[Delete Krypton/Pluto]**
 
 ###  Feel free to use this mod on your modpack
