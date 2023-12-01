@@ -8,11 +8,12 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "CCustomPayloadPacketMixin",
     "CCustomPayloadLoginPacketMixin",
+    "CCustomPayloadPacketMixin",
+    "PacketBufferMixin",
+    "NbtAccounterMixin",
     "NettyCompressionDecoderMixin",
     "NettyCompressionEncoderMixin",
-    "NbtAccounterMixin",
     "SCustomPayloadLoginPacketMixin",
     "SCustomPayloadPlayPacketMixin"
   ]
