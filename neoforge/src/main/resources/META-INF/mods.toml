@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="[1.0,)"
+license="MIT"
+issueTrackerURL="https://github.com/TonimatasDEV/PacketFixer/issues"
+
+[[mixins]]
+config="packetfixer.mixins.json"
+
+[[mods]]
+modId="packetfixer"
+version="${modVersion}"
+displayName="Packet Fixer"
+logoFile="icon.png"
+updateJSONURL="https://api.modrinth.com/updates/packet-fixer/forge_updates.json"
+authors="TonimatasDEV"
+description='''
+A simple mod to solve various problems with packets/NBT's.
+'''
+
+[[dependencies.packetfixer]]
+modId="neoforge"
+mandatory=true
+versionRange="[${neoforgeVersionRange},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.packetfixer]]
+modId="minecraft"
+mandatory=true
+versionRange="[${minecraftVersion}]"
+ordering="NONE"
+side="BOTH"

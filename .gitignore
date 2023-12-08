@@ -8,7 +8,10 @@
 
 /fabric/build/
 /forge/build/
+/neoforge/build/
 /fabric/.gradle/
 /forge/.gradle/
+/neoforge/.gradle/
 /fabric/run/
 /forge/run/
+/neoforge/run/
