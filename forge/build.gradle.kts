@@ -1,5 +1,5 @@
 plugins {
-    id("net.minecraftforge.gradle") version "6.+"
+    id("net.minecraftforge.gradle") version "[6.0.16,6.2)"
     id("org.spongepowered.mixin") version "0.7-SNAPSHOT"
     id("idea")
     id("eclipse")
@@ -13,10 +13,7 @@ val forgeVersionRange: String by extra
 group = "net.tonimatasdev"
 version = "$modVersion-$minecraftVersion"
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
-    withSourcesJar()
-}
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 
 minecraft {
     mappings("official", minecraftVersion)
