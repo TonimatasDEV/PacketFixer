@@ -1,9 +1,7 @@
-package net.tonimatasdev.packetfixerfabric.mixin;
+package net.tonimatasdev.packetfixerforge.mixin;
 
 import com.mojang.logging.LogUtils;
-import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.ModContainer;
-import net.fabricmc.loader.api.metadata.ModMetadata;
+import net.neoforged.fml.loading.FMLLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -15,6 +13,7 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public void onLoad(String mixinPackage) {
+        System.getProperties().setProperty("forge.disablePacketCompressionDebug", "true");
     }
 
     @Override
@@ -24,13 +23,11 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        List<String> mods = FabricLoader.getInstance().getAllMods().stream().map(ModContainer::getMetadata).map(ModMetadata::getId).toList();
+        boolean krypton = FMLLoader.getLoadingModList().getModFileById("krypton") != null || FMLLoader.getLoadingModList().getModFileById("pluto") != null;
 
-        boolean krypton = mods.contains("krypton");
-
-        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.SplitterHandlerMixin") || mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.SizePrependerMixin")) {
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.Varint21FrameDecoderMixin") || mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.Varint21LengthFieldPrependerMixin")) {
             if (krypton) {
-                LogUtils.getLogger().warn("For can't fit X into 3 error fix. Delete Krypton.");
+                LogUtils.getLogger().warn("For can't fit X into 3 error fix. Delete Krypton or Pluto.");
                 return false;
             }
         }

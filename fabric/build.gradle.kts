@@ -11,7 +11,7 @@ val minecraftVersion: String by extra
 
 dependencies {
     minecraft("com.mojang:minecraft:$minecraftVersion")
-    mappings("net.fabricmc:yarn:$yarnMappings:v2")
+    mappings("net.fabricmc:yarn:$minecraftVersion+build.$yarnMappings:v2")
     modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
 
 }

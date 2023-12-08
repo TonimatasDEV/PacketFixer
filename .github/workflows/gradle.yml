@@ -35,3 +35,9 @@ jobs:
         with:
           name: PacketFixerFabric
           path: fabric/build/libs/**.jar
+
+      - name: Upload a NeoForge Artifacts
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: PacketFixerNeoForge
+          path: neoforge/build/libs/**.jar

@@ -13,8 +13,7 @@
     "PacketEncoderMixin",
     "PacketInflaterMixin",
     "SizePrependerMixin",
-    "SplitterHandlerMixin",
-    "compat.connectivity.PacketInflaterMixin"
+    "SplitterHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
