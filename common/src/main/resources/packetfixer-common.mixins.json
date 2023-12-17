@@ -3,7 +3,17 @@
   "minVersion": "0.8",
   "package": "dev.tonimatas.packetfixer.mixins",
   "compatibilityLevel": "JAVA_17",
+  "plugin": "dev.tonimatas.packetfixer.mixins.MixinConfigPlugin",
   "mixins": [
+    "ClientboundCustomPayloadPacketMixin",
+    "ClientboundCustomQueryPacketMixin",
+    "CompressionDecoderMixin",
+    "NbtAccounterMixin",
+    "PacketEncoderMixin",
+    "ServerboundCustomPayloadPacketMixin",
+    "ServerboundCustomQueryPacketMixin",
+    "Varint21FrameDecoderMixin",
+    "Varint21LengthFieldPrependerMixin"
   ],
   "client": [
   ],

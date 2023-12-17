@@ -1,6 +1,5 @@
-package dev.tonimatas.packetfixerfabric;
+package dev.tonimatas.packetfixer;
 
-import dev.tonimatas.packetfixer.PacketFixer;
 import net.fabricmc.api.ModInitializer;
 
 public class PacketFixerFabric implements ModInitializer {

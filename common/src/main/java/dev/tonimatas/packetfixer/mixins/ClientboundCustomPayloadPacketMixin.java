@@ -12,4 +12,5 @@ public class ClientboundCustomPayloadPacketMixin {
     private static int newSize(int value) {
         return Integer.MAX_VALUE;
     }
+
 }

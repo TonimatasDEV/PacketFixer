@@ -33,7 +33,7 @@ allprojects {
     apply(plugin = "architectury-plugin")
 
     version = modVersion
-    group = "dev.tonimatas"
+    group = "dev.tonimatas.packetfixer"
 
     repositories {
 
