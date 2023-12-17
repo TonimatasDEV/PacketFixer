@@ -1,46 +1,75 @@
-@file:Suppress("UnstableApiUsage")
+@file:Suppress("DEPRECATION", "UnstableApiUsage")
+
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import net.fabricmc.loom.task.RemapJarTask
 
 plugins {
-    id ("java-library")
-    id ("eclipse")
-    id ("idea")
-    id ("maven-publish")
-    id ("net.neoforged.gradle.userdev") version "7.0.57"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
-val modVersion: String by extra
 val minecraftVersion: String by extra
 val neoforgeVersion: String by extra
-val neoforgeVersionRange: String by extra
+val neoforgeLoaderRange: String by extra
+val modVersion: String by extra
 
-group = "net.tonimatasdev"
-version = "$modVersion-$minecraftVersion"
+architectury {
+    platformSetupLoomIde()
+    neoForge()
+}
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+val common by configurations.creating
+val shadowCommon by configurations.creating
 
-sourceSets.main.get().resources { srcDir("src/generated/resources") }
+configurations["compileClasspath"].extendsFrom(common)
+configurations["runtimeClasspath"].extendsFrom(common)
+configurations["developmentNeoForge"].extendsFrom(common)
 
 repositories {
-
+    maven(url = "https://maven.neoforged.net/")
 }
 
 dependencies {
-    implementation("net.neoforged:neoforge:${neoforgeVersion}")
-    annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
+    neoForge("net.neoforged:neoforge:$neoforgeVersion")
+
+    common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
+    shadowCommon(project(path = ":common", configuration = "transformProductionNeoForge")) { isTransitive = false }
 }
 
-
-
 tasks.withType<ProcessResources> {
-    val replaceProperties = mapOf("neoforgeVersionRange" to neoforgeVersionRange, "modVersion" to modVersion, "minecraftVersion" to minecraftVersion)
-
+    val replaceProperties = mapOf("neoforgeLoaderRange" to neoforgeLoaderRange, "minecraftVersion" to minecraftVersion, "modVersion" to modVersion)
     inputs.properties(replaceProperties)
 
-    filesMatching(listOf("META-INF/mods.toml", "pack.mcmeta")) {
+    filesMatching("META-INF/mods.toml") {
         expand(replaceProperties)
     }
 }
 
-tasks.withType<JavaCompile> {
-    options.encoding = "UTF-8"
+tasks.withType<ShadowJar> {
+    exclude("fabric.mod.json")
+
+    configurations = listOf(shadowCommon)
+    archiveClassifier.set("dev-shadow")
+}
+
+tasks.withType<RemapJarTask> {
+    val shadowTask = tasks.shadowJar.get()
+    input.set(shadowTask.archiveFile)
+    dependsOn(shadowTask)
+    archiveClassifier.set("")
+}
+
+tasks.jar {
+    archiveClassifier.set("dev")
+}
+
+tasks.sourcesJar {
+    val commonSources = project(":common").tasks.sourcesJar.get()
+    dependsOn(commonSources)
+    from(commonSources.archiveFile.map { zipTree(it) })
+}
+
+components.getByName<AdhocComponentWithVariants>("java").apply {
+    withVariantsFromConfiguration(project.configurations["shadowRuntimeElements"]) {
+        skip()
+    }
 }
