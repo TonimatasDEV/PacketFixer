@@ -1,6 +1,5 @@
-package dev.tonimatas.packetfixerneoforge;
+package dev.tonimatas.packetfixer;
 
-import dev.tonimatas.packetfixer.PacketFixer;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod(PacketFixer.MOD_ID)
