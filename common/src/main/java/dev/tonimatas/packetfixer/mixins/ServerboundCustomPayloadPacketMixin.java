@@ -1,13 +1,13 @@
-package net.tonimatasdev.packetfixer.mixin;
+package dev.tonimatas.packetfixer.mixins;
 
 
-import net.minecraft.network.play.client.CCustomPayloadPacket;
+import net.minecraft.network.protocol.game.ServerboundCustomPayloadPacket;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(value = CCustomPayloadPacket.class, priority = 999)
-public class CCustomPayloadPacketMixin {
+@Mixin(value = ServerboundCustomPayloadPacket.class, priority = 999)
+public class ServerboundCustomPayloadPacketMixin {
     @ModifyConstant(method = "read", constant = @Constant(intValue = 32767))
     private int newSize(int value) {
         return value * 100;
