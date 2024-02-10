@@ -1,35 +1,24 @@
-@file:Suppress("DEPRECATION", "HasPlatformType")
-
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import net.fabricmc.loom.task.RemapJarTask
-import org.gradle.api.component.AdhocComponentWithVariants
+@file:Suppress("UnstableApiUsage")
 
 plugins {
-    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("fabric-loom") version "1.5-SNAPSHOT"
 }
 
-architectury {
-    platformSetupLoomIde()
-    fabric()
-}
-
-val minecraftVersion: String by extra
-val fabricLoaderVersion: String by extra
-val fabricMinecraftVersionRange: String by extra
+val loaderVersion: String by extra
+val yarnMappings: String by extra
 val modVersion: String by extra
+val minecraftVersion: String by extra
 
-val common by configurations.creating
-val shadowCommon by configurations.creating
-
-configurations["compileClasspath"].extendsFrom(common)
-configurations["runtimeClasspath"].extendsFrom(common)
-configurations["developmentFabric"].extendsFrom(common)
+repositories {
+    maven(url = "https://maven.fabricmc.net/")
+    maven(url = "https://libraries.minecraft.net/")
+}
 
 dependencies {
-    modImplementation("net.fabricmc:fabric-loader:$fabricLoaderVersion")
+    minecraft("com.mojang:minecraft:$minecraftVersion")
+    mappings("net.fabricmc:yarn:$yarnMappings:v2")
+    modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
 
-    common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
-    shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }
 }
 
 tasks.withType<ProcessResources> {
@@ -42,30 +31,8 @@ tasks.withType<ProcessResources> {
     }
 }
 
-tasks.withType<ShadowJar> {
-    configurations = listOf(shadowCommon)
-    archiveClassifier.set("dev-shadow")
-}
-
-tasks.withType<RemapJarTask> {
-    val shadowTask = tasks.shadowJar.get()
-    input.set(shadowTask.archiveFile)
-    dependsOn(shadowTask)
-    archiveClassifier.set("")
-}
-
 tasks.jar {
-    archiveClassifier.set("dev")
-}
-
-tasks.sourcesJar {
-    val commonSources = project(":common").tasks.sourcesJar.get()
-    dependsOn(commonSources)
-    from(commonSources.archiveFile.map { zipTree(it) })
-}
-
-components.getByName<AdhocComponentWithVariants>("java").apply {
-    withVariantsFromConfiguration(project.configurations["shadowRuntimeElements"]) {
-        skip()
+    from("LICENSE") {
+        rename { "${it}_${project.base.archivesName.get()}"}
     }
 }
