@@ -15,11 +15,12 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.tonimatasdev.packetfixerfabric.PacketFixerFabric"
+      "dev.tonimatas.packetfixer.PacketFixerFabric"
     ]
   },
   "mixins": [
-    "packetfixer.mixins.json"
+    "packetfixer.mixins.json",
+    "packetfixer-fabric.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.12.12",

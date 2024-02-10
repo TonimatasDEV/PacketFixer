@@ -1,0 +1,3 @@
+accessWidener   v2  named
+
+mutable field net/minecraft/network/protocol/game/ClientboundAddEntityPacket data I
