@@ -32,7 +32,7 @@ allprojects {
     apply(plugin = "java")
     apply(plugin = "architectury-plugin")
 
-    version = modVersion
+    version = "$minecraftVersion-$modVersion"
     group = "dev.tonimatas.packetfixer"
 
     repositories {
