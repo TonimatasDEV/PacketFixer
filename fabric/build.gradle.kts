@@ -1,23 +1,43 @@
-@file:Suppress("UnstableApiUsage")
+@file:Suppress("DEPRECATION", "HasPlatformType")
+
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import net.fabricmc.loom.task.RemapJarTask
+import org.gradle.api.component.AdhocComponentWithVariants
 
 plugins {
-    id("fabric-loom") version "1.3-SNAPSHOT"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
-val loaderVersion: String by extra
-val yarnMappings: String by extra
-val modVersion: String by extra
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+loom {
+    accessWidenerPath.set(project(":common").loom.accessWidenerPath)
+}
+
 val minecraftVersion: String by extra
+val fabricLoaderVersion: String by extra
+val fabricMinecraftVersionRange: String by extra
+val modVersion: String by extra
+
+val common by configurations.creating
+val shadowCommon by configurations.creating
+
+configurations["compileClasspath"].extendsFrom(common)
+configurations["runtimeClasspath"].extendsFrom(common)
+configurations["developmentFabric"].extendsFrom(common)
 
 dependencies {
-    minecraft("com.mojang:minecraft:$minecraftVersion")
-    mappings("net.fabricmc:yarn:$yarnMappings:v2")
-    modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
+    modImplementation("net.fabricmc:fabric-loader:$fabricLoaderVersion")
 
+    common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
+    shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }
 }
 
 tasks.withType<ProcessResources> {
-    val replaceProperties = mapOf("version" to modVersion, "minecraftVersion" to minecraftVersion)
+    val replaceProperties = mapOf("modVersion" to modVersion, "minecraftVersion" to minecraftVersion)
 
     inputs.properties(replaceProperties)
 
@@ -26,19 +46,30 @@ tasks.withType<ProcessResources> {
     }
 }
 
-tasks.withType<JavaCompile> {
-    options.release.set(17)
+tasks.withType<ShadowJar> {
+    configurations = listOf(shadowCommon)
+    archiveClassifier.set("dev-shadow")
 }
 
-java {
-    withSourcesJar()
-
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+tasks.withType<RemapJarTask> {
+    val shadowTask = tasks.shadowJar.get()
+    input.set(shadowTask.archiveFile)
+    dependsOn(shadowTask)
+    archiveClassifier.set("")
 }
 
 tasks.jar {
-    from("LICENSE") {
-        rename { "${it}_${project.base.archivesName.get()}"}
+    archiveClassifier.set("dev")
+}
+
+tasks.sourcesJar {
+    val commonSources = project(":common").tasks.sourcesJar.get()
+    dependsOn(commonSources)
+    from(commonSources.archiveFile.map { zipTree(it) })
+}
+
+components.getByName<AdhocComponentWithVariants>("java").apply {
+    withVariantsFromConfiguration(project.configurations["shadowRuntimeElements"]) {
+        skip()
     }
 }

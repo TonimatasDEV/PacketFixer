@@ -8,7 +8,9 @@
 
 /fabric/build/
 /forge/build/
+/common/build/
 /fabric/.gradle/
 /forge/.gradle/
+/common/.gradle/
 /fabric/run/
 /forge/run/

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "packetfixer",
-  "version": "${version}",
+  "version": "${modVersion}",
   "name": "Packet Fixer",
   "description": "A simple mod to solve various problems with packets/NBT's.",
   "authors": [
@@ -15,11 +15,12 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.tonimatasdev.packetfixerfabric.PacketFixerFabric"
+      "dev.tonimatas.packetfixer.PacketFixerFabric"
     ]
   },
   "mixins": [
-    "packetfixer.mixins.json"
+    "packetfixer.mixins.json",
+    "packetfixer-fabric.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.12.12",
