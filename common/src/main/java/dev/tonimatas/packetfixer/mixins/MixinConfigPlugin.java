@@ -26,11 +26,13 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
         boolean connectivity = Hooks.isModLoaded("connectivity");
         boolean krypton = Hooks.isModLoaded("krypton") || Hooks.isModLoaded("pluto");
 
-        if (mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixin.CompressionDecoderMixin")) return !connectivity;
-        if (mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixin.compat.connectivity.CompressionDecoderMixin")) return connectivity;
-        if (mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixin.SplitterHandlerMixin") || mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.SizePrependerMixin")) {
-            LogUtils.getLogger().warn("For can't fit X into 3 error fix. Delete Krypton or Pluto.");
-            return !krypton;
+        if (mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.CompressionDecoderMixin")) return !connectivity;
+        if (mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.compat.connectivity.CompressionDecoderMixin")) return connectivity;
+        if (mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.SplitterHandlerMixin") || mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.SizePrependerMixin")) {
+            if (krypton) {
+                LogUtils.getLogger().warn("For can't fit X into 3 error fix. Delete Krypton or Pluto.");
+                return false;
+            }
         }
 
         return true;
