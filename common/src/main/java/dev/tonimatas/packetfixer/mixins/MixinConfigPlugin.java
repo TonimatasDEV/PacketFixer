@@ -24,7 +24,7 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         boolean krypton = Hooks.isModLoaded("krypton") || Hooks.isModLoaded("pluto");
 
-        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.Varint21FrameDecoderMixin") || mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.Varint21LengthFieldPrependerMixin")) {
+        if (mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.Varint21FrameDecoderMixin") || mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.Varint21LengthFieldPrependerMixin")) {
             if (krypton) {
                 LogUtils.getLogger().warn("For can't fit X into 3 error fix (" + mixinClassName + "). Delete Krypton or Pluto.");
                 return false;
