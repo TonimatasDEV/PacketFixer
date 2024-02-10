@@ -1,48 +1,52 @@
-@file:Suppress("DEPRECATION", "HasPlatformType")
+@file:Suppress("DEPRECATION", "UnstableApiUsage")
 
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import net.fabricmc.loom.task.RemapJarTask
-import org.gradle.api.component.AdhocComponentWithVariants
 
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
+val minecraftVersion: String by extra
+val neoforgeVersion: String by extra
+val neoforgeLoaderRange: String by extra
+val modVersion: String by extra
+
 architectury {
     platformSetupLoomIde()
-    fabric()
+    neoForge()
 }
-
-val minecraftVersion: String by extra
-val fabricLoaderVersion: String by extra
-val fabricMinecraftVersionRange: String by extra
-val modVersion: String by extra
 
 val common by configurations.creating
 val shadowCommon by configurations.creating
 
 configurations["compileClasspath"].extendsFrom(common)
 configurations["runtimeClasspath"].extendsFrom(common)
-configurations["developmentFabric"].extendsFrom(common)
+configurations["developmentNeoForge"].extendsFrom(common)
+
+repositories {
+    maven(url = "https://maven.neoforged.net/")
+}
 
 dependencies {
-    modImplementation("net.fabricmc:fabric-loader:$fabricLoaderVersion")
+    neoForge("net.neoforged:neoforge:$neoforgeVersion")
 
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
-    shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }
+    shadowCommon(project(path = ":common", configuration = "transformProductionNeoForge")) { isTransitive = false }
 }
 
 tasks.withType<ProcessResources> {
-    val replaceProperties = mapOf("modVersion" to modVersion, "minecraftVersion" to minecraftVersion)
-
+    val replaceProperties = mapOf("neoforgeLoaderRange" to neoforgeLoaderRange, "minecraftVersion" to minecraftVersion, "modVersion" to modVersion)
     inputs.properties(replaceProperties)
 
-    filesMatching("fabric.mod.json") {
+    filesMatching("META-INF/mods.toml") {
         expand(replaceProperties)
     }
 }
 
 tasks.withType<ShadowJar> {
+    exclude("fabric.mod.json")
+
     configurations = listOf(shadowCommon)
     archiveClassifier.set("dev-shadow")
 }
