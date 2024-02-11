@@ -3,27 +3,61 @@ package dev.tonimatas.packetfixer.mixins;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
+import net.minecraft.network.BandwidthDebugMonitor;
+import net.minecraft.network.VarInt;
 import net.minecraft.network.Varint21FrameDecoder;
-import org.objectweb.asm.Opcodes;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.*;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
+
+import java.util.List;
 
 @Mixin(Varint21FrameDecoder.class)
-public class Varint21FrameDecoderMixin {
+public abstract class Varint21FrameDecoderMixin {
+    @Shadow @Final @Nullable private BandwidthDebugMonitor monitor;
+
+    @Shadow private static boolean copyVarint(ByteBuf byteBuf, ByteBuf byteBuf2) {
+        return false;
+    }
+
+    @Unique private final ByteBuf packetFixer$helperBuf = Unpooled.directBuffer(8);
+
+    /**
+     * @author TonimatasDEV
+     * @reason Use packetFixer$helperBuf
+     */
+    @Overwrite
+    protected void handlerRemoved0(ChannelHandlerContext channelHandlerContext) {
+        this.packetFixer$helperBuf.release();
+    }
+
     @ModifyConstant(method = "copyVarint", constant = @Constant(intValue = 3))
     private static int newSize(int value) {
         return 8;
     }
 
-    @Inject(method = "handlerRemoved0", at = @At(value = "HEAD"), cancellable = true)
-    private void redirectReadNullable(ChannelHandlerContext p_299287_, CallbackInfo ci) {
-        Unpooled.directBuffer(8).release();
-        ci.cancel();
-    }
+    /**
+     * @author TonimatasDEV
+     * @reason Use packetFixer$helperBuf
+     */
+    @Overwrite
+    protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) {
+        byteBuf.markReaderIndex();
+        this.packetFixer$helperBuf.clear();
+        if (!copyVarint(byteBuf, this.packetFixer$helperBuf)) {
+            byteBuf.resetReaderIndex();
+        } else {
+            int i = VarInt.read(this.packetFixer$helperBuf);
+            if (byteBuf.readableBytes() < i) {
+                byteBuf.resetReaderIndex();
+            } else {
+                if (this.monitor != null) {
+                    this.monitor.onReceive(i + VarInt.getByteSize(i));
+                }
 
-    @Redirect(method = "decode", at = @At(value = "FIELD", target = "Lnet/minecraft/network/Varint21FrameDecoder;helperBuf:Lio/netty/buffer/ByteBuf;", opcode = Opcodes.GETFIELD))
-    public ByteBuf accountBits(Varint21FrameDecoder instance) {
-        return Unpooled.directBuffer(8);
+                list.add(byteBuf.readBytes(i));
+            }
+        }
     }
 }
