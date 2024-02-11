@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(value = CompressionDecoder.class, priority = 9999)
 public class CompressionDecoderMixin {
-    @ModifyConstant(method = "decode", constant = @Constant(intValue = 8388608))
+    @ModifyConstant(method = "decode", constant = @Constant(intValue = 2097152))
     private int newSize(int value) {
         return Integer.MAX_VALUE;
     }
