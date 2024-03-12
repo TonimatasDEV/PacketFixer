@@ -28,6 +28,7 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
         List<String> mods = FabricLoader.getInstance().getAllMods().stream().map(ModContainer::getMetadata).map(ModMetadata::getId).collect(Collectors.toList());
         
         boolean krypton = mods.contains("krypton");
+        boolean randomPatches = mods.contains("randompatches");
         
         if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.SplitterHandlerMixin") || mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerfabric.mixin.SizePrependerMixin")) {
             if (krypton) {
@@ -35,6 +36,9 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
                 return false;
             }
         }
+
+        if (mixinClassName.equalsIgnoreCase("net.tonimatasdev.packetfixerforge.mixin.CustomPayloadC2SPacketMixin")) return !randomPatches;
+
 
         return true;
     }
