@@ -6,9 +6,15 @@
 /.idea/
 /artifacts/
 
+/common/build/
 /fabric/build/
 /forge/build/
+/neoforge/build/
+/common/.gradle/
 /fabric/.gradle/
 /forge/.gradle/
+/neoforge/.gradle/
+/common/run/
 /fabric/run/
 /forge/run/
+/neoforge/run/
