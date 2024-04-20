@@ -11,7 +11,6 @@
   "mixins": [
     "CCustomPayloadLoginPacketMixin",
     "CCustomPayloadPacketMixin",
-    "NbtAccounterMixin",
     "NettyCompressionDecoderMixin",
     "NettyCompressionEncoderMixin",
     "NettyVarint21FrameDecoderMixin",

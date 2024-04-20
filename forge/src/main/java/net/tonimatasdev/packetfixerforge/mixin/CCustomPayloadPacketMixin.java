@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class CCustomPayloadPacketMixin {
     @ModifyConstant(method = "read", constant = @Constant(intValue = 32767))
     private int newSize(int value) {
-        return value * 100;
+        return Integer.MAX_VALUE;
     }
 }

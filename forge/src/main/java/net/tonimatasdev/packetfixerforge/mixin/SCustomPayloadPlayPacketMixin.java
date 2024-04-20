@@ -9,6 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class SCustomPayloadPlayPacketMixin {
     @ModifyConstant(method = {"<init>(Lnet/minecraft/util/ResourceLocation;Lnet/minecraft/network/PacketBuffer;)V", "read"}, constant = @Constant(intValue = 1048576))
     private int newSize(int value) {
-        return value * 100;
+        return Integer.MAX_VALUE;
     }
 }

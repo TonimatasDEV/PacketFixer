@@ -1,15 +1,14 @@
 package net.tonimatasdev.packetfixerfabric.mixin;
 
-import net.minecraft.nbt.NbtTagSizeTracker;
-import org.objectweb.asm.Opcodes;
+import net.minecraft.network.PacketByteBuf;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(value = NbtTagSizeTracker.class, priority = 9999)
+@Mixin(value = PacketByteBuf.class, priority = 9999)
 public abstract class NbtTagSizeTrackerMixin {
-    @Redirect(method = "add(J)V", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtTagSizeTracker;maxBytes:J", opcode = Opcodes.GETFIELD))
-    public long newSize(NbtTagSizeTracker instance) {
+    @ModifyConstant(method = "readNbt()Lnet/minecraft/nbt/NbtCompound;", constant = @Constant(longValue = 2097152L))
+    public long newSize(long value) {
         return Long.MAX_VALUE;
     }
 }

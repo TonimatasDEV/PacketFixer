@@ -15,4 +15,9 @@ public class PacketBufferMixin {
     private int readUtfSize(int value) {
         return Integer.MAX_VALUE;
     }
+
+    @ModifyConstant(method = "readNbt()Lnet/minecraft/nbt/CompoundNBT;", constant = @Constant(longValue = 2097152L))
+    public long newSize(long value) {
+        return Long.MAX_VALUE;
+    }
 }

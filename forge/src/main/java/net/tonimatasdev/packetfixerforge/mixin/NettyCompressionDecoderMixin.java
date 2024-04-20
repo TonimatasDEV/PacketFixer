@@ -9,6 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class NettyCompressionDecoderMixin {
     @ModifyConstant(method = "decode", constant = @Constant(intValue = 2097152), require = 0)
     private int newSize(int value) {
-        return value * 100;
+        return Integer.MAX_VALUE;
     }
 }
