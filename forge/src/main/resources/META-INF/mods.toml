@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[${forgeVersionRange},)"
+loaderVersion="[0,)"
 license="MIT"
 issueTrackerURL="https://github.com/TonimatasDEV/PacketFixer/issues"
 
@@ -17,13 +17,13 @@ A simple mod to solve various problems with packets/NBT's.
 [[dependencies.packetfixer]]
 modId="forge"
 mandatory=true
-versionRange="[${forgeVersionRange},)"
+versionRange="[0,)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.packetfixer]]
 modId="minecraft"
 mandatory=true
-versionRange="[${minecraftVersion}]"
+versionRange="[${minecraftVersionRange}]"
 ordering="NONE"
 side="BOTH"

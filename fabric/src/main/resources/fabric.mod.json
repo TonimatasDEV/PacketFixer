@@ -23,7 +23,7 @@
     "packetfixer-fabric.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.0.0",
-    "minecraft": "${minecraftVersion}"
+    "fabricloader": "*",
+    "minecraft": ">=${minimumMinecraftVersion} <=${minecraftVersion}"
   }
 }
