@@ -8,7 +8,7 @@
     "ClientboundCustomPayloadPacketMixin",
     "ClientboundCustomQueryPacketMixin",
     "CompressionDecoderMixin",
-    "NbtAccounterMixin",
+    "FriendlyByteBufMixin",
     "PacketEncoderMixin",
     "ServerboundCustomPayloadPacketMixin",
     "ServerboundCustomQueryPacketMixin",
