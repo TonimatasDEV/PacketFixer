@@ -1,15 +1,14 @@
 package dev.tonimatas.packetfixer.mixins;
 
-import net.minecraft.nbt.NbtAccounter;
-import org.objectweb.asm.Opcodes;
+import net.minecraft.network.FriendlyByteBuf;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(value = NbtAccounter.class, priority = 9999)
+@Mixin(value = FriendlyByteBuf.class, priority = 9999)
 public abstract class NbtAccounterMixin {
-    @Redirect(method = "accountBytes(J)V", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtAccounter;quota:J", opcode = Opcodes.GETFIELD))
-    public long accountBits(NbtAccounter instance) {
+    @ModifyConstant(method = "readNbt()Lnet/minecraft/nbt/CompoundTag;", constant = @Constant(longValue = 2097152L))
+    public long newSize(long value) {
         return Long.MAX_VALUE;
     }
 }
