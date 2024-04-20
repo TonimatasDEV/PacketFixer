@@ -8,6 +8,7 @@ plugins {
 
 val modVersion: String by extra
 val minecraftVersion: String by extra
+val minecraftVersionRange: String by extra
 
 architectury {
     minecraft = minecraftVersion
@@ -16,7 +17,7 @@ architectury {
 subprojects {
     apply(plugin = "dev.architectury.loom")
 
-    base.archivesName.set("PacketFixer-" + project.name)
+    base.archivesName.set("packetfixer-" + project.name)
 
     configure<LoomGradleExtensionAPI> {
         silentMojangMappingsLicense()
@@ -32,7 +33,8 @@ allprojects {
     apply(plugin = "java")
     apply(plugin = "architectury-plugin")
 
-    version = "$minecraftVersion-$modVersion"
+    val versionArray = minecraftVersionRange.split(",")
+    version = "$modVersion-${versionArray[0]}-to-${versionArray[1]}"
     group = "dev.tonimatas.packetfixer"
 
     repositories {

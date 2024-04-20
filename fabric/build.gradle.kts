@@ -14,8 +14,8 @@ architectury {
 }
 
 val minecraftVersion: String by extra
+val minecraftVersionRange: String by extra
 val fabricLoaderVersion: String by extra
-val fabricMinecraftVersionRange: String by extra
 val modVersion: String by extra
 
 val common by configurations.creating
@@ -33,7 +33,7 @@ dependencies {
 }
 
 tasks.withType<ProcessResources> {
-    val replaceProperties = mapOf("modVersion" to modVersion, "minecraftVersion" to minecraftVersion)
+    val replaceProperties = mapOf("modVersion" to modVersion, "minimumMinecraftVersion" to minecraftVersionRange.split(",")[0], "minecraftVersion" to minecraftVersion)
 
     inputs.properties(replaceProperties)
 
