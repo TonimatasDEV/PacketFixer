@@ -5,5 +5,5 @@ dependencies {
 }
 
 architectury {
-    common("fabric", "forge", "neoforge")
+    common("fabric", /*"forge",*/ "neoforge")
 }

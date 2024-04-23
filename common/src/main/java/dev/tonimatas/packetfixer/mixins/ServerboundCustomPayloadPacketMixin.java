@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(value = ServerboundCustomPayloadPacket.class, priority = 9999)
 public class ServerboundCustomPayloadPacketMixin {
-    @ModifyConstant(method = "readUnknownPayload", constant = @Constant(intValue = 32767))
+    @ModifyConstant(method = "method_56475", constant = @Constant(intValue = 32767))
     private static int newSize(int value) {
         return Integer.MAX_VALUE;
     }
