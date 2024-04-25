@@ -39,7 +39,7 @@ tasks.withType<ProcessResources> {
     val replaceProperties = mapOf("minecraftVersionRange" to minecraftVersionRange, "modVersion" to modVersion)
     inputs.properties(replaceProperties)
 
-    filesMatching("META-INF/mods.toml") {
+    filesMatching("META-INF/neoforge.mods.toml") {
         expand(replaceProperties)
     }
 }
