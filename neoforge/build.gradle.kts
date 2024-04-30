@@ -4,7 +4,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import net.fabricmc.loom.task.RemapJarTask
 
 plugins {
-    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("com.github.johnrengelman.shadow")
 }
 
 val minecraftVersion: String by extra
@@ -45,8 +45,6 @@ tasks.withType<ProcessResources> {
 }
 
 tasks.withType<ShadowJar> {
-    exclude("fabric.mod.json")
-
     configurations = listOf(shadowCommon)
     archiveClassifier.set("dev-shadow")
 }
@@ -54,22 +52,4 @@ tasks.withType<ShadowJar> {
 tasks.withType<RemapJarTask> {
     val shadowTask = tasks.shadowJar.get()
     input.set(shadowTask.archiveFile)
-    dependsOn(shadowTask)
-    archiveClassifier.set("")
-}
-
-tasks.jar {
-    archiveClassifier.set("dev")
-}
-
-tasks.sourcesJar {
-    val commonSources = project(":common").tasks.sourcesJar.get()
-    dependsOn(commonSources)
-    from(commonSources.archiveFile.map { zipTree(it) })
-}
-
-components.getByName<AdhocComponentWithVariants>("java").apply {
-    withVariantsFromConfiguration(project.configurations["shadowRuntimeElements"]) {
-        skip()
-    }
 }

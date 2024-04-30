@@ -22,14 +22,14 @@ A simple mod to solve various problems with packets/NBT's.
 
 [[dependencies.packetfixer]]
 modId="neoforge"
-mandatory=true
+type="required"
 versionRange="[0,)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.packetfixer]]
 modId="minecraft"
-mandatory=true
+type="required"
 versionRange="[${minecraftVersionRange}]"
 ordering="NONE"
 side="BOTH"
