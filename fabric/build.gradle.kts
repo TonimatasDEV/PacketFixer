@@ -5,7 +5,7 @@ import net.fabricmc.loom.task.RemapJarTask
 import org.gradle.api.component.AdhocComponentWithVariants
 
 plugins {
-    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("com.github.johnrengelman.shadow")
 }
 
 architectury {
@@ -50,22 +50,4 @@ tasks.withType<ShadowJar> {
 tasks.withType<RemapJarTask> {
     val shadowTask = tasks.shadowJar.get()
     input.set(shadowTask.archiveFile)
-    dependsOn(shadowTask)
-    archiveClassifier.set("")
-}
-
-tasks.jar {
-    archiveClassifier.set("dev")
-}
-
-tasks.sourcesJar {
-    val commonSources = project(":common").tasks.sourcesJar.get()
-    dependsOn(commonSources)
-    from(commonSources.archiveFile.map { zipTree(it) })
-}
-
-components.getByName<AdhocComponentWithVariants>("java").apply {
-    withVariantsFromConfiguration(project.configurations["shadowRuntimeElements"]) {
-        skip()
-    }
 }
