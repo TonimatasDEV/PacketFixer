@@ -1,4 +1,4 @@
-package net.tonimatasdev.packetfixerfabric.mixin;
+package dev.tonimatas.packetfixer.mixin;
 
 import net.minecraft.network.PacketInflater;
 import org.spongepowered.asm.mixin.Mixin;

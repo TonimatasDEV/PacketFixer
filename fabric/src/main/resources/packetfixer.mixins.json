@@ -1,18 +1,16 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.tonimatasdev.packetfixerfabric.mixin",
+  "package": "dev.tonimatas.packetfixer.mixin",
   "compatibilityLevel": "JAVA_8",
-  "plugin": "net.tonimatasdev.packetfixerfabric.mixin.MixinConfigPlugin",
+  "plugin": "dev.tonimatas.packetfixer.mixin.MixinConfigPlugin",
   "mixins": [
     "CustomPayloadC2SPacketMixin",
     "CustomPayloadS2CPacketMixin",
     "LoginQueryRequestS2CPacketMixin",
     "LoginQueryResponseC2SPacketMixin",
     "NbtTagSizeTrackerMixin",
-    "PacketInflaterMixin",
-    "SizePrependerMixin",
-    "SplitterHandlerMixin"
+    "PacketInflaterMixin"
   ],
   "injectors": {
     "defaultRequire": 1

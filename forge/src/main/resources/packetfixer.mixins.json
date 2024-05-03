@@ -1,9 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.tonimatasdev.packetfixerforge.mixin",
+  "package": "dev.tonimatas.packetfixer.mixin",
   "compatibilityLevel": "JAVA_8",
-  "plugin": "net.tonimatasdev.packetfixerforge.mixin.MixinConfigPlugin",
+  "plugin": "dev.tonimatas.packetfixer.mixin.MixinConfigPlugin",
   "refmap": "packetfixer.refmap.json",
   "injectors": {
     "defaultRequire": 1
@@ -13,8 +13,6 @@
     "CCustomPayloadPacketMixin",
     "NettyCompressionDecoderMixin",
     "NettyCompressionEncoderMixin",
-    "NettyVarint21FrameDecoderMixin",
-    "NettyVarint21FrameEncoderMixin",
     "PacketBufferMixin",
     "SCustomPayloadLoginPacketMixin",
     "SCustomPayloadPlayPacketMixin"

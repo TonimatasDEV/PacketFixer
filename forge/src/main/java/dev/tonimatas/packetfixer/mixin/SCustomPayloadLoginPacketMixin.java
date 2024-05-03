@@ -1,4 +1,4 @@
-package net.tonimatasdev.packetfixerforge.mixin;
+package dev.tonimatas.packetfixer.mixin;
 
 import net.minecraft.network.login.server.SCustomPayloadLoginPacket;
 import org.spongepowered.asm.mixin.Mixin;

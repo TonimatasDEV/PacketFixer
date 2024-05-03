@@ -1,4 +1,4 @@
-package net.tonimatasdev.packetfixerfabric.mixin;
+package dev.tonimatas.packetfixer.mixin;
 
 import net.minecraft.network.packet.s2c.login.LoginQueryRequestS2CPacket;
 import org.spongepowered.asm.mixin.Mixin;

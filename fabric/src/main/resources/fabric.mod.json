@@ -15,7 +15,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.tonimatasdev.packetfixerfabric.PacketFixerFabric"
+      "dev.tonimatas.packetfixer.PacketFixerFabric"
     ]
   },
   "mixins": [
