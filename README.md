@@ -14,6 +14,6 @@ This mod fixes various package erros. This mod could be used in mod packs for in
 
 ### Fix these problems:
  - Unable to fit X into 3 **[Delete Krypton and Pluto in both sides]**
- - VarInt too long [Try deleting Krypton and Pluto in both sides]
+ - VarInt too long **[Try deleting Krypton and Pluto in both sides]**
 
 ###  Feel free to use this mod on your modpack
