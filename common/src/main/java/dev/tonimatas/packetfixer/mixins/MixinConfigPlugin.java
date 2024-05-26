@@ -1,6 +1,7 @@
-package dev.tonimatas.packetfixer.mixin;
+package dev.tonimatas.packetfixer.mixins;
 
-import net.minecraftforge.fml.loading.FMLLoader;
+import dev.tonimatas.packetfixer.util.Config;
+import dev.tonimatas.packetfixer.util.Hooks;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -12,7 +13,7 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public void onLoad(String mixinPackage) {
-        System.getProperties().setProperty("forge.disablePacketCompressionDebug", "true");
+        Config.runProperties();
     }
 
     @Override
@@ -22,9 +23,9 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        boolean randomPatches = FMLLoader.getLoadingModList().getModFileById("randompatches") != null;
+        boolean randomPatches = Hooks.isModLoaded("randompatches");
 
-        if (mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixin.CCustomPayloadPacketMixin")) return !randomPatches;
+        if (mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.ServerboundCustomPayloadPacketMixin")) return !randomPatches;
         
         return true;
     }
@@ -41,7 +42,6 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-
     }
 
     @Override

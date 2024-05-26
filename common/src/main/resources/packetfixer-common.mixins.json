@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "dev.tonimatas.packetfixer.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "plugin": "dev.tonimatas.packetfixer.mixins.MixinConfigPlugin",
+  "minVersion": "0.8",
+  "mixins": [
+    "ClientboundCustomPayloadPacketMixin",
+    "ClientboundCustomQueryPacketMixin",
+    "CompressionDecoderMixin",
+    "FriendlyByteBufMixin",
+    "ServerboundCustomPayloadPacketMixin",
+    "ServerboundCustomQueryPacketMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,10 +1,10 @@
-@file:Suppress("UnstableApiUsage")
+@file:Suppress("UnstableApiUsage", "DEPRECATION")
+
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import net.fabricmc.loom.task.RemapJarTask
 
 plugins {
-    id("net.minecraftforge.gradle") version "[6.0,6.2)"
-    id("org.spongepowered.mixin") version "0.7-SNAPSHOT"
-    id("idea")
-    id("eclipse")
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 val modVersion: String by extra
@@ -12,61 +12,30 @@ val minecraftVersion: String by extra
 val forgeVersion: String by extra
 val forgeVersionRange: String by extra
 
-minecraft {
-    mappings("official", minecraftVersion)
+architectury {
+    platformSetupLoomIde()
+    forge()
+}
 
-    copyIdeResources.set(true)
-
-    runs {
-        configureEach {
-            workingDirectory(project.file("run"))
-            property("forge.logging.markers", "REGISTRIES")
-            property("forge.logging.console.level", "debug")
-
-            mods {
-                create("packetfixer") {
-                    source(sourceSets.main.get())
-                }
-            }
-        }
-
-        create("client") {
-            property("forge.enabledGameTestNamespaces", "packetfixer")
-        }
-
-        create("server") {
-            property("forge.enabledGameTestNamespaces", "packetfixer")
-            args("--nogui")
-        }
-
-        create("gameTestServer") {
-            property("forge.enabledGameTestNamespaces", "packetfixer")
-        }
-
-        create("data") {
-            workingDirectory(project.file("run-data"))
-            args("--mod", "packetfixer", "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/"))
-        }
+loom {
+    forge {
+        mixinConfig("packetfixer-common.mixins.json", "packetfixer-forge.mixins.json")
     }
 }
 
-mixin {
-    add(sourceSets.main.get(), "packetfixer.refmap.json")
-    config("packetfixer.mixins.json")
-}
+val common by configurations.creating
+val shadowCommon by configurations.creating
 
-sourceSets.main.get().resources { srcDir("src/generated/resources") }
-
-repositories {
-
-}
+configurations["compileClasspath"].extendsFrom(common)
+configurations["runtimeClasspath"].extendsFrom(common)
+configurations["developmentForge"].extendsFrom(common)
 
 dependencies {
-    minecraft("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
-    annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
+    forge("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
+
+    common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
+    shadowCommon(project(path = ":common", configuration = "transformProductionForge")) { isTransitive = false }
 }
-
-
 
 tasks.withType<ProcessResources> {
     val replaceProperties = mapOf("forgeVersionRange" to forgeVersionRange, "version" to modVersion, "minecraftVersion" to minecraftVersion)
@@ -78,18 +47,26 @@ tasks.withType<ProcessResources> {
     }
 }
 
+tasks.withType<ProcessResources> {
+    val replaceProperties = mapOf("forgeVersionRange" to forgeVersionRange, "version" to modVersion, "minecraftVersion" to minecraftVersion)
 
-tasks.jar {
-    manifest {
-        attributes(
-                "Specification-Title" to "PacketFixerForge",
-                "Specification-Vendor" to "TonimatasDEV",
-                "Specification-Version" to modVersion,
-                "Implementation-Title" to "PacketFixerForge",
-                "Implementation-Version" to modVersion,
-                "Implementation-Vendor" to "TonimatasDEV"
-        )
+    inputs.properties(replaceProperties)
+
+    filesMatching(listOf("META-INF/mods.toml", "pack.mcmeta")) {
+        expand(replaceProperties)
     }
+}
 
-    finalizedBy("reobfJar")
+tasks.withType<ShadowJar> {
+    exclude("fabric.mod.json")
+
+    configurations = listOf(shadowCommon)
+    archiveClassifier.set("dev-shadow")
+}
+
+tasks.withType<RemapJarTask> {
+    val shadowTask = tasks.shadowJar.get()
+    input.set(shadowTask.archiveFile)
+    dependsOn(shadowTask)
+    archiveClassifier.set("")
 }

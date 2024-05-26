@@ -1,16 +1,52 @@
+import net.fabricmc.loom.api.LoomGradleExtensionAPI
+
 plugins {
     java
+    id("architectury-plugin") version "3.4-SNAPSHOT"
+    id("dev.architectury.loom") version "1.6-SNAPSHOT" apply false
 }
 
 val modVersion: String by extra
 val minecraftVersion: String by extra
 
-subprojects {
-    apply(plugin = "java")
+architectury {
+    minecraft = minecraftVersion
+}
 
-    group = "net.tonimatasdev"
+subprojects {
+    apply(plugin = "dev.architectury.loom")
+
+    base.archivesName.set("packetfixer-" + project.name)
+
+    configure<LoomGradleExtensionAPI> {
+        silentMojangMappingsLicense()
+    }
+
+    repositories {
+
+    }
+
+    dependencies {
+        "minecraft"("com.mojang:minecraft:$minecraftVersion")
+        "mappings"(project.the<LoomGradleExtensionAPI>().officialMojangMappings())
+    }
+}
+
+allprojects {
+    apply(plugin = "java")
+    apply(plugin = "architectury-plugin")
+
+
     version = "$modVersion-$minecraftVersion"
-    base.archivesName.set("PacketFixer-" + project.name)
+    group = "dev.tonimatas.packetfixer"
+
+    repositories {
+
+    }
+
+    tasks.withType<JavaCompile> {
+        options.encoding = "UTF-8"
+    }
 
     java {
         withSourcesJar()
@@ -19,8 +55,5 @@ subprojects {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    
-    tasks.withType<JavaCompile> {
-        options.encoding = "UTF-8"
-    }
+
 }

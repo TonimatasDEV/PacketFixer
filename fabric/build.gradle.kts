@@ -1,24 +1,34 @@
-@file:Suppress("UnstableApiUsage")
+@file:Suppress("HasPlatformType", "DEPRECATION")
+
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import net.fabricmc.loom.task.RemapJarTask
 
 plugins {
-    id("fabric-loom") version "1.6-SNAPSHOT"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
-val loaderVersion: String by extra
-val yarnMappings: String by extra
-val modVersion: String by extra
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
 val minecraftVersion: String by extra
+val minecraftVersionRange: String by extra
+val loaderVersion: String by extra
+val modVersion: String by extra
 
-repositories {
-    maven(url = "https://maven.fabricmc.net/")
-    maven(url = "https://libraries.minecraft.net/")
-}
+val common by configurations.creating
+val shadowCommon by configurations.creating
+
+configurations["compileClasspath"].extendsFrom(common)
+configurations["runtimeClasspath"].extendsFrom(common)
+configurations["developmentFabric"].extendsFrom(common)
 
 dependencies {
-    minecraft("com.mojang:minecraft:$minecraftVersion")
-    mappings("net.fabricmc:yarn:$yarnMappings:v2")
     modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
 
+    common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
+    shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }
 }
 
 tasks.withType<ProcessResources> {
@@ -31,8 +41,14 @@ tasks.withType<ProcessResources> {
     }
 }
 
-tasks.jar {
-    from("LICENSE") {
-        rename { "${it}_${project.base.archivesName.get()}"}
-    }
+tasks.withType<ShadowJar> {
+    configurations = listOf(shadowCommon)
+    archiveClassifier.set("dev-shadow")
+}
+
+tasks.withType<RemapJarTask> {
+    val shadowTask = tasks.shadowJar.get()
+    input.set(shadowTask.archiveFile)
+    dependsOn(shadowTask)
+    archiveClassifier.set("")
 }

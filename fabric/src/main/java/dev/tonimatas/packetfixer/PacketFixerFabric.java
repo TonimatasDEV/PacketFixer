@@ -6,6 +6,6 @@ import org.apache.logging.log4j.LogManager;
 public class PacketFixerFabric implements ModInitializer {
     @Override
     public void onInitialize() {
-        LogManager.getLogger().info("Packet Fixer (Fabric) has been initialized successfully");
+        PacketFixer.init();
     }
 }
