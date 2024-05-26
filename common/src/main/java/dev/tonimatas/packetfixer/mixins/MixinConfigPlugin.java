@@ -1,6 +1,6 @@
 package dev.tonimatas.packetfixer.mixins;
 
-import com.mojang.logging.LogUtils;
+import dev.tonimatas.packetfixer.util.Config;
 import dev.tonimatas.packetfixer.util.Hooks;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
@@ -13,6 +13,7 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public void onLoad(String mixinPackage) {
+        Config.runProperties();
     }
 
     @Override
