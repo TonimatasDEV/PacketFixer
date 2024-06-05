@@ -8,10 +8,12 @@
     "ClientboundCustomPayloadPacketMixin",
     "ClientboundCustomQueryPacketMixin",
     "CompressionDecoderMixin",
-    "FriendlyByteBufMixin",
     "CompressionEncoderMixin",
+    "FriendlyByteBufMixin",
     "ServerboundCustomPayloadPacketMixin",
-    "ServerboundCustomQueryPacketMixin"
+    "ServerboundCustomQueryPacketMixin",
+    "Varint21FrameDecoderMixin",
+    "Varint21LengthFieldPrependerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
