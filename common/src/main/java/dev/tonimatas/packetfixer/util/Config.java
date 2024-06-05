@@ -10,7 +10,13 @@ public class Config {
     
     public static void runProperties() {
         try {
-            File propertiesFile = new File(new File("config"), "packetfixer.properties");
+            File configFolder = new File("config");
+            
+            if (!configFolder.exists()) {
+                configFolder.mkdirs();
+            }
+            
+            File propertiesFile = new File(configFolder, "packetfixer.properties");
             properties = new Properties();
             
             if (!propertiesFile.exists()) {
@@ -19,10 +25,11 @@ public class Config {
                 properties.setProperty("nbtMaxSize", Long.toString(2097152 * 100));
                 properties.setProperty("packetSize", Integer.toString(1048576 * 100));
                 properties.setProperty("decoderSize", Integer.toString(8388608 * 100));
+                properties.setProperty("varInt21", Integer.toString(8));
                 properties.store(Files.newOutputStream(propertiesFile.toPath()), 
                         "Packet Fixer config file.\n" +
-                        "Default values (minecraft default): nbtMaxSize 2097152, packetSize 1048576 and decoderSize 2097152.\n" +
-                        "Max values are " + Integer.MAX_VALUE + " for packetSize/decoderSize and " + Long.MAX_VALUE + " for nbtMaxSize.");
+                        "Default values (minecraft default): nbtMaxSize 2097152, packetSize 1048576, decoderSize 2097152 and varInt21Size 3.\n" +
+                        "Max values are " + Integer.MAX_VALUE + " for packetSize/decoderSize/varInt21 and " + Long.MAX_VALUE + " for nbtMaxSize.");
             }
 
             properties.load(Files.newInputStream(propertiesFile.toPath()));
@@ -44,5 +51,10 @@ public class Config {
     public static int getDecoderSize() {
         if (properties == null) runProperties();
         return Integer.parseInt(properties.getProperty("decoderSize"));
+    }
+    
+    public static int getVarInt21Size() {
+        if (properties == null) runProperties();
+        return Integer.parseInt(properties.getProperty("varInt21"));
     }
 }
