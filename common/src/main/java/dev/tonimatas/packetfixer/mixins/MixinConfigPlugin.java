@@ -2,6 +2,7 @@ package dev.tonimatas.packetfixer.mixins;
 
 import dev.tonimatas.packetfixer.util.Config;
 import dev.tonimatas.packetfixer.util.Hooks;
+import dev.tonimatas.packetfixer.util.MixinCheck;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -21,11 +22,15 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
         return null;
     }
 
+    @SuppressWarnings("UnreachableCode")
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         boolean randomPatches = Hooks.isModLoaded("randompatches");
+        boolean krypton = Hooks.isModLoaded("krypton") || Hooks.isModLoaded("pluto");
 
-        if (mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.ServerboundCustomPayloadPacketMixin")) return !randomPatches;
+        if (MixinCheck.with(mixinClassName, "ServerboundCustomPayloadPacketMixin")) return !randomPatches;
+        if (MixinCheck.with(mixinClassName, "Varint21FrameDecoderMixin") || 
+                MixinCheck.with(mixinClassName, "Varint21LengthFieldPrependerMixin")) return !krypton;
         
         return true;
     }
