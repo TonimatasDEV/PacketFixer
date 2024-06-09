@@ -21,15 +21,20 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
         return null;
     }
 
+    @SuppressWarnings("UnreachableCode")
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         boolean krypton = Hooks.isModLoaded("krypton") || Hooks.isModLoaded("pluto");
 
-        if (mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.Varint21FrameDecoderMixin") || mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.Varint21LengthFieldPrependerMixin")) {
+        if (check(mixinClassName, "Varint21FrameDecoderMixin") || check(mixinClassName, "Varint21LengthFieldPrependerMixin")) {
             return !krypton;
         }
 
         return true;
+    }
+    
+    private boolean check(String mixinClassName, String mixin) {
+        return mixinClassName.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins." + mixin);
     }
 
     @Override
