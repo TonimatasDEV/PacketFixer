@@ -36,7 +36,11 @@ dependencies {
 }
 
 tasks.withType<ProcessResources> {
-    val replaceProperties = mapOf("minecraftVersionRange" to minecraftVersionRange, "modVersion" to modVersion)
+    val versionRangeSplit = minecraftVersionRange.split(",")
+    var versionRange = minecraftVersionRange
+    if (versionRangeSplit[0] == versionRangeSplit[1]) versionRange = versionRangeSplit[0]
+    
+    val replaceProperties = mapOf("minecraftVersionRange" to versionRange, "modVersion" to modVersion)
     inputs.properties(replaceProperties)
 
     filesMatching("META-INF/neoforge.mods.toml") {
