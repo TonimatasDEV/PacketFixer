@@ -1,7 +1,7 @@
 val fabricLoaderVersion: String by extra
 
 architectury {
-    common("fabric", "forge", "neoforge")
+    common("fabric", /*"forge",*/ "neoforge")
 }
 
 dependencies {
