@@ -29,6 +29,8 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
         boolean krypton = Hooks.isModLoaded("krypton") || Hooks.isModLoaded("pluto");
 
         if (MixinCheck.with(mixinClassName, "ServerboundCustomPayloadPacketMixin")) return !randomPatches;
+        if (MixinCheck.with(mixinClassName, "FriendlyByteBufMixin")) return !randomPatches;
+        if (MixinCheck.with(mixinClassName, "CompressionDecoderMixin")) return !randomPatches;
         if (MixinCheck.with(mixinClassName, "Varint21FrameDecoderMixin") || 
                 MixinCheck.with(mixinClassName, "Varint21LengthFieldPrependerMixin")) return !krypton;
         
