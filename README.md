@@ -1,4 +1,4 @@
-[![Hits](https://hits.sh/github.com/tonimatasdev/packetfixer.svg)](https://hits.sh/github.com/tonimatasdev/packetfixer/)
+[![Hits](https://hits.sh/github.com/tonimatasdev/packetfixer.svg?view=today-total&label=Views)](https://hits.sh/github.com/tonimatasdev/packetfixer/)
 # Packet Fixer
 ##### Visit my discord server: [Link](https://discord.com/invite/vWBP4P4Yd8)
 
