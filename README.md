@@ -1,3 +1,4 @@
+[![Hits](https://hits.sh/github.com/tonimatasdev/packetfixer.svg)](https://hits.sh/github.com/tonimatasdev/packetfixer/)
 # Packet Fixer
 ##### Visit my discord server: [Link](https://discord.com/invite/vWBP4P4Yd8)
 
