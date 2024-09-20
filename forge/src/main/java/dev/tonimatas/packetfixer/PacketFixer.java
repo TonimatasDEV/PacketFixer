@@ -5,7 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-@Mod(modid = "packetfixer")
+@Mod(modid = "packetfixer", dependencies = "required-after:mixinbooter")
 public class PacketFixer {
     public static final Logger LOGGER = LogManager.getLogger("PacketFixer");
 

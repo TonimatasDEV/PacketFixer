@@ -1,15 +1,15 @@
 plugins {
-    id("net.minecraftforge.gradle") version "6.+"
+    id("com.gtnewhorizons.retrofuturagradle") version "1.3.35"
     id("idea")
     id("eclipse")
 }
 
 val modVersion: String by extra
 val minecraftVersion: String by extra
-val forgeVersion: String by extra
 
-group = "net.tonimatasdev"
+group = "dev.tonimatas"
 version = "$modVersion-$minecraftVersion"
+
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(8))
@@ -17,61 +17,43 @@ java {
 }
 
 minecraft {
-    mappings("snapshot", "20171003-1.12")
+    mcVersion.set("1.12.2")
 
-    copyIdeResources.set(true)
+    mcpMappingChannel.set("stable")
+    mcpMappingVersion.set("39")
 
-    runs {
-        configureEach {
-            workingDirectory(project.file("run"))
-            property("forge.logging.markers", "REGISTRIES")
-            property("forge.logging.console.level", "debug")
-
-            mods {
-                create("packetfixer") {
-                    source(sourceSets.main.get())
-                }
-            }
-        }
-
-        create("client") {
-            property("forge.enabledGameTestNamespaces", "packetfixer")
-        }
-
-        create("server") {
-            property("forge.enabledGameTestNamespaces", "packetfixer")
-            args("--nogui")
-        }
-
-        create("gameTestServer") {
-            property("forge.enabledGameTestNamespaces", "packetfixer")
-        }
-
-        create("data") {
-            workingDirectory(project.file("run-data"))
-            args("--mod", "packetfixer", "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/"))
-        }
-    }
+    useDependencyAccessTransformers.set(true)
 }
 
 sourceSets.main.get().resources { srcDir("src/generated/resources") }
 
 repositories {
-
+    maven(url = "https://maven.cleanroommc.com")
 }
 
 dependencies {
-    minecraft("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
+    //minecraft("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
+
+    var mixin = modUtils.enableMixins("zone.rong:mixinbooter:9.1", "packetfixer.mixins.refmap.json") as String
+    api(mixin) {
+        isTransitive = false
+    }
+    annotationProcessor("org.ow2.asm:asm-debug-all:5.2")
+    annotationProcessor("com.google.guava:guava:24.1.1-jre")
+    annotationProcessor("com.google.code.gson:gson:2.8.6")
+    annotationProcessor(mixin) {
+        isTransitive = false
+    }
 }
 
 
 
-tasks.withType<ProcessResources> {
+tasks.processResources {
     val replaceProperties = mapOf("modVersion" to modVersion, "minecraftVersion" to minecraftVersion)
 
     inputs.properties(replaceProperties)
 
-    filesMatching(listOf("META-INF/mods.toml", "pack.mcmeta")) {
+    filesMatching(listOf("mcmod.info", "pack.mcmeta")) {
         expand(replaceProperties)
     }
 }
@@ -81,8 +63,6 @@ tasks.jar {
     manifest {
         attributes(
             "Manifest-Version" to "1.0",
-            "FMLCorePluginContainsFMLMod" to true,
-            "FMLCorePlugin" to "net.tonimatasdev.packetfixer.PacketFixer"
         )
     }
 

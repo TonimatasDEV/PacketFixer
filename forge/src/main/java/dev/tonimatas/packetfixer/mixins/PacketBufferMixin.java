@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(value = PacketBuffer.class, priority = 9999)
 public class PacketBufferMixin {
     @ModifyConstant(method = "readCompoundTag", constant = @Constant(longValue = 2097152L))
-    private long newSize$readCompoundTag(long value) {
+    private long newSize$readCompoundTag(long constant) {
         return Config.getNbtMaxSize();
     }
 }

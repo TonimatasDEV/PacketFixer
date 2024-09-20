@@ -9,11 +9,7 @@ subprojects {
     apply(plugin = "java")
 
     version = "$modVersion-$minecraftVersion"
-    group = "net.tonimatasdev"
+    group = "dev.tonimatas"
 
     base.archivesName.set("PacketFixer-" + project.name)
-    
-    dependencies {
-        implementation("org.spongepowered:mixin:0.8.5")
-    }
 }
