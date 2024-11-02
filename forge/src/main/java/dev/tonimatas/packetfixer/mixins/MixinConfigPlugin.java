@@ -1,6 +1,7 @@
 package dev.tonimatas.packetfixer.mixins;
 
 import dev.tonimatas.packetfixer.util.Config;
+import net.minecraftforge.fml.common.Loader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -22,6 +23,8 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
     @SuppressWarnings("UnreachableCode")
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (check(mixinClassName, "PacketBufferMixin")) return !Loader.isModLoaded("randompatches");
+        
         return true;
     }
 
