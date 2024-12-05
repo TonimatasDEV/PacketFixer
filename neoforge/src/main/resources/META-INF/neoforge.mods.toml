@@ -14,7 +14,7 @@ modId="packetfixer"
 version="${modVersion}"
 displayName="Packet Fixer"
 logoFile="icon.png"
-updateJSONURL="https://api.modrinth.com/updates/packet-fixer/forge_updates.json"
+#updateJSONURL="https://api.modrinth.com/updates/packet-fixer/forge_updates.json"
 authors="TonimatasDEV"
 description='''
 A simple mod to solve various problems with packets/NBT's.
@@ -30,6 +30,6 @@ side="BOTH"
 [[dependencies.packetfixer]]
 modId="minecraft"
 type="required"
-versionRange="[${minecraftVersionRange}]"
+versionRange="[${minecraftVersion}]"
 ordering="NONE"
 side="BOTH"

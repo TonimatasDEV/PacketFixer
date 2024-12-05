@@ -1,14 +1,7 @@
-@file:Suppress("DEPRECATION", "UnstableApiUsage")
-
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import net.fabricmc.loom.task.RemapJarTask
 
-plugins {
-    id("com.github.johnrengelman.shadow")
-}
-
 val minecraftVersion: String by extra
-val minecraftVersionRange: String by extra
 val neoforgeVersion: String by extra
 val modVersion: String by extra
 
@@ -17,8 +10,8 @@ architectury {
     neoForge()
 }
 
-val common by configurations.creating
-val shadowCommon by configurations.creating
+val common: Configuration by configurations.creating
+val shadowCommon: Configuration by configurations.creating
 
 configurations["compileClasspath"].extendsFrom(common)
 configurations["runtimeClasspath"].extendsFrom(common)
@@ -36,11 +29,7 @@ dependencies {
 }
 
 tasks.withType<ProcessResources> {
-    val versionRangeSplit = minecraftVersionRange.split(",")
-    var versionRange = minecraftVersionRange
-    if (versionRangeSplit[0] == versionRangeSplit[1]) versionRange = versionRangeSplit[0]
-    
-    val replaceProperties = mapOf("minecraftVersionRange" to versionRange, "modVersion" to modVersion)
+    val replaceProperties = mapOf("minecraftVersion" to minecraftVersion, "modVersion" to modVersion)
     inputs.properties(replaceProperties)
 
     filesMatching("META-INF/neoforge.mods.toml") {
@@ -55,5 +44,5 @@ tasks.withType<ShadowJar> {
 
 tasks.withType<RemapJarTask> {
     val shadowTask = tasks.shadowJar.get()
-    input.set(shadowTask.archiveFile)
+    inputFile.set(shadowTask.archiveFile)
 }

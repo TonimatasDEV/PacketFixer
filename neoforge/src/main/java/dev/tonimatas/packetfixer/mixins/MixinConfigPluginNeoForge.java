@@ -1,4 +1,4 @@
-package dev.tonimatas.packetfixer.mixin;
+package dev.tonimatas.packetfixer.mixins;
 
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
@@ -7,11 +7,11 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 import java.util.List;
 import java.util.Set;
 
-public class MixinConfigPluginForge implements IMixinConfigPlugin {
+public class MixinConfigPluginNeoForge implements IMixinConfigPlugin {
 
     @Override
     public void onLoad(String mixinPackage) {
-        System.getProperties().setProperty("forge.disablePacketCompressionDebug", "true");
+        System.getProperties().setProperty("neoforge.disablePacketCompressionDebug", "true");
     }
 
     @Override

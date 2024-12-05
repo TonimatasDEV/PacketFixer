@@ -11,7 +11,7 @@
     "repo": "https://github.com/TonimatasDEV/PacketFixer"
   },
   "license": "MIT",
-  "icon": "assets/packetfixer/icon.png",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -24,6 +24,6 @@
   ],
   "depends": {
     "fabricloader": "*",
-    "minecraft": ">=${minimumMinecraftVersion} <=${minecraftVersion}"
+    "minecraft": "${minecraftVersion}"
   }
 }
