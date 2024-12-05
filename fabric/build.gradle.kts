@@ -1,12 +1,5 @@
-@file:Suppress("DEPRECATION", "HasPlatformType")
-
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import net.fabricmc.loom.task.RemapJarTask
-import org.gradle.api.component.AdhocComponentWithVariants
-
-plugins {
-    id("com.github.johnrengelman.shadow")
-}
 
 architectury {
     platformSetupLoomIde()
@@ -14,12 +7,11 @@ architectury {
 }
 
 val minecraftVersion: String by extra
-val minecraftVersionRange: String by extra
 val fabricLoaderVersion: String by extra
 val modVersion: String by extra
 
-val common by configurations.creating
-val shadowCommon by configurations.creating
+val common: Configuration by configurations.creating
+val shadowCommon: Configuration by configurations.creating
 
 configurations["compileClasspath"].extendsFrom(common)
 configurations["runtimeClasspath"].extendsFrom(common)
@@ -33,7 +25,7 @@ dependencies {
 }
 
 tasks.withType<ProcessResources> {
-    val replaceProperties = mapOf("modVersion" to modVersion, "minimumMinecraftVersion" to minecraftVersionRange.split(",")[0], "minecraftVersion" to minecraftVersion)
+    val replaceProperties = mapOf("modVersion" to modVersion, "minecraftVersion" to minecraftVersion)
 
     inputs.properties(replaceProperties)
 
@@ -49,5 +41,5 @@ tasks.withType<ShadowJar> {
 
 tasks.withType<RemapJarTask> {
     val shadowTask = tasks.shadowJar.get()
-    input.set(shadowTask.archiveFile)
+    inputFile.set(shadowTask.archiveFile)
 }

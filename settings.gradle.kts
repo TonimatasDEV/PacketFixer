@@ -7,5 +7,5 @@ pluginManagement {
     }
 }
 
-include("common", "fabric", /*"forge",*/ "neoforge")
+include("common", "fabric", "neoforge")
 rootProject.name = "PacketFixer"
