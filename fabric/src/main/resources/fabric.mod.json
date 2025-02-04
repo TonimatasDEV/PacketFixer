@@ -19,8 +19,8 @@
     ]
   },
   "mixins": [
-    "packetfixer-common.mixins.json",
-    "packetfixer-fabric.mixins.json"
+    "packetfixer.common.mixins.json",
+    "packetfixer.fabric.mixins.json"
   ],
   "depends": {
     "fabricloader": "*",
