@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(value = ServerboundCustomQueryAnswerPacket.class, priority = 9999)
+@Mixin(ServerboundCustomQueryAnswerPacket.class)
 public class ServerboundCustomQueryPacketMixin {
     @ModifyConstant(method = "readUnknownPayload", constant = @Constant(intValue = 1048576))
     private static int newSize(int value) {
