@@ -7,9 +7,9 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(NettyVarint21FrameDecoder.class)
-public class NettyVarint21FrameDecoderMixin {
+public class Varint21LengthFieldPrependerMixin {
     @ModifyConstant(method = "decode", constant = @Constant(intValue = 3))
-    private int newSize$decode(int constant) {
+    private int newSize(int value) {
         return Config.getVarInt21Size();
     }
 }

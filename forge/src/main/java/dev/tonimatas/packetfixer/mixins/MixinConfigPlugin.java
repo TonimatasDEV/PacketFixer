@@ -24,7 +24,7 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (check(mixinClassName, "PacketBufferMixin")) return !Loader.isModLoaded("randompatches");
-        
+
         return true;
     }
 

@@ -5,15 +5,16 @@
   "compatibilityLevel": "JAVA_8",
   "plugin": "dev.tonimatas.packetfixer.mixins.MixinConfigPlugin",
   "refmap": "packetfixer.mixins.refmap.json",
-  "client": [
-    "CPacketCustomPayloadMixin"
-  ],
   "mixins": [
+    "CPacketCustomPayloadMixin",
     "NettyCompressionDecoderMixin",
     "NettyVarint21FrameDecoderMixin",
     "NettyVarint21FrameEncoderMixin",
     "PacketBufferMixin",
-    "SPacketCustomPayloadMixin"
+    "SPacketChunkDataMixin",
+    "SPacketCustomPayloadMixin",
+    "Varint21FrameDecoderMixin",
+    "Varint21LengthFieldPrependerMixin"
   ],
   "injectors": {
     "defaultRequire": 0

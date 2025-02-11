@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(value = SPacketCustomPayload.class, priority = 9999)
+@Mixin(SPacketCustomPayload.class)
 public class SPacketCustomPayloadMixin {
     @ModifyConstant(method = "<init>(Ljava/lang/String;Lnet/minecraft/network/PacketBuffer;)V", constant = @Constant(intValue = 1048576))
     private int newSize$init(int constant) {
