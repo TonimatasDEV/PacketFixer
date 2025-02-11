@@ -2,6 +2,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import net.fabricmc.loom.task.RemapJarTask
 
 val minecraftVersion: String by extra
+val minecraftVersionRange: String by extra
 val neoforgeVersion: String by extra
 val modVersion: String by extra
 
@@ -29,7 +30,7 @@ dependencies {
 }
 
 tasks.withType<ProcessResources> {
-    val replaceProperties = mapOf("minecraftVersion" to minecraftVersion, "modVersion" to modVersion)
+    val replaceProperties = mapOf("minecraftVersionRange" to minecraftVersionRange, "modVersion" to modVersion)
     inputs.properties(replaceProperties)
 
     filesMatching("META-INF/neoforge.mods.toml") {

@@ -30,6 +30,6 @@ side="BOTH"
 [[dependencies.packetfixer]]
 modId="minecraft"
 type="required"
-versionRange="[${minecraftVersion}]"
+versionRange="[${minecraftVersionRange}]"
 ordering="NONE"
 side="BOTH"
