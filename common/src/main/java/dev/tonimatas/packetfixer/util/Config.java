@@ -75,17 +75,17 @@ public class Config {
 
     public static int getVarInt21Size() {
         if (properties == null) runProperties();
-        return getUnlimitedPacketSize() ? Integer.MAX_VALUE : Integer.parseInt(properties.getProperty("varInt21"));
+        return getUnlimitedPacketSize() ? (Integer.MAX_VALUE / 2 - 1) : Integer.parseInt(properties.getProperty("varInt21"));
     }
 
     public static int getVarIntSize() {
         if (properties == null) runProperties();
-        return getUnlimitedPacketSize() ? Integer.MAX_VALUE : Integer.parseInt(properties.getProperty("varInt"));
+        return getUnlimitedPacketSize() ? (Integer.MAX_VALUE / 2 - 1) : Integer.parseInt(properties.getProperty("varInt"));
     }
     
     public static int getVarLong() {
         if (properties == null) runProperties();
-        return getUnlimitedPacketSize() ? Integer.MAX_VALUE : Integer.parseInt(properties.getProperty("varLong"));
+        return getUnlimitedPacketSize() ? (Integer.MAX_VALUE / 2 - 1) : Integer.parseInt(properties.getProperty("varLong"));
     }
     
     public static int getChunkPacketData() {
