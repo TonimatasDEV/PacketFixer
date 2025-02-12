@@ -3,62 +3,29 @@ package dev.tonimatas.packetfixer.mixins;
 import dev.tonimatas.packetfixer.util.Config;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.network.BandwidthDebugMonitor;
-import net.minecraft.network.VarInt;
 import net.minecraft.network.Varint21FrameDecoder;
-import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mutable;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
-
-import java.util.List;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Varint21FrameDecoder.class)
 public abstract class Varint21FrameDecoderMixin {
-    @Shadow @Final @Nullable private BandwidthDebugMonitor monitor;
+    @Mutable @Shadow @Final private ByteBuf helperBuf;
 
-    @Shadow private static boolean copyVarint(ByteBuf byteBuf, ByteBuf byteBuf2) {
-        return false;
+    @Inject(method = "<init>", at = @At("RETURN"))
+    private void init$helper(BandwidthDebugMonitor bandwidthDebugMonitor, CallbackInfo ci) {
+        this.helperBuf = Unpooled.directBuffer(Config.getVarInt21Size());
     }
-
-    @Unique private final ByteBuf packetFixer$helperBuf = Unpooled.directBuffer(Config.getVarInt21Size());
-
-    /**
-     * @author TonimatasDEV
-     * @reason Use packetFixer$helperBuf
-     */
-    @Overwrite
-    protected void handlerRemoved0(ChannelHandlerContext channelHandlerContext) {
-        this.packetFixer$helperBuf.release();
-    }
-
+    
     @ModifyConstant(method = "copyVarint", constant = @Constant(intValue = 3))
-    private static int newSize(int value) {
+    private static int newSize(int original) {
         return Config.getVarInt21Size();
-    }
-
-    /**
-     * @author TonimatasDEV
-     * @reason Use packetFixer$helperBuf
-     */
-    @Overwrite
-    protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) {
-        byteBuf.markReaderIndex();
-        this.packetFixer$helperBuf.clear();
-        if (!copyVarint(byteBuf, this.packetFixer$helperBuf)) {
-            byteBuf.resetReaderIndex();
-        } else {
-            int i = VarInt.read(this.packetFixer$helperBuf);
-            if (byteBuf.readableBytes() < i) {
-                byteBuf.resetReaderIndex();
-            } else {
-                if (this.monitor != null) {
-                    this.monitor.onReceive(i + VarInt.getByteSize(i));
-                }
-
-                list.add(byteBuf.readBytes(i));
-            }
-        }
     }
 }
