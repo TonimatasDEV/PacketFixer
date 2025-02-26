@@ -17,6 +17,6 @@
     "Varint21LengthFieldPrependerMixin"
   ],
   "injectors": {
-    "defaultRequire": 1
+    "defaultRequire": 0
   }
 }
