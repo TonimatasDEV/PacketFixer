@@ -4,8 +4,9 @@
   "package": "dev.tonimatas.packetfixer.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "PayloadHelperMixin"
   ],
   "injectors": {
-    "defaultRequire": 1
+    "defaultRequire": 0
   }
 }

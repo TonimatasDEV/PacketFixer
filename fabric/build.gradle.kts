@@ -20,6 +20,8 @@ configurations["developmentFabric"].extendsFrom(common)
 dependencies {
     modImplementation("net.fabricmc:fabric-loader:$fabricLoaderVersion")
 
+    modApi("net.fabricmc.fabric-api:fabric-api:0.118.5+1.21.4")
+
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
     shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }
 }
