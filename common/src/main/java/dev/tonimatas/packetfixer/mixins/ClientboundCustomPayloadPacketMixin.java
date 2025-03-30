@@ -9,12 +9,12 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ClientboundCustomPayloadPacket.class)
 public class ClientboundCustomPayloadPacketMixin {
-    @ModifyConstant(method = "method_56460", constant = @Constant(intValue = 1048576))
+    @ModifyConstant(method = "lambda$static$0", constant = @Constant(intValue = 1048576))
     private static int newSize$1(int value) {
         return Config.getPacketSize();
     }
 
-    @ModifyConstant(method = "method_56461", constant = @Constant(intValue = 1048576))
+    @ModifyConstant(method = "lambda$static$2", constant = @Constant(intValue = 1048576))
     private static int newSize$2(int value) {
         return Config.getPacketSize();
     }
