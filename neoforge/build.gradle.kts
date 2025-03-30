@@ -1,48 +1,38 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import net.fabricmc.loom.task.RemapJarTask
+plugins {
+    id("multiloader-loader")
+    id("net.neoforged.moddev")
+}
 
 val minecraftVersion: String by extra
 val neoforgeVersion: String by extra
 val modVersion: String by extra
 
-architectury {
-    platformSetupLoomIde()
-    neoForge()
-}
+neoForge {
+    version = neoforgeVersion
+    
+    runs {
+        configureEach {
+            systemProperty("neoforge.enabledGameTestNamespaces", "packetfixer")
+        }
 
-val common: Configuration by configurations.creating
-val shadowCommon: Configuration by configurations.creating
+        create("client") {
+            client()
+        }
 
-configurations["compileClasspath"].extendsFrom(common)
-configurations["runtimeClasspath"].extendsFrom(common)
-configurations["developmentNeoForge"].extendsFrom(common)
+        create("data") {
+            clientData()
+        }
 
-repositories {
-    maven(url = "https://maven.neoforged.net/")
-}
+        create("server") {
+            server()
+        }
+    }
 
-dependencies {
-    neoForge("net.neoforged:neoforge:$neoforgeVersion")
-
-    common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
-    shadowCommon(project(path = ":common", configuration = "transformProductionNeoForge")) { isTransitive = false }
-}
-
-tasks.withType<ProcessResources> {
-    val replaceProperties = mapOf("minecraftVersion" to minecraftVersion, "modVersion" to modVersion)
-    inputs.properties(replaceProperties)
-
-    filesMatching("META-INF/neoforge.mods.toml") {
-        expand(replaceProperties)
+    mods {
+        create("packetfixer") {
+            sourceSet(sourceSets.main.get())
+        }
     }
 }
 
-tasks.withType<ShadowJar> {
-    configurations = listOf(shadowCommon)
-    archiveClassifier.set("dev-shadow")
-}
-
-tasks.withType<RemapJarTask> {
-    val shadowTask = tasks.shadowJar.get()
-    inputFile.set(shadowTask.archiveFile)
-}
+sourceSets.main.get().resources { srcDir("src/generated/resources") }

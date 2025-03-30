@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "dev.tonimatas.packetfixer.mixins",
   "compatibilityLevel": "JAVA_21",
-  "plugin": "dev.tonimatas.packetfixer.mixins.MixinConfigPlugin",
+  "refmap": "packetfixer.refmap.json",
   "mixins": [
     "ClientboundCustomPayloadPacketMixin",
     "ClientboundCustomQueryPacketMixin",

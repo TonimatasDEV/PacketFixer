@@ -1,11 +1,34 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        maven(url = "https://maven.neoforged.net/")
-        maven(url = "https://maven.architectury.dev/")
-        maven(url = "https://maven.fabricmc.net/")
+        mavenCentral()
+        exclusiveContent {
+            forRepository {
+                maven("https://maven.fabricmc.net")
+            }
+            filter {
+                includeGroup("net.fabricmc")
+                includeGroup("fabric-loom")
+            }
+        }
+        exclusiveContent {
+            forRepository {
+                maven("https://repo.spongepowered.org/repository/maven-public")
+            }
+            filter {
+                includeGroupAndSubgroups("org.spongepowered")
+            }
+        }
     }
 }
 
-include("common", "fabric", "neoforge")
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+}
+
 rootProject.name = "PacketFixer"
+include("common")
+include("fabric")
+include("neoforge")
