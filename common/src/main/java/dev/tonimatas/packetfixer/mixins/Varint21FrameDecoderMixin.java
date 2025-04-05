@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
-@Mixin(value = Varint21FrameDecoder.class, priority = 1001)
+@Mixin(Varint21FrameDecoder.class)
 public abstract class Varint21FrameDecoderMixin {
     @Unique
     private int packetFixer$varInt21Size = 10;
