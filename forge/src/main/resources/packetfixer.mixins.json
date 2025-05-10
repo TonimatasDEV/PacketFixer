@@ -12,9 +12,7 @@
     "NettyVarint21FrameEncoderMixin",
     "PacketBufferMixin",
     "SPacketChunkDataMixin",
-    "SPacketCustomPayloadMixin",
-    "Varint21FrameDecoderMixin",
-    "Varint21LengthFieldPrependerMixin"
+    "SPacketCustomPayloadMixin"
   ],
   "injectors": {
     "defaultRequire": 0
