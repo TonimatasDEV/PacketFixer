@@ -3,9 +3,9 @@
 ##### Visit my discord server: [Link](https://discord.com/invite/vWBP4P4Yd8)
 
 ## Description
-This mod fixes various package erros. This mod could be used in mod packs for increasing the number of mods.
+This mod increases the packet sizes to prevent various package erros. This mod could be used in mod packs for increasing the number of mods.
 
-### Fix these problems:
+### Prevent these problems:
  - Tried to read NBT tag that was too big; tried to allocate: X bytes where max allowed: 2097152
  - Badly compressed packet - size of X is larger than protocol maximum of 2097152
  - Attempted to send packet over maximum protocol size: 8388608
