@@ -64,9 +64,10 @@ public class Config {
     }
 
     public static int getPacketSize() {
-        if (properties == null) runProperties();
-        return getUnlimitedPacketSize() ? Integer.MAX_VALUE : Integer.parseInt(properties.getProperty("packetSize"));
-    }
+    if (properties == null) runProperties();
+    if (getUnlimitedPacketSize()) return Math.min(Integer.MAX_VALUE, 8388608); // clamp fallback
+    return Math.min(Integer.parseInt(properties.getProperty("packetSize")), 8388608);
+	}
 
     public static int getDecoderSize() {
         if (properties == null) runProperties();
