@@ -11,6 +11,7 @@
     "CompressionDecoderMixin",
     "ConnectionMixin",
     "FriendlyByteBufMixin",
+    "NbtAccounterMixin",
     "ServerboundCustomPayloadPacketMixin",
     "ServerboundCustomQueryPacketMixin",
     "Varint21FrameDecoderMixin",
