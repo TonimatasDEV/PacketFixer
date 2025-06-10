@@ -7,6 +7,7 @@
   "refmap": "packetfixer.mixins.refmap.json",
   "mixins": [
     "CPacketCustomPayloadMixin",
+    "NBTSizeTrackerMixin",
     "NettyCompressionDecoderMixin",
     "NettyVarint21FrameDecoderMixin",
     "NettyVarint21FrameEncoderMixin",
