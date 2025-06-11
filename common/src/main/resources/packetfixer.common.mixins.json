@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "plugin": "dev.tonimatas.packetfixer.mixins.MixinConfigPlugin",
   "mixins": [
+    "ByteBufCodecsMixin",
     "ClientboundCustomPayloadPacketMixin",
     "ClientboundCustomQueryPacketMixin",
     "ClientboundLevelChunkPacketDataMixin",
