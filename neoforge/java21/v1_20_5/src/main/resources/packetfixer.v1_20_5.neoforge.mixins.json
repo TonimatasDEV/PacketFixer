@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.tonimatas.packetfixer.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "plugin": "dev.tonimatas.packetfixer.mixins.v1_20_5_neoforge.MixinPlugin",
+  "injectors": {
+    "defaultRequire": 0
+  },
+  "mixins": [
+    "v1_20_5_neoforge.ClientboundCustomPayloadPacketMixin",
+    "v1_20_5_neoforge.ClientboundCustomQueryPacketMixin",
+    "v1_20_5_neoforge.ClientboundLevelChunkPacketDataMixin",
+    "v1_20_5_neoforge.CompressionDecoderMixin",
+    "v1_20_5_neoforge.CompressionEncoderMixin",
+    "v1_20_5_neoforge.ConnectionMixin",
+    "v1_20_5_neoforge.FriendlyByteBufMixin",
+    "v1_20_5_neoforge.NbtAccounterMixin",
+    "v1_20_5_neoforge.ServerboundCustomPayloadPacketMixin",
+    "v1_20_5_neoforge.ServerboundCustomQueryPacketMixin",
+    "v1_20_5_neoforge.Varint21FrameDecoderMixin",
+    "v1_20_5_neoforge.Varint21LengthFieldPrependerMixin",
+    "v1_20_5_neoforge.VarIntMixin",
+    "v1_20_5_neoforge.VarLongMixin"
+  ]
+}
