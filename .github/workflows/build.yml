@@ -22,7 +22,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build with Gradle
-        run: ./gradlew mergedJar
+        run: ./gradlew clean mergedJar
         
       - name: Upload a Java 17 artifact
         uses: actions/upload-artifact@v4
