@@ -19,6 +19,9 @@ jobs:
           distribution: "temurin"
           cache: "gradle"
 
+      - name: Give permissions to Gradle
+        run: chmod +x ./gradlew
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
