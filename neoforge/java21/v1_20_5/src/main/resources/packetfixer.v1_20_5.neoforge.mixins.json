@@ -8,6 +8,7 @@
     "defaultRequire": 0
   },
   "mixins": [
+    "v1_20_5_neoforge.ByteBufCodecsMixin",
     "v1_20_5_neoforge.ClientboundCustomPayloadPacketMixin",
     "v1_20_5_neoforge.ClientboundCustomQueryPacketMixin",
     "v1_20_5_neoforge.ClientboundLevelChunkPacketDataMixin",

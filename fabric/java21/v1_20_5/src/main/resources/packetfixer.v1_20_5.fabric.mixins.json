@@ -9,6 +9,7 @@
     "defaultRequire": 0
   },
   "mixins": [
+    "v1_20_5_fabric.ByteBufCodecsMixin",
     "v1_20_5_fabric.ClientboundCustomPayloadPacketMixin",
     "v1_20_5_fabric.ClientboundCustomQueryPacketMixin",
     "v1_20_5_fabric.ClientboundLevelChunkPacketDataMixin",

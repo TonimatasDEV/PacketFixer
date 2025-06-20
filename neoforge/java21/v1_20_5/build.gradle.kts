@@ -26,7 +26,7 @@ minecraft {
 }
 
 dependencies {
-    implementation("net.neoforged:neoforge:21.6.0-beta")
+    implementation("net.neoforged:neoforge:21.6.11-beta")
     implementation(project(":common"))
 }
 
