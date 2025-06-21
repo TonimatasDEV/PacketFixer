@@ -14,7 +14,7 @@ tasks.register<Task>("export") {
 
 tasks.register<Jar>("mergedJar") {
     archiveClassifier.set("merged")
-    version = "$version-1.20.5-1.21.5"
+    version = "$version-1.20.5-1.21.6"
 
     dependsOn("jar", ":common:jar")
 
@@ -61,7 +61,7 @@ tasks.processResources {
 
     inputs.properties(commonProperties)
 
-    filesMatching(listOf("META-INF/mods.toml", "fabric.mod.json")) {
+    filesMatching(listOf("META-INF/mods.toml", "fabric.mod.json", "META-INF/neoforge.mods.toml")) {
         expand(commonProperties)
     }
 }

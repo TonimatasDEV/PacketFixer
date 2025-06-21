@@ -74,7 +74,7 @@ tasks.processResources {
 
     inputs.properties(commonProperties)
 
-    filesMatching(listOf("META-INF/mods.toml", "fabric.mod.json")) {
+    filesMatching(listOf("META-INF/*", "fabric.mod.json")) {
         expand(commonProperties)
     }
 }

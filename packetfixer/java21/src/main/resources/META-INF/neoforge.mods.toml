@@ -19,14 +19,14 @@ A simple mod to solve various problems with packets.
 
 [[dependencies.packetfixer]]
 modId="neoforge"
-mandatory=true
+required=true
 versionRange="[0,)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.packetfixer]]
 modId="minecraft"
-mandatory=true
-versionRange="[1.20.5]"
+required=true
+versionRange="[1.20.5,1.21.6]"
 ordering="NONE"
 side="BOTH"
