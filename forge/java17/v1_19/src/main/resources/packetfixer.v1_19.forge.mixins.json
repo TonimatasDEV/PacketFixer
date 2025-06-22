@@ -9,17 +9,17 @@
     "defaultRequire": 0
   },
   "mixins": [
-    "v1_18_forge.ClientboundCustomPayloadPacketMixin",
-    "v1_18_forge.ClientboundCustomQueryPacketMixin",
-    "v1_18_forge.ClientboundLevelChunkPacketDataMixin",
-    "v1_18_forge.CompressionDecoderMixin",
-    "v1_18_forge.CompressionEncoderMixin",
-    "v1_18_forge.ConnectionMixin",
-    "v1_18_forge.FriendlyByteBufMixin",
-    "v1_18_forge.NbtAccounterMixin",
-    "v1_18_forge.ServerboundCustomPayloadPacketMixin",
+    "v1_19_forge.ClientboundCustomPayloadPacketMixin",
+    "v1_19_forge.ClientboundCustomQueryPacketMixin",
+    "v1_19_forge.ClientboundLevelChunkPacketDataMixin",
+    "v1_19_forge.CompressionDecoderMixin",
+    "v1_19_forge.CompressionEncoderMixin",
+    "v1_19_forge.ConnectionMixin",
+    "v1_19_forge.FriendlyByteBufMixin",
+    "v1_19_forge.NbtAccounterMixin",
+    "v1_19_forge.ServerboundCustomPayloadPacketMixin",
     "v1_19_forge.ServerboundCustomQueryPacketMixin",
-    "v1_18_forge.Varint21FrameDecoderMixin",
-    "v1_18_forge.Varint21LengthFieldPrependerMixin"
+    "v1_19_forge.Varint21FrameDecoderMixin",
+    "v1_19_forge.Varint21LengthFieldPrependerMixin"
   ]
 }

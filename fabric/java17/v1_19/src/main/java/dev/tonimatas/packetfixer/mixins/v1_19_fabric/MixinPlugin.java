@@ -1,5 +1,6 @@
 package dev.tonimatas.packetfixer.mixins.v1_19_fabric;
 
+import dev.tonimatas.packetfixer.common.Config;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import org.apache.logging.log4j.LogManager;
@@ -16,6 +17,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
     @Override
     public void onLoad(String s) {
         if (isThisVersion()) {
+            Config.runProperties();
             LogManager.getLogger().info("Packet Fixer fabric 1.19-1.19.2 has been applied successfully.");
         }
     }

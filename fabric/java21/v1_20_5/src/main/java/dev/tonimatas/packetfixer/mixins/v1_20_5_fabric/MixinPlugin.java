@@ -1,5 +1,6 @@
 package dev.tonimatas.packetfixer.mixins.v1_20_5_fabric;
 
+import dev.tonimatas.packetfixer.common.Config;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import org.objectweb.asm.tree.ClassNode;
@@ -15,7 +16,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
     @Override
     public void onLoad(String s) {
         if (isThisVersion()) {
-            System.getProperties().setProperty("forge.disablePacketCompressionDebug", "true");
+            Config.runProperties();
             System.out.println("Packet Fixer forge 1.20.5-1.21.5 has been applied successfully.");
         }
     }

@@ -4,11 +4,7 @@ import dev.tonimatas.packetfixer.LoaderPlugin;
 import net.fabricmc.loom.LoomGradlePlugin;
 import net.fabricmc.loom.api.LoomGradleExtensionAPI;
 import org.gradle.api.Project;
-import org.gradle.api.file.FileCollection;
 import org.gradle.api.plugins.JavaPluginExtension;
-import org.gradle.api.tasks.SourceSet;
-import org.gradle.api.tasks.SourceSetContainer;
-import org.gradle.api.tasks.compile.JavaCompile;
 
 @SuppressWarnings({"unused", "UnstableApiUsage"})
 public class FabricModPlugin extends LoaderPlugin {
@@ -32,17 +28,6 @@ public class FabricModPlugin extends LoaderPlugin {
             
             if (extension.getFabricVersion() != null) {
                 project.getDependencies().add("modImplementation", "net.fabricmc.fabric-api:fabric-api:" + extension.getFabricVersion() + "+" + extension.getMinecraftVersion());
-            }
-
-            for (String projectStr : extension.getProjects()) {
-                String javaVersionStr = extension.getJavaVersion().toString().replaceAll("VERSION_", "");
-                SourceSetContainer targetSourceSets = p.project(":fabric:java" + javaVersionStr + ":" + projectStr).getExtensions().getByType(SourceSetContainer.class);
-                SourceSet targetMain = targetSourceSets.getByName("main");
-
-                project.getTasks().named("compileJava", JavaCompile.class).configure(compileJava -> {
-                    FileCollection extraSources = targetMain.getAllJava().getSourceDirectories();
-                    compileJava.setSource(compileJava.getSource().plus(extraSources));
-                });
             }
             
             project.getExtensions().configure(LoomGradleExtensionAPI.class, loom -> {

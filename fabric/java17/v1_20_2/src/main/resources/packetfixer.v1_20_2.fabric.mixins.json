@@ -9,9 +9,9 @@
     "defaultRequire": 0
   },
   "mixins": [
-    "v1_18_fabric.ClientboundLevelChunkPacketDataMixin",
-    "v1_18_fabric.CompressionDecoderMixin",
-    "v1_18_fabric.ConnectionMixin",
+    "v1_20_2_fabric.ClientboundLevelChunkPacketDataMixin",
+    "v1_20_2_fabric.CompressionDecoderMixin",
+    "v1_20_2_fabric.ConnectionMixin",
     "v1_20_2_fabric.ClientboundCustomPayloadPacketMixin",
     "v1_20_2_fabric.ClientboundCustomQueryPacketMixin",
     "v1_20_2_fabric.FriendlyByteBufMixin",

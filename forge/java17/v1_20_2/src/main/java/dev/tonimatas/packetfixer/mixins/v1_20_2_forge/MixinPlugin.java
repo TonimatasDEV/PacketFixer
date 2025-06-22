@@ -1,5 +1,6 @@
 package dev.tonimatas.packetfixer.mixins.v1_20_2_forge;
 
+import dev.tonimatas.packetfixer.common.Config;
 import net.minecraftforge.fml.loading.FMLLoader;
 import org.apache.logging.log4j.LogManager;
 import org.objectweb.asm.tree.ClassNode;
@@ -14,6 +15,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
     @Override
     public void onLoad(String s) {
         if (isThisVersion()) {
+            Config.runProperties();
             System.getProperties().setProperty("forge.disablePacketCompressionDebug", "true");
             LogManager.getLogger().info("Packet Fixer forge 1.20.2-1.20.4 has been applied successfully.");
         }

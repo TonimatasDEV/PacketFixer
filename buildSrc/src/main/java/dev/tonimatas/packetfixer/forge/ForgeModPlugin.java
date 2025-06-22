@@ -4,11 +4,7 @@ import dev.tonimatas.packetfixer.LoaderPlugin;
 import net.minecraftforge.gradle.userdev.UserDevExtension;
 import net.minecraftforge.gradle.userdev.UserDevPlugin;
 import org.gradle.api.Project;
-import org.gradle.api.file.FileCollection;
 import org.gradle.api.plugins.JavaPluginExtension;
-import org.gradle.api.tasks.SourceSet;
-import org.gradle.api.tasks.SourceSetContainer;
-import org.gradle.api.tasks.compile.JavaCompile;
 import org.gradle.jvm.tasks.Jar;
 import org.spongepowered.asm.gradle.plugins.MixinExtension;
 import org.spongepowered.asm.gradle.plugins.MixinGradlePlugin;
@@ -37,16 +33,6 @@ public class ForgeModPlugin extends LoaderPlugin {
             });
 
             project.getTasks().named("jar", Jar.class).configure(jar -> jar.finalizedBy("reobfJar"));
-
-            for (String projectStr : extension.getProjects()) {
-                SourceSetContainer targetSourceSets = p.project(":forge:java17:" + projectStr).getExtensions().getByType(SourceSetContainer.class);
-                SourceSet targetMain = targetSourceSets.getByName("main");
-
-                project.getTasks().named("compileJava", JavaCompile.class).configure(compileJava -> {
-                    FileCollection extraSources = targetMain.getAllJava().getSourceDirectories();
-                    compileJava.setSource(compileJava.getSource().plus(extraSources));
-                });
-            }
             
             project.getExtensions().configure(MixinExtension.class, mixin -> {
                 String version = minecraftVersion.replaceAll("\\.", "_");

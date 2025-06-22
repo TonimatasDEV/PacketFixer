@@ -9,16 +9,16 @@
     "defaultRequire": 0
   },
   "mixins": [
-    "v1_18_fabric.ClientboundCustomPayloadPacketMixin",
-    "v1_18_fabric.ClientboundCustomQueryPacketMixin",
-    "v1_18_fabric.ClientboundLevelChunkPacketDataMixin",
-    "v1_18_fabric.CompressionDecoderMixin",
-    "v1_18_fabric.ConnectionMixin",
-    "v1_18_fabric.FriendlyByteBufMixin",
+    "v1_19_3_fabric.ClientboundCustomPayloadPacketMixin",
+    "v1_19_3_fabric.ClientboundCustomQueryPacketMixin",
+    "v1_19_3_fabric.ClientboundLevelChunkPacketDataMixin",
+    "v1_19_3_fabric.CompressionDecoderMixin",
+    "v1_19_3_fabric.ConnectionMixin",
+    "v1_19_3_fabric.FriendlyByteBufMixin",
     "v1_19_3_fabric.NbtAccounterMixin",
-    "v1_18_fabric.ServerboundCustomPayloadPacketMixin",
-    "v1_19_fabric.ServerboundCustomQueryPacketMixin",
-    "v1_18_fabric.Varint21FrameDecoderMixin",
-    "v1_18_fabric.Varint21LengthFieldPrependerMixin"
+    "v1_19_3_fabric.ServerboundCustomPayloadPacketMixin",
+    "v1_19_3_fabric.ServerboundCustomQueryPacketMixin",
+    "v1_19_3_fabric.Varint21FrameDecoderMixin",
+    "v1_19_3_fabric.Varint21LengthFieldPrependerMixin"
   ]
 }
