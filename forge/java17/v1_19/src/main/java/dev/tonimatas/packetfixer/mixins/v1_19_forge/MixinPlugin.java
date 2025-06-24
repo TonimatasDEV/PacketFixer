@@ -7,7 +7,6 @@ import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -23,7 +22,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public String getRefMapperConfig() {
-        return "";
+        return null;
     }
 
     @Override
@@ -49,7 +48,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public List<String> getMixins() {
-        return Collections.emptyList();
+        return null;
     }
 
     @Override
