@@ -16,6 +16,7 @@
     "v1_18_fabric.ConnectionMixin",
     "v1_18_fabric.FriendlyByteBufMixin",
     "v1_18_fabric.NbtAccounterMixin",
+    "v1_18_fabric.PacketEncoderMixin",
     "v1_18_fabric.ServerboundCustomPayloadPacketMixin",
     "v1_18_fabric.ServerboundCustomQueryPacketMixin",
     "v1_18_fabric.Varint21FrameDecoderMixin",

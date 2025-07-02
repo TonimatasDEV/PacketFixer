@@ -16,6 +16,7 @@
     "v1_20_2_neoforge.ConnectionMixin",
     "v1_20_2_neoforge.FriendlyByteBufMixin",
     "v1_20_2_neoforge.NbtAccounterMixin",
+    "v1_20_2_neoforge.PacketEncoderMixin",
     "v1_20_2_neoforge.ServerboundCustomPayloadPacketMixin",
     "v1_20_2_neoforge.ServerboundCustomQueryPacketMixin",
     "v1_20_2_neoforge.Varint21FrameDecoderMixin",

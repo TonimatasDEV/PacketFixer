@@ -9,13 +9,14 @@
     "defaultRequire": 0
   },
   "mixins": [
+    "v1_20_2_fabric.ClientboundCustomPayloadPacketMixin",
+    "v1_20_2_fabric.ClientboundCustomQueryPacketMixin",
     "v1_20_2_fabric.ClientboundLevelChunkPacketDataMixin",
     "v1_20_2_fabric.CompressionDecoderMixin",
     "v1_20_2_fabric.ConnectionMixin",
-    "v1_20_2_fabric.ClientboundCustomPayloadPacketMixin",
-    "v1_20_2_fabric.ClientboundCustomQueryPacketMixin",
     "v1_20_2_fabric.FriendlyByteBufMixin",
     "v1_20_2_fabric.NbtAccounterMixin",
+    "v1_20_2_fabric.PacketEncoderMixin",
     "v1_20_2_fabric.PayloadHelperMixin",
     "v1_20_2_fabric.ServerboundCustomPayloadPacketMixin",
     "v1_20_2_fabric.ServerboundCustomQueryPacketMixin",

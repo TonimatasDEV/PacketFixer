@@ -17,6 +17,7 @@
     "v1_20_2_forge.ConnectionMixin",
     "v1_20_2_forge.FriendlyByteBufMixin",
     "v1_20_2_forge.NbtAccounterMixin",
+    "v1_20_2_forge.PacketEncoderMixin",
     "v1_20_2_forge.ServerboundCustomPayloadPacketMixin",
     "v1_20_2_forge.ServerboundCustomQueryPacketMixin",
     "v1_20_2_forge.Varint21FrameDecoderMixin",
