@@ -4,7 +4,7 @@
   "package": "dev.tonimatas.packetfixer.mixins",
   "compatibilityLevel": "JAVA_21",
   "plugin": "dev.tonimatas.packetfixer.mixins.v1_20_5_fabric.MixinPlugin",
-  "refmap": "packetfixer.v1_21_5.fabric.refmap.json",
+  "refmap": "packetfixer.v1_21_7.fabric.refmap.json",
   "injectors": {
     "defaultRequire": 0
   },
