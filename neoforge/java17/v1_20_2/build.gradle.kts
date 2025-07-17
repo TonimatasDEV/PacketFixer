@@ -2,8 +2,8 @@ plugins {
     java
     idea
     eclipse
-    id("net.neoforged.gradle.userdev") version "7.0.185"
-    id("net.neoforged.gradle.mixin") version "7.0.185"
+    id("net.neoforged.gradle.userdev") version "7.0.190"
+    id("net.neoforged.gradle.mixin") version "7.0.190"
 }
 
 version = rootProject.version

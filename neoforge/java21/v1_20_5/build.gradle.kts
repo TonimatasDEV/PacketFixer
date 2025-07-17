@@ -2,8 +2,8 @@ plugins {
     java
     idea
     eclipse
-    id("net.neoforged.gradle.userdev") version "7.0.185"
-    id("net.neoforged.gradle.mixin") version "7.0.185"
+    id("net.neoforged.gradle.userdev") version "7.0.190"
+    id("net.neoforged.gradle.mixin") version "7.0.190"
 }
 
 version = rootProject.version
@@ -26,7 +26,7 @@ minecraft {
 }
 
 dependencies {
-    implementation("net.neoforged:neoforge:21.7.1-beta")
+    implementation("net.neoforged:neoforge:21.7.25-beta")
     implementation(project(":common"))
 }
 
