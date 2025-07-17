@@ -2,5 +2,7 @@ plugins {
     java
 }
 
+val modVersion: String by extra
+
 group = "dev.tonimatas"
-version = "3.1.3"
+version = modVersion
