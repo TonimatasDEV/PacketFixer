@@ -94,7 +94,7 @@ public class Config {
     
     public static int getStringSize() {
         if (properties == null) runProperties();
-        return getUnlimitedPacketSize() ? Integer.MAX_VALUE : Integer.parseInt(properties.getProperty("stringSize"));
+        return getUnlimitedPacketSize() ? 327670000 : Integer.parseInt(properties.getProperty("stringSize"));
     }
     
     public static int getChunkPacketData() {
