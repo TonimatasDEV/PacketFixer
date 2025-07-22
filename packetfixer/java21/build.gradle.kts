@@ -14,7 +14,7 @@ tasks.register<Task>("export") {
 
 tasks.register<Jar>("mergedJar") {
     archiveClassifier.set("merged")
-    version = "$version-1.20.5-1.21.7"
+    version = "$version-1.20.5-1.21.X"
 
     dependsOn("jar", ":common:jar")
 

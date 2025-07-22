@@ -16,7 +16,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
     public void onLoad(String s) {
         if (isThisVersion()) {
             Config.runProperties();
-            System.out.println("Packet Fixer forge 1.20.5-1.21.5 has been applied successfully.");
+            System.out.println("Packet Fixer forge 1.20.5-1.21.X has been applied successfully.");
         }
     }
 
@@ -35,7 +35,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
 
         if (modContainer.isPresent()) {
             String version = modContainer.get().getMetadata().getVersion().getFriendlyString();
-            return version.equals("1.20.5") || version.equals("1.20.6") || version.equals("1.21") || version.equals("1.21.1") || version.equals("1.21.2") || version.equals("1.21.3") || version.equals("1.21.4") || version.equals("1.21.5") || version.equals("1.21.6");
+            return version.equals("1.20.5") || version.equals("1.20.6") || version.startsWith("1.21");
         }
 
         return false;

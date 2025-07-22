@@ -11,7 +11,6 @@ modId="packetfixer"
 version="${modVersion}"
 displayName="PacketFixer"
 icon="icon.png"
-
 authors="TonimatasDEV"
 description='''
 A simple mod to solve various problems with packets.
@@ -27,6 +26,6 @@ side="BOTH"
 [[dependencies.packetfixer]]
 modId="minecraft"
 required=true
-versionRange="[1.20.5,1.21.7]"
+versionRange="[1.20.5,1.22)"
 ordering="NONE"
 side="BOTH"

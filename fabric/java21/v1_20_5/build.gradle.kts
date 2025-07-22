@@ -3,7 +3,7 @@ plugins {
 }
 
 loaderModPlugin {
-    minecraftVersion = "1.21.7"
+    minecraftVersion = "1.21.8"
     javaVersion = JavaVersion.VERSION_21
-    fabricVersion = "0.128.2"
+    fabricVersion = "0.129.0"
 }

@@ -21,12 +21,12 @@ mixin {
 
 minecraft {
     mappings {
-        version.put("minecraft", "1.21.7")
+        version.put("minecraft", "1.21.8")
     }
 }
 
 dependencies {
-    implementation("net.neoforged:neoforge:21.7.25-beta")
+    implementation("net.neoforged:neoforge:21.8.9")
     implementation(project(":common"))
 }
 

@@ -16,7 +16,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
         if (isThisVersion()) {
             Config.runProperties();
             System.getProperties().setProperty("neoforge.disablePacketCompressionDebug", "true");
-            LogManager.getLogger().info("Packet Fixer neoforge 1.20.5-1.20.5 has been applied successfully.");
+            LogManager.getLogger().info("Packet Fixer neoforge 1.20.5-1.21.X has been applied successfully.");
         }
     }
 
@@ -32,7 +32,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
     
     private boolean isThisVersion() {
         String version = FMLLoader.versionInfo().mcVersion();
-        return version.equals("1.20.5") || version.equals("1.20.6") || version.equals("1.21") || version.equals("1.21.1") || version.equals("1.21.2") || version.equals("1.21.3") || version.equals("1.21.4") || version.equals("1.21.5");
+        return version.equals("1.20.5") || version.equals("1.20.6") || version.startsWith("1.21");
     }
 
     @Override
