@@ -3,6 +3,7 @@ package dev.tonimatas.packetfixer.mixins.v1_20_5_fabric;
 import dev.tonimatas.packetfixer.common.Config;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
+import org.apache.logging.log4j.LogManager;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -16,7 +17,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
     public void onLoad(String s) {
         if (isThisVersion()) {
             Config.runProperties();
-            System.out.println("Packet Fixer forge 1.20.5-1.21.X has been applied successfully.");
+            LogManager.getLogger().info("Packet Fixer forge 1.20.5-1.21.X has been applied successfully.");
         }
     }
 
