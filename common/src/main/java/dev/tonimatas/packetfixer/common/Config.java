@@ -15,7 +15,7 @@ public class Config {
     private static int varLong = 10;
     private static int stringSize = 32767;
     private static int chunkPacketData = 2097152;
-    private static int timeout = 90;
+    private static int timeout = 120;
     private static boolean forceUnlimitedNbtEnabled = false;
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -88,7 +88,7 @@ public class Config {
     public static int getTimeout() {
         return timeout;
     }
-    
+
     public static boolean isForceUnlimitedNbtEnabled() {
         return forceUnlimitedNbtEnabled;
     }
