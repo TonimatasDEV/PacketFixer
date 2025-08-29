@@ -20,6 +20,9 @@
     "v1_19_forge.PacketEncoderMixin",
     "v1_19_forge.ServerboundCustomPayloadPacketMixin",
     "v1_19_forge.ServerboundCustomQueryPacketMixin",
+    "v1_19_forge.ServerConnectionListenerMixin",
+    "v1_19_forge.ServerGamePacketListenerImplMixin",
+    "v1_19_forge.ServerLoginPacketListenerImplMixin",
     "v1_19_forge.Varint21FrameDecoderMixin",
     "v1_19_forge.Varint21LengthFieldPrependerMixin"
   ]

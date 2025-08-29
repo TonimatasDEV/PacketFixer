@@ -19,6 +19,9 @@
     "v1_18_fabric.PacketEncoderMixin",
     "v1_18_fabric.ServerboundCustomPayloadPacketMixin",
     "v1_18_fabric.ServerboundCustomQueryPacketMixin",
+    "v1_18_fabric.ServerConnectionListenerMixin",
+    "v1_18_fabric.ServerGamePacketListenerImplMixin",
+    "v1_18_fabric.ServerLoginPacketListenerImplMixin",
     "v1_18_fabric.Varint21FrameDecoderMixin",
     "v1_18_fabric.Varint21LengthFieldPrependerMixin"
   ]
