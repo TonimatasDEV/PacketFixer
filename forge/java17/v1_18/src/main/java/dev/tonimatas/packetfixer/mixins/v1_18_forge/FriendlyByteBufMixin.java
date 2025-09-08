@@ -42,4 +42,9 @@ public abstract class FriendlyByteBufMixin {
     private int packetfixer$writeUtf$newSize(int value) {
         return Config.getStringSize();
     }
+
+    @ModifyConstant(method = "readResourceLocation", constant = @Constant(intValue = 32767))
+    private int packetfixer$readResourceLocation$newSize(int value) {
+        return Config.getStringSize();
+    }
 }
