@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.tonimatas.packetfixer.mixins",
+  "refmap": "packetfixer.refmap.json",
+  "compatibilityLevel": "JAVA_18",
+  "mixins": [
+    "ByteBufCodecsMixin",
+    "ClientboundCustomQueryPacketMixin",
+    "ClientboundLevelChunkPacketDataMixin",
+    "CompressionDecoderMixin",
+    "CompressionEncoderMixin",
+    "ConnectionMixin",
+    "FriendlyByteBufMixin",
+    "MinecraftServerMixin",
+    "NbtAccounterMixin",
+    "ServerboundCustomQueryPacketMixin",
+    "ServerCommonPacketListenerImplMixin",
+    "ServerConnectionListenerMixin",
+    "ServerLoginPacketListenerImplMixin",
+    "Varint21FrameDecoderMixin",
+    "Varint21LengthFieldPrependerMixin",
+    "VarIntMixin",
+    "VarLongMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

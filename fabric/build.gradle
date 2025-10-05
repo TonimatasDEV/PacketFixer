@@ -1,0 +1,40 @@
+plugins {
+    id 'multiloader-loader'
+    id 'fabric-loom'
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraftVersion}"
+
+    mappings loom.layered {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${parchmentMinecraft}:${parchmentVersion}@zip")
+    }
+
+    modImplementation "net.fabricmc:fabric-loader:${fabricLoaderVersion}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabricVersion}"
+}
+
+loom {
+    def aw = project(':common').file("src/main/resources/packetfixer.accesswidener")
+    if (aw.exists()) {
+        accessWidenerPath.set(aw)
+    }
+    mixin {
+        defaultRefmapName.set("packetfixer.refmap.json")
+    }
+    runs {
+        client {
+            client()
+            setConfigName('Fabric Client')
+            ideConfigGenerated(true)
+            runDir('runs/client')
+        }
+        server {
+            server()
+            setConfigName('Fabric Server')
+            ideConfigGenerated(true)
+            runDir('runs/server')
+        }
+    }
+}

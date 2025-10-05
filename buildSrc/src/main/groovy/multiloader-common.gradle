@@ -1,0 +1,106 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+base {
+    archivesName = "packetfixer-${project.name}-${modVersion}-${minecraftVersion}"
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(javaVersion)
+    withSourcesJar()
+    withJavadocJar()
+}
+
+repositories {
+    mavenCentral()
+    // https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_content_exclusively_found_in_one_repository
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Sponge'
+                url = 'https://repo.spongepowered.org/repository/maven-public'
+            }
+        }
+        filter { includeGroupAndSubgroups('org.spongepowered') }
+    }
+    exclusiveContent {
+        forRepositories(maven {
+            name = 'ParchmentMC'
+            url = 'https://maven.parchmentmc.org/'
+        },
+                maven {
+                    name = "NeoForge"
+                    url = 'https://maven.neoforged.net/releases'
+                })
+        filter { includeGroup('org.parchmentmc.data') }
+    }
+    maven {
+        name = 'BlameJared'
+        url = 'https://maven.blamejared.com'
+    }
+}
+
+// Declare capabilities on the outgoing configurations.
+// Read more about capabilities here: https://docs.gradle.org/current/userguide/component_capabilities.html#sec:declaring-additional-capabilities-for-a-local-component
+['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
+    configurations."$variant".outgoing {
+        capability("dev.tonimatas.packetfixer:${base.archivesName.get()}:$modVersion")
+        capability("dev.tonimatas.packetfixer:packetfixer-${project.name}-${minecraftVersion}:$modVersion")
+        capability("dev.tonimatas.packetfixer:packetfixer:$modVersion")
+    }
+    publishing.publications.configureEach {
+        suppressPomMetadataWarningsFor(variant)
+    }
+}
+
+sourcesJar {
+    from(rootProject.file('LICENSE')) {
+        rename { "${it}_PacketFixer" }
+    }
+}
+
+jar {
+    from(rootProject.file('LICENSE')) {
+        rename { "${it}_PacketFixer" }
+    }
+
+    manifest {
+        attributes(['Specification-Title'   : "Packet Fixer",
+                    'Specification-Vendor'  : "TonimatasDEV",
+                    'Specification-Version' : project.jar.archiveVersion,
+                    'Implementation-Title'  : project.name,
+                    'Implementation-Version': project.jar.archiveVersion,
+                    'Implementation-Vendor' : "TonimatasDEV",
+                    'Built-On-Minecraft'    : minecraftVersion])
+    }
+}
+
+processResources {
+    var expandProps = ['modVersion'            : modVersion,
+                       'minecraftVersion'      : minecraftVersion,
+                       'minecraftVersionRange' : minecraftVersionRange,
+                       'fabricVersion'         : fabricVersion,
+                       'fabricLoaderVersion'   : fabricLoaderVersion,
+                       'neoforgeVersion'       : neoforgeVersion]
+
+    filesMatching(['fabric.mod.json', 'META-INF/neoforge.mods.toml']) {
+        expand expandProps
+    }
+    inputs.properties(expandProps)
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            artifactId base.archivesName.get()
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url System.getenv('local_maven_url')
+        }
+    }
+}

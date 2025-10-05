@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.tonimatas.packetfixer.mixins",
+  "plugin": "dev.tonimatas.packetfixer.mixins.NeoForgeMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ClientboundCustomPayloadPacketMixin",
+    "ServerboundCustomPayloadPacketMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

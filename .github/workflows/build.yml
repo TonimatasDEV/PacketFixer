@@ -4,7 +4,6 @@ on:
   push:
     branches: [master]
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,16 +25,16 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build with Gradle
-        run: ./gradlew build mergedJar
+        run: ./gradlew export
 
       - name: Upload a Java 17 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PacketFixer17
-          path: packetfixer/java17/build/libs/**merged.jar
+          name: PacketFixerFabric
+          path: fabric/build/libs/**.jar
 
       - name: Upload a Java 21 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PacketFixer21
-          path: packetfixer/java21/build/libs/**merged.jar
+          name: PacketFixerNeoForge
+          path: neoforge/build/libs/**.jar

@@ -1,8 +1,11 @@
 plugins {
-    java
+    // https://fabricmc.net/develop/
+    id("fabric-loom") version "1.11-SNAPSHOT" apply false
+    // https://projects.neoforged.net/neoforged/moddevgradle
+    id("net.neoforged.moddev") version "2.0.112" apply false
 }
 
-val modVersion: String by extra
-
-group = "dev.tonimatas"
-version = modVersion
+tasks.register<DefaultTask>("export") {
+    dependsOn(project(":fabric").tasks.named("remapJar"))
+    dependsOn(project(":neoforge").tasks.named("jar"))
+}

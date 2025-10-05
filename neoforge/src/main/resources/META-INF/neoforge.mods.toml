@@ -1,0 +1,36 @@
+modLoader="javafml"
+loaderVersion="[0,)"
+license="MIT"
+issueTrackerURL="https://github.com/TonimatasDEV/PacketFixer/issues"
+
+[[mixins]]
+config="packetfixer.mixins.json"
+[[mixins]]
+config="packetfixer.neoforge.mixins.json"
+
+[[mods]]
+modId="packetfixer"
+version="${modVersion}"
+displayName="PacketFixer"
+#updateJSONURL="Modrinth PLEASE add this in the future."
+displayURL="https://github.com/TonimatasDEV/PacketFixer"
+logoFile="logo.png"
+credits="TonimatasDEV - Developer"
+authors="TonimatasDEV"
+description='''
+A simple mod to solve various problems with packets.
+'''
+
+[[dependencies.packetfixer]]
+modId="neoforge"
+type="required"
+versionRange="[0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.packetfixer]]
+modId="minecraft"
+type="required"
+versionRange="${minecraftVersionRange}"
+ordering="NONE"
+side="BOTH"
