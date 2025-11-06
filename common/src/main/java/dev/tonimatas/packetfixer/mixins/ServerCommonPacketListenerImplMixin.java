@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class ServerCommonPacketListenerImplMixin {
     @ModifyConstant(method = "keepConnectionAlive", constant = @Constant(longValue = 15000L))
     private long packetfixer$tick$1(long constant) {
-        return Config.getTimeout() * 1000L;
+        return Config.getKeepAliveTimeout() * 1000L;
     }
 }

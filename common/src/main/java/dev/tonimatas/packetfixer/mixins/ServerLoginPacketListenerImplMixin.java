@@ -10,6 +10,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class ServerLoginPacketListenerImplMixin {
     @ModifyConstant(method = "tick", constant = @Constant(intValue = 600))
     private static int packetfixer$tick(int constant) {
-        return Config.getTimeout() * 20;
+        return Config.getLoginTimeout() * 20;
     }
 }

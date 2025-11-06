@@ -9,6 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class ConnectionMixin {
     @ModifyConstant(method = "initChannel", constant = @Constant(intValue = 30))
     private int packetfixer$newTimeout(int value) {
-        return Config.getTimeout();
+        return Config.getReadTimeout();
     }
 }

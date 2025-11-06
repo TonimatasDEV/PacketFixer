@@ -16,6 +16,9 @@ public class Config {
     private static int stringSize = 32767;
     private static int chunkPacketData = 2097152;
     private static int timeout = 120;
+    private static int readTimeout = 120;
+    private static int loginTimeout = 120;
+    private static int keepAliveTimeout = 120;
     private static boolean forceUnlimitedNbtEnabled = false;
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -46,6 +49,9 @@ public class Config {
             stringSize = Integer.parseInt(checkVariable(properties, "stringSize", Integer.toString(stringSize)));
             chunkPacketData = Integer.parseInt(checkVariable(properties, "chunkPacketData", Integer.toString(chunkPacketData)));
             timeout = Integer.parseInt(checkVariable(properties, "timeout", Integer.toString(timeout)));
+            readTimeout = Integer.parseInt(checkVariable(properties, "readTimeout", Integer.toString(readTimeout)));
+            loginTimeout = Integer.parseInt(checkVariable(properties, "loginTimeout", Integer.toString(loginTimeout)));
+            keepAliveTimeout = Integer.parseInt(checkVariable(properties, "keepAliveTimeout", Integer.toString(keepAliveTimeout)));
             forceUnlimitedNbtEnabled = Boolean.parseBoolean(checkVariable(properties, "forceUnlimitedNbtEnabled", Boolean.toString(forceUnlimitedNbtEnabled)));
             save(properties, propertiesFile);
         } catch (IOException e) {
@@ -87,6 +93,18 @@ public class Config {
     
     public static int getTimeout() {
         return timeout;
+    }
+
+    public static int getReadTimeout() {
+        return readTimeout;
+    }
+
+    public static int getLoginTimeout() {
+        return loginTimeout;
+    }
+
+    public static int getKeepAliveTimeout() {
+        return keepAliveTimeout;
     }
 
     public static boolean isForceUnlimitedNbtEnabled() {
