@@ -16,6 +16,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
         if (isThisVersion()) {
             Config.runProperties();
             System.getProperties().setProperty("forge.disablePacketCompressionDebug", "true");
+            System.getProperty("forge.readTimeout", String.valueOf(Config.getTimeout()));
             LogManager.getLogger().info("Packet Fixer forge 1.19.4-1.20.1 has been applied successfully.");
         }
     }

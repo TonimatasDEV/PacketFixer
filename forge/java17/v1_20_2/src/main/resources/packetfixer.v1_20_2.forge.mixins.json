@@ -21,7 +21,6 @@
     "v1_20_2_forge.ServerboundCustomPayloadPacketMixin",
     "v1_20_2_forge.ServerboundCustomQueryPacketMixin",
     "v1_20_2_forge.ServerCommonPacketListenerImplMixin",
-    "v1_20_2_forge.ServerConnectionListenerMixin",
     "v1_20_2_forge.ServerGamePacketListenerImplMixin",
     "v1_20_2_forge.ServerLoginPacketListenerImplMixin",
     "v1_20_2_forge.Varint21FrameDecoderMixin",

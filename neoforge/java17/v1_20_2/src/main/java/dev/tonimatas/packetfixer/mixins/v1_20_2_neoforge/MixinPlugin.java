@@ -16,6 +16,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
         if (isThisVersion()) {
             Config.runProperties();
             System.getProperties().setProperty("neoforge.disablePacketCompressionDebug", "true");
+            System.getProperty("neoforge.readTimeout", String.valueOf(Config.getTimeout()));
             LogManager.getLogger().info("Packet Fixer neoforge 1.20.2-1.20.4 has been applied successfully.");
         }
     }

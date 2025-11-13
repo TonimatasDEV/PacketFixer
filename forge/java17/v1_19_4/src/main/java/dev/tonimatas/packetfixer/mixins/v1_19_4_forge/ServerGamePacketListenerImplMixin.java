@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ServerGamePacketListenerImpl.class)
 public class ServerGamePacketListenerImplMixin {
-    @ModifyConstant(method = "tick", constant = @Constant(longValue = 60L))
+    @ModifyConstant(method = "tick", constant = @Constant(longValue = 15000L))
     private long packetfixer$tick(long constant) {
-        return Config.getTimeout();
+        return Config.getTimeout() * 1000L;
     }
 }
