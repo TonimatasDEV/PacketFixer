@@ -20,7 +20,6 @@
     "v1_20_5_neoforge.ServerboundCustomPayloadPacketMixin",
     "v1_20_5_neoforge.ServerboundCustomQueryPacketMixin",
     "v1_20_5_neoforge.ServerCommonPacketListenerImplMixin",
-    "v1_20_5_neoforge.ServerConnectionListenerMixin",
     "v1_20_5_neoforge.ServerGamePacketListenerImplMixin",
     "v1_20_5_neoforge.ServerLoginPacketListenerImplMixin",
     "v1_20_5_neoforge.Varint21FrameDecoderMixin",
