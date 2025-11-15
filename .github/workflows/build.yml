@@ -2,7 +2,7 @@
 name: Build
 on:
   push:
-    branches: [master]
+    branches: [1.18.2-to-1.21.8]
 
 
 jobs:
