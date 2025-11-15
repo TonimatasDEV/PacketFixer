@@ -10,7 +10,7 @@ config="packetfixer.v1_20_5.neoforge.mixins.json"
 modId="packetfixer"
 version="${modVersion}"
 displayName="PacketFixer"
-icon="icon.png"
+logoFile="icon.png"
 authors="TonimatasDEV"
 description='''
 A simple mod to solve various problems with packets.
