@@ -8,11 +8,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(FriendlyByteBuf.class)
 public abstract class FriendlyByteBufMixin {
-    @ModifyConstant(method = "readNbt(Lio/netty/buffer/ByteBuf;)Lnet/minecraft/nbt/CompoundTag;", constant = @Constant(longValue = 2097152L))
-    private static long packetfixer$readNbt$newSize(long value) {
-        return Config.getNbtMaxSize();
-    }
-
     @ModifyConstant(method = "readUtf()Ljava/lang/String;", constant = @Constant(intValue = 32767))
     private int packetfixer$readUtf$newSize(int value) {
         return Config.getStringSize();
@@ -23,7 +18,7 @@ public abstract class FriendlyByteBufMixin {
         return Config.getStringSize();
     }
 
-    @ModifyConstant(method = "readResourceLocation", constant = @Constant(intValue = 32767))
+    @ModifyConstant(method = "readIdentifier", constant = @Constant(intValue = 32767))
     private int packetfixer$readResourceLocation$newSize(int value) {
         return Config.getStringSize();
     }

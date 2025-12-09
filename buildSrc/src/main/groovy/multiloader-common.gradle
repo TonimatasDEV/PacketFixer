@@ -1,6 +1,5 @@
 plugins {
     id 'java-library'
-    id 'maven-publish'
 }
 
 base {
@@ -26,10 +25,7 @@ repositories {
         filter { includeGroupAndSubgroups('org.spongepowered') }
     }
     exclusiveContent {
-        forRepositories(maven {
-            name = 'ParchmentMC'
-            url = 'https://maven.parchmentmc.org/'
-        },
+        forRepositories(
                 maven {
                     name = "NeoForge"
                     url = 'https://maven.neoforged.net/releases'
@@ -49,9 +45,6 @@ repositories {
         capability("dev.tonimatas.packetfixer:${base.archivesName.get()}:$modVersion")
         capability("dev.tonimatas.packetfixer:packetfixer-${project.name}-${minecraftVersion}:$modVersion")
         capability("dev.tonimatas.packetfixer:packetfixer:$modVersion")
-    }
-    publishing.publications.configureEach {
-        suppressPomMetadataWarningsFor(variant)
     }
 }
 
@@ -89,18 +82,4 @@ processResources {
         expand expandProps
     }
     inputs.properties(expandProps)
-}
-
-publishing {
-    publications {
-        register('mavenJava', MavenPublication) {
-            artifactId base.archivesName.get()
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            url System.getenv('local_maven_url')
-        }
-    }
 }

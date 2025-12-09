@@ -3,7 +3,6 @@
   "minVersion": "0.8",
   "package": "dev.tonimatas.packetfixer.mixins",
   "plugin": "dev.tonimatas.packetfixer.mixins.FabricMixinPlugin",
-  "refmap": "packetfixer.refmap.json",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "ClientboundCustomPayloadPacketMixin",

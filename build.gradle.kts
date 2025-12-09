@@ -1,8 +1,8 @@
 plugins {
     // https://fabricmc.net/develop/
-    id("fabric-loom") version "1.11-SNAPSHOT" apply false
+    id("fabric-loom") version "1.14-SNAPSHOT" apply false
     // https://projects.neoforged.net/neoforged/moddevgradle
-    id("net.neoforged.moddev") version "2.0.115" apply false
+    id("net.neoforged.moddev") version "2.0.123" apply false
 }
 
 tasks.register<DefaultTask>("export") {

@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(value = VarInt.class, priority = 1001)
+@Mixin(VarInt.class)
 public class VarIntMixin {
     @ModifyConstant(method = "getByteSize", constant = @Constant(intValue = 5))
     private static int packetfixer$getByteSize$newSize(int value) {

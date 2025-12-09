@@ -17,11 +17,6 @@ neoForge {
         accessTransformers.from(at.absolutePath)
     }
 
-    parchment {
-        minecraftVersion = parchmentMinecraft
-        mappingsVersion = parchmentVersion
-    }
-
     runs {
         configureEach {
             systemProperty("neoforge.enabledGameTestNamespaces", "packetfixer")

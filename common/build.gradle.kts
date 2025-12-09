@@ -4,8 +4,6 @@ plugins {
 }
 
 val thisNeoFormVersion: String by extra
-val parchmentMinecraft: String by extra
-val parchmentVersion: String by extra
 
 neoForge {
     neoFormVersion = thisNeoFormVersion
@@ -13,11 +11,6 @@ neoForge {
     val at = file("src/main/resources/META-INF/accesstransformer.cfg")
     if (at.exists()) {
         setAccessTransformers(at.absolutePath)
-    }
-
-    parchment {
-        minecraftVersion = parchmentMinecraft
-        mappingsVersion = parchmentVersion
     }
 }
 
