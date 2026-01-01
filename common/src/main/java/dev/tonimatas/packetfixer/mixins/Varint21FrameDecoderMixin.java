@@ -27,7 +27,7 @@ public abstract class Varint21FrameDecoderMixin {
     }
 
     @ModifyConstant(method = "copyVarint", constant = @Constant(intValue = 3))
-    private static int packetfixer$newSize(int value, ByteBuf byteBuf) {
-        return VarInt.getByteSize(byteBuf.readableBytes()) + 2;
+    private static int packetfixer$newSize(int value, ByteBuf byteBuf, ByteBuf byteBuf1) {
+        return VarInt.getByteSize(byteBuf1.readableBytes()) + 2;
     }
 }

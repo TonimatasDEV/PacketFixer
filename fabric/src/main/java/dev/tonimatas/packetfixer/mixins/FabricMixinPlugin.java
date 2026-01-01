@@ -1,6 +1,7 @@
 package dev.tonimatas.packetfixer.mixins;
 
 import dev.tonimatas.packetfixer.util.Config;
+import net.fabricmc.loader.api.FabricLoader;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
@@ -20,6 +21,12 @@ public class FabricMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String s, String s1) {
+        boolean isKryptonHere = FabricLoader.getInstance().getModContainer("krypton").isPresent();
+
+        if (s1.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.VarIntMixin")) {
+            return !isKryptonHere;
+        }
+
         return true;
     }
 

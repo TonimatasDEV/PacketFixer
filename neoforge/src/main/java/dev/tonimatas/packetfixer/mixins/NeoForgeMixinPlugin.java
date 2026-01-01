@@ -1,6 +1,7 @@
 package dev.tonimatas.packetfixer.mixins;
 
 import dev.tonimatas.packetfixer.util.Config;
+import net.neoforged.fml.loading.FMLLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -22,6 +23,11 @@ public class NeoForgeMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String s, String s1) {
+        boolean isKryptonHere = FMLLoader.getCurrent().getLoadingModList().getModFileById("krypton_fnp") != null;
+        
+        if (s1.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.VarIntMixin")) {
+            return !isKryptonHere;
+        }
         return true;
     }
 

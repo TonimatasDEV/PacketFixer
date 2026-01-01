@@ -3,6 +3,9 @@
   "minVersion": "0.8",
   "package": "dev.tonimatas.packetfixer.mixins",
   "compatibilityLevel": "JAVA_18",
+  "injectors": {
+    "defaultRequire": 0
+  },
   "mixins": [
     "ClientboundCustomQueryPacketMixin",
     "ClientboundLevelChunkPacketDataMixin",
@@ -18,10 +21,6 @@
     "ServerLoginPacketListenerImplMixin",
     "Varint21FrameDecoderMixin",
     "Varint21LengthFieldPrependerMixin",
-    "VarIntMixin",
     "VarLongMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 0
-  }
+  ]
 }

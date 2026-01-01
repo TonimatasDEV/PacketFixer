@@ -4,11 +4,12 @@
   "package": "dev.tonimatas.packetfixer.mixins",
   "plugin": "dev.tonimatas.packetfixer.mixins.NeoForgeMixinPlugin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "ClientboundCustomPayloadPacketMixin",
-    "ServerboundCustomPayloadPacketMixin"
-  ],
   "injectors": {
     "defaultRequire": 0
-  }
+  },
+  "mixins": [
+    "ClientboundCustomPayloadPacketMixin",
+    "ServerboundCustomPayloadPacketMixin",
+    "VarIntMixin"
+  ]
 }
