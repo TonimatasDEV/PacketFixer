@@ -14,6 +14,10 @@ public class MinecraftServerMixin {
 
     @Redirect(method = "playerIdleTimeout", at = @At(value = "FIELD", target = "Lnet/minecraft/server/MinecraftServer;playerIdleTimeout:I"))
     private int packetfixer$playerIdleTimeout(MinecraftServer server) {
-        return Math.max(playerIdleTimeout, Config.getTimeout());
+        if (playerIdleTimeout <= 0) {
+            return 0;
+        } else {
+            return Math.max(playerIdleTimeout, Config.getPlayerIdleTimeout());
+        }
     }
 }
