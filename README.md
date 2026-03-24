@@ -3,7 +3,9 @@
 ##### Visit my discord server: [Link](https://discord.com/invite/vWBP4P4Yd8)
 
 ## Description
-This mod fixes various package erros. This mod could be used in mod packs for increasing the number of mods.
+This mod fixes various package errors. This mod could be used in mod packs for increasing the number of mods.
+
+Do you want a version for 1.12.2? [Check here](https://github.com/TonimatasDEV/PacketFixer-1.12.2)
 
 ### Fix these problems:
 - Tried to read NBT tag that was too big; tried to allocate: X bytes where max allowed: 2097152
@@ -19,9 +21,5 @@ This mod fixes various package erros. This mod could be used in mod packs for in
 - Connection timeout
 - VarLong too big
 - VarInt too big
-
-### Fix these problems:
-- Unable to fit X into 3 **[Delete Krypton and Pluto in both sides]**
-- VarInt too long **[Try deleting Krypton and Pluto in both sides]**
 
 ###  Feel free to use this mod on your modpack
