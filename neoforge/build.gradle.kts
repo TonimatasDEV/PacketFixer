@@ -20,7 +20,7 @@ neoForge {
     runs {
         configureEach {
             systemProperty("neoforge.enabledGameTestNamespaces", "packetfixer")
-            ideName = "NeoForge ${this.name.capitalized()} (${project.path})" // Unify the run config names with fabric
+            ideName = "NeoForge ${this.name.capitalized()} (${project.path})"
         }
 
         create("client") {

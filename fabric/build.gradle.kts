@@ -1,6 +1,6 @@
 plugins {
     id("multiloader-loader")
-    id("fabric-loom")
+    id("net.fabricmc.fabric-loom")
 }
 
 val minecraftVersion: String by extra
@@ -9,10 +9,8 @@ val fabricVersion: String by extra
 
 dependencies {
     minecraft("com.mojang:minecraft:${minecraftVersion}")
-    mappings(loom.officialMojangMappings())
-
-    modImplementation("net.fabricmc:fabric-loader:${fabricLoaderVersion}")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${fabricVersion}")
+    implementation("net.fabricmc:fabric-loader:${fabricLoaderVersion}")
+    implementation("net.fabricmc.fabric-api:fabric-api:${fabricVersion}")
 }
 
 loom {
