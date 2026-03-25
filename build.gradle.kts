@@ -4,8 +4,3 @@ plugins {
     // https://projects.neoforged.net/neoforged/moddevgradle
     id("net.neoforged.moddev") version "2.0.141" apply false
 }
-
-tasks.register<DefaultTask>("export") {
-    dependsOn(project(":fabric").tasks.named("remapJar"))
-    dependsOn(project(":neoforge").tasks.named("jar"))
-}
