@@ -78,7 +78,7 @@ public class Config {
     }
     
     public static int getStringSize() {
-        return allSizesUnlimited ? 327670000 : stringSize;
+        return stringSize;
     }
     
     public static int getChunkPacketData() {
