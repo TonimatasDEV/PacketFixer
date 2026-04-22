@@ -76,7 +76,8 @@ processResources {
                        'minecraftVersionRange' : minecraftVersionRange,
                        'fabricVersion'         : fabricVersion,
                        'fabricLoaderVersion'   : fabricLoaderVersion,
-                       'neoforgeVersion'       : neoforgeVersion]
+                       'neoforgeVersion'       : neoforgeVersion,
+                       'fabricMinecraftVersionRange' : fabricMinecraftVersionRange]
 
     filesMatching(['fabric.mod.json', 'META-INF/neoforge.mods.toml']) {
         expand expandProps

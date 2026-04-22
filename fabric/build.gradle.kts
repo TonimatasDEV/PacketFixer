@@ -4,6 +4,7 @@ plugins {
 }
 
 val minecraftVersion: String by extra
+val fabricMinecraftVersionRange: String by extra
 val fabricLoaderVersion: String by extra
 val fabricVersion: String by extra
 
