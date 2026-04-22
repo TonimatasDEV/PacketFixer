@@ -24,9 +24,10 @@ public class NeoForgeMixinPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String s, String s1) {
         boolean isKryptonHere = FMLLoader.getCurrent().getLoadingModList().getModFileById("krypton_fnp") != null;
+        boolean isKrenoHere = FMLLoader.getCurrent().getLoadingModList().getModFileById("kreno") != null;
         
         if (s1.equalsIgnoreCase("dev.tonimatas.packetfixer.mixins.VarIntMixin")) {
-            return !isKryptonHere;
+            return !isKryptonHere && !isKrenoHere;
         }
         return true;
     }
