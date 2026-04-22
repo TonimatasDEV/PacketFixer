@@ -21,7 +21,6 @@
     "ServerLoginPacketListenerImplMixin",
     "Varint21FrameDecoderMixin",
     "Varint21LengthFieldPrependerMixin",
-    "VarIntMixin",
     "VarLongMixin"
   ]
 }
