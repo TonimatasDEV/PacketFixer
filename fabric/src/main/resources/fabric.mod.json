@@ -25,6 +25,6 @@
     "packetfixer.fabric.mixins.json"
   ],
   "depends": {
-    "minecraft": "${fabricMinecraftVersionRange}"
+    "minecraft": "${minecraftVersion}"
   }
 }
