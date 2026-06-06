@@ -12,4 +12,8 @@ public class ServerCommonPacketListenerImplMixin {
     private long packetfixer$tick$1(long constant) {
         return Config.getKeepAliveTimeout() * 1000L;
     }
+    @ModifyConstant(method = "checkIfClosed", constant = @Constant(longValue = 15000L))
+    private long packetfixer$checkIfClosed(long constant) {
+        return Config.getKeepAliveTimeout() * 1000L;
+    }
 }
