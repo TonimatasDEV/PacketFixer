@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        mavenLocal()
         mavenCentral()
         gradlePluginPortal()
         maven(url = "https://maven.minecraftforge.net/")
@@ -7,6 +8,10 @@ pluginManagement {
         maven(url = "https://maven.fabricmc.net/")
         maven(url = "https://nexus.gtnewhorizons.com/repository/public/")
     }
+}
+
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.7.0"
 }
 
 include("forge")
