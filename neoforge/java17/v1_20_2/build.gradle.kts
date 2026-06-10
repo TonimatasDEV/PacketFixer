@@ -2,7 +2,7 @@ plugins {
     java
     idea
     eclipse
-    id("net.neoforged.gradle.userdev") version "7.1.4"
+    id("net.neoforged.gradle.userdev") version "7.1.36"
 }
 
 version = rootProject.version
