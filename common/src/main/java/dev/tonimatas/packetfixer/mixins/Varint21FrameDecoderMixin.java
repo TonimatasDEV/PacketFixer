@@ -22,12 +22,12 @@ public abstract class Varint21FrameDecoderMixin {
     @Mutable @Shadow @Final private ByteBuf helperBuf;
 
     @Inject(method = "decode", at = @At("HEAD"))
-    private void packetfixer$checkSize(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list, CallbackInfo ci) {
-        this.helperBuf = Unpooled.directBuffer(VarInt.getByteSize(byteBuf.readableBytes()) + 2);
+    private void packetfixer$checkSize(ChannelHandlerContext ctx, ByteBuf in, List<Object> out, CallbackInfo ci) {
+        this.helperBuf = Unpooled.directBuffer(VarInt.getByteSize(in.readableBytes()) + 2);
     }
 
     @ModifyConstant(method = "copyVarint", constant = @Constant(intValue = 3))
-    private static int packetfixer$newSize(int value, ByteBuf byteBuf, ByteBuf byteBuf1) {
-        return VarInt.getByteSize(byteBuf1.readableBytes()) + 2;
+    private static int packetfixer$newSize(int value, ByteBuf in, ByteBuf out) {
+        return VarInt.getByteSize(out.readableBytes()) + 2;
     }
 }
