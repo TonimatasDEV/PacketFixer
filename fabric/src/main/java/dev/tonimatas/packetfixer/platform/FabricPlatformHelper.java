@@ -18,4 +18,9 @@ public class FabricPlatformHelper implements IPlatformHelper {
         Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer("packetfixer");
         return modContainer.map(container -> container.getMetadata().getVersion().getFriendlyString()).orElse(null);
     }
+
+    @Override
+    public boolean isModEnabled(String id) {
+        return FabricLoader.getInstance().getModContainer(id).isPresent();
+    }
 }

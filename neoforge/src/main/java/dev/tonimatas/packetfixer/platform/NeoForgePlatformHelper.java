@@ -14,4 +14,9 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
     public String getModVersion() {
         return FMLLoader.getCurrent().getLoadingModList().getModFileById("packetfixer").versionString();
     }
+
+    @Override
+    public boolean isModEnabled(String id) {
+        return FMLLoader.getCurrent().getLoadingModList().getModFileById(id) != null;
+    }
 }
