@@ -31,6 +31,6 @@ side="BOTH"
 [[dependencies.packetfixer]]
 modId="minecraft"
 type="required"
-versionRange="${minecraftVersionRange}"
+versionRange="${neoforgeMinecraftVersionRange}"
 ordering="NONE"
 side="BOTH"

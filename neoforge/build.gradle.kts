@@ -1,50 +1,55 @@
-import org.gradle.internal.extensions.stdlib.capitalized
-
 plugins {
-    id("multiloader-loader")
-    id("net.neoforged.moddev")
+    id("com.gradleup.shadow")
 }
 
+val minecraftVersion: String by extra
 val neoforgeVersion: String by extra
-val parchmentMinecraft: String by extra
-val parchmentVersion: String by extra
+val neoforgeMinecraftVersionRange: String by extra
+val modVersion: String by extra
 
-neoForge {
-    version = neoforgeVersion
-    val at = project(":common").file("src/main/resources/META-INF/accesstransformer.cfg")
+architectury {
+    platformSetupLoomIde()
+    neoForge()
+}
 
-    if (at.exists()) {
-        accessTransformers.from(at.absolutePath)
-    }
+loom {
+    accessWidenerPath.set(project(":common").loom.accessWidenerPath)
+}
 
-    runs {
-        configureEach {
-            systemProperty("neoforge.enabledGameTestNamespaces", "packetfixer")
-            ideName = "NeoForge ${this.name.capitalized()} (${project.path})"
-        }
+val common: Configuration by configurations.creating
+val shadowCommon: Configuration by configurations.creating
 
-        create("client") {
-            client()
-        }
+configurations["compileClasspath"].extendsFrom(common)
+configurations["runtimeClasspath"].extendsFrom(common)
+configurations["developmentNeoForge"].extendsFrom(common)
 
-        create("clientData") {
-            clientData()
-        }
+repositories {
+    maven(url = "https://maven.neoforged.net/releases")
+}
 
-        create("serverData") {
-            serverData()
-        }
+dependencies {
+    neoForge("net.neoforged:neoforge:$neoforgeVersion")
 
-        create("server") {
-            server()
-        }
-    }
+    common(project(path = ":common")) { isTransitive = false }
+    shadowCommon(project(path = ":common", configuration = "transformProductionNeoForge")) { isTransitive = false }
+}
 
-    mods {
-        create("packetfixer") {
-            sourceSet(sourceSets.main.get())
-        }
+tasks.processResources {
+    val replaceProperties = mapOf("modVersion" to modVersion, "neoforgeMinecraftVersionRange" to neoforgeMinecraftVersionRange)
+    inputs.properties(replaceProperties)
+
+    filesMatching("META-INF/neoforge.mods.toml") {
+        expand(replaceProperties)
     }
 }
 
-sourceSets.main.get().resources { srcDir("src/generated/resources") }
+tasks.jar {
+    archiveClassifier = "raw"
+}
+
+tasks.shadowJar {
+    dependsOn("jar")
+    configurations = listOf(shadowCommon)
+    from(zipTree(tasks.jar.get().archiveFile))
+    archiveClassifier.set(null)
+}

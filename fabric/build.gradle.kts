@@ -1,39 +1,60 @@
 plugins {
-    id("multiloader-loader")
-    id("net.fabricmc.fabric-loom")
+    id("com.gradleup.shadow")
 }
 
-val minecraftVersion: String by extra
-val fabricMinecraftVersionRange: String by extra
-val fabricLoaderVersion: String by extra
-val fabricVersion: String by extra
-
-dependencies {
-    minecraft("com.mojang:minecraft:${minecraftVersion}")
-    implementation("net.fabricmc:fabric-loader:${fabricLoaderVersion}")
-    implementation("net.fabricmc.fabric-api:fabric-api:${fabricVersion}")
+architectury {
+    platformSetupLoomIde()
+    fabric()
 }
 
 loom {
-    val aw = project(":common").file("src/main/resources/packetfixer.accesswidener")
+    accessWidenerPath.set(project(":common").loom.accessWidenerPath)
 
-    if (aw.exists()) {
-        accessWidenerPath.set(aw)
+    fabricApi.configureDataGeneration {
+        modId.set("packetfixer")
+        outputDirectory.set(rootDir.resolve("common/src/main/generated"))
     }
-    
-    runs {
-        named("client") {
-            client()
-            configName = "Fabric Client"
-            ideConfigGenerated(true)
-            runDir("runs/client")
-        }
+}
 
-        named("server") {
-            server()
-            configName = "Fabric Server"
-            ideConfigGenerated(true)
-            runDir("runs/server")
-        }
+val minecraftVersion: String by extra
+val fabricApiVersion: String by extra
+val fabricLoaderVersion: String by extra
+val fabricMinecraftVersionRange: String by extra
+val modVersion: String by extra
+
+val common: Configuration by configurations.creating
+val shadowCommon: Configuration by configurations.creating
+
+configurations["compileClasspath"].extendsFrom(common)
+configurations["runtimeClasspath"].extendsFrom(common)
+configurations["developmentFabric"].extendsFrom(common)
+
+dependencies {
+    implementation("net.fabricmc:fabric-loader:$fabricLoaderVersion")
+
+    api("net.fabricmc.fabric-api:fabric-api:$fabricApiVersion+$minecraftVersion")
+
+    common(project(path = ":common")) { isTransitive = false }
+    shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }
+}
+
+tasks.processResources {
+    val replaceProperties = mapOf("modVersion" to modVersion, "fabricMinecraftVersionRange" to fabricMinecraftVersionRange)
+
+    inputs.properties(replaceProperties)
+
+    filesMatching("fabric.mod.json") {
+        expand(replaceProperties)
     }
+}
+
+tasks.jar {
+    archiveClassifier = "raw"
+}
+
+tasks.shadowJar {
+    dependsOn("jar")
+    configurations = listOf(shadowCommon)
+    from(zipTree(tasks.jar.get().archiveFile))
+    archiveClassifier.set(null)
 }
