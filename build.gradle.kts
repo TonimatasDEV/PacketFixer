@@ -24,7 +24,7 @@ subprojects {
     apply(plugin = "architectury-plugin")
 
     base {
-        archivesName.set("PacketFixer" + project.name)
+        archivesName.set("PacketFixer-" + project.name)
     }
 
     dependencies {
