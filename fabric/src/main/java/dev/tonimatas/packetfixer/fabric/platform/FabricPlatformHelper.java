@@ -1,4 +1,4 @@
-package dev.tonimatas.packetfixer.platform;
+package dev.tonimatas.packetfixer.fabric.platform;
 
 import dev.tonimatas.packetfixer.platform.services.IPlatformHelper;
 import net.fabricmc.loader.api.FabricLoader;

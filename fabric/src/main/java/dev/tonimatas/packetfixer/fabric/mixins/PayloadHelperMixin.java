@@ -1,4 +1,4 @@
-package dev.tonimatas.packetfixer.mixins;
+package dev.tonimatas.packetfixer.fabric.mixins;
 
 import net.fabricmc.fabric.impl.networking.payload.PayloadHelper;
 import net.minecraft.network.FriendlyByteBuf;

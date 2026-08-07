@@ -1,4 +1,4 @@
-package dev.tonimatas.packetfixer.platform;
+package dev.tonimatas.packetfixer.neoforge.platform;
 
 import dev.tonimatas.packetfixer.platform.services.IPlatformHelper;
 import net.neoforged.fml.loading.FMLLoader;

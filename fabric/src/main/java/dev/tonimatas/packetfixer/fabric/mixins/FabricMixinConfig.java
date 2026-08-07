@@ -1,4 +1,4 @@
-package dev.tonimatas.packetfixer.mixins;
+package dev.tonimatas.packetfixer.fabric.mixins;
 
 import dev.tonimatas.packetfixer.platform.Services;
 import org.objectweb.asm.tree.ClassNode;

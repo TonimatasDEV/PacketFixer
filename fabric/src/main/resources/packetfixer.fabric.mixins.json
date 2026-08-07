@@ -1,16 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "dev.tonimatas.packetfixer.mixins",
-  "plugin": "dev.tonimatas.packetfixer.mixins.FabricMixinConfig",
+  "package": "dev.tonimatas.packetfixer.fabric.mixins",
+  "plugin": "dev.tonimatas.packetfixer.fabric.mixins.FabricMixinConfig",
   "compatibilityLevel": "JAVA_25",
   "injectors": {
     "defaultRequire": 0
   },
   "mixins": [
-    "ClientboundCustomPayloadPacketMixin",
-    "PayloadHelperMixin",
-    "ServerboundCustomPayloadPacketMixin",
-    "VarIntMixin"
+    "PayloadHelperMixin"
   ]
 }

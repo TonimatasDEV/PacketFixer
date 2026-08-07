@@ -8,6 +8,7 @@
     "defaultRequire": 0
   },
   "mixins": [
+    "ClientboundCustomPayloadPacketMixin",
     "ClientboundCustomQueryPacketMixin",
     "ClientboundLevelChunkPacketDataMixin",
     "CompressionDecoderMixin",
@@ -16,6 +17,7 @@
     "FriendlyByteBufMixin",
     "MinecraftServerMixin",
     "NbtAccounterMixin",
+    "ServerboundCustomPayloadPacketMixin",
     "ServerboundCustomQueryPacketMixin",
     "ServerCommonPacketListenerImplMixin",
     "ServerConnectionListenerMixin",
