@@ -2,6 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "dev.tonimatas.packetfixer.mixins",
+  "plugin": "dev.tonimatas.packetfixer.mixins.FabricMixinConfig",
   "compatibilityLevel": "JAVA_25",
   "injectors": {
     "defaultRequire": 0
