@@ -52,4 +52,5 @@ tasks.shadowJar {
     configurations = listOf(shadowCommon)
     from(zipTree(tasks.jar.get().archiveFile))
     archiveClassifier.set(null)
+    destinationDirectory.set(rootDir.toPath().resolve("export").toFile())
 }

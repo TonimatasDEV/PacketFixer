@@ -27,14 +27,8 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew jar
 
-      - name: Upload a Fabric artifact
+      - name: Upload builds
         uses: actions/upload-artifact@v4
         with:
-          name: PacketFixerFabric
-          path: fabric/build/libs/**.jar
-
-      - name: Upload a NeoForge artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: PacketFixerNeoForge
-          path: neoforge/build/libs/**.jar
+          name: PacketFixerBuilds
+          path: export/**.jar
