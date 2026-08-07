@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "dev.tonimatas.packetfixer.mixins",
-  "compatibilityLevel": "JAVA_18",
+  "compatibilityLevel": "JAVA_25",
   "plugin": "dev.tonimatas.packetfixer.mixins.CommonMixinPlugin",
   "injectors": {
     "defaultRequire": 0
