@@ -2,8 +2,8 @@ plugins {
     java
 }
 
-val modVersion: String by extra
-val minecraftVersion: String by extra
+val modVersion = project.property("modVersion")
+val minecraftVersion = project.property("minecraftVersion")
 
 subprojects {
     apply(plugin = "java")

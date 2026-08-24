@@ -1,11 +1,11 @@
 plugins {
-    id("com.gtnewhorizons.retrofuturagradle") version "1.4.0"
+    id("com.gtnewhorizons.retrofuturagradle") version "2.+"
     id("idea")
     id("eclipse")
 }
 
-val modVersion: String by extra
-val minecraftVersion: String by extra
+val modVersion = rootProject.property("modVersion")
+val minecraftVersion = rootProject.property("minecraftVersion")
 
 group = "dev.tonimatas"
 version = "$modVersion-$minecraftVersion"
