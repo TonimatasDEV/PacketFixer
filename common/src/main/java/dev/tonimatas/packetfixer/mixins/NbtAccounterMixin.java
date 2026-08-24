@@ -2,6 +2,7 @@ package dev.tonimatas.packetfixer.mixins;
 
 import dev.tonimatas.packetfixer.util.Config;
 import net.minecraft.nbt.NbtAccounter;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -14,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class NbtAccounterMixin {
     @Shadow @Final private long quota;
 
-    @Redirect(method = "accountBytes(J)V", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtAccounter;quota:J"))
+    @Redirect(method = "accountBytes(J)V", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtAccounter;quota:J", opcode = Opcodes.GETFIELD, ordinal = 0))
     private long packetfixer$newSize(NbtAccounter instance) {
         return Config.isForceUnlimitedNbtEnabled() ? Config.getNbtMaxSize() : quota;
     }
