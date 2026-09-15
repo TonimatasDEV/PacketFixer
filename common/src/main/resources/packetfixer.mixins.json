@@ -25,7 +25,6 @@
     "Varint21FrameDecoderMixin",
     "Varint21LengthFieldPrependerMixin",
     "VarIntMixin",
-    "VarLongMixin",
-    "YggdrasilServicesKeyInfoMixin"
+    "VarLongMixin"
   ]
 }
