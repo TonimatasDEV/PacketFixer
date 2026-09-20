@@ -2,22 +2,21 @@ package dev.tonimatas.packetfixer.mixins;
 
 import dev.tonimatas.packetfixer.util.Config;
 import net.minecraft.nbt.NbtAccounter;
-import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(NbtAccounter.class)
 public class NbtAccounterMixin {
+    @Mutable
     @Shadow @Final private long quota;
 
-    @Redirect(method = "accountBytes(J)V", at = @At(value = "FIELD", target = "Lnet/minecraft/nbt/NbtAccounter;quota:J", opcode = Opcodes.GETFIELD, ordinal = 0))
-    private long packetfixer$newSize(NbtAccounter instance) {
-        return Config.isForceUnlimitedNbtEnabled() ? Config.getNbtMaxSize() : quota;
+    @Inject(method = "accountBytes(J)V", at = @At("HEAD"))
+    private void packetfixer$newSize(long size, CallbackInfo ci) {
+        quota = Config.isForceUnlimitedNbtEnabled() ? Config.getNbtMaxSize() : quota;
     }
     
     @ModifyConstant(method = "defaultQuota", constant = @Constant(longValue = 2097152L))
